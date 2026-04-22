@@ -37,7 +37,7 @@ const {
     <!-- Inter font — full weight range for aggressive typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />" rel="stylesheet" />
 
     <!-- Apply saved theme before first paint to prevent flash -->
     <script is:inline>
@@ -58,4 +58,11 @@ const {
 
 <style is:global>
   @import '../styles/design.css';
+
+  /* Hier definieren wir den dünnen Look für die Headlines */
+  h1, h2, h3 {
+    font-weight: 300 !important; /* Nutzt die dünne Inter-Stärke, die du gerade in Zeile 40 geladen hast */
+    letter-spacing: -0.04em !important; /* Macht den Text eng und edel wie bei Augusta Labs */
+    color: #fafafa; /* Ein ganz leichtes Off-White */
+  }
 </style>
