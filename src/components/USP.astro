@@ -1,0 +1,188 @@
+---
+export interface Props {
+  lang?: 'en' | 'de';
+}
+const { lang = 'en' } = Astro.props;
+
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+const faqs: FaqItem[] = lang === 'de' ? [
+  {
+    question: 'Wie erreicht implicit jeden Mitarbeitenden?',
+    answer: 'KI-geführte Gespräche erreichen Ihre gesamte Belegschaft in Stunden — nicht Monaten. Kein Scheduling, keine Interviewermüdung. Einfach deployen und starten.',
+  },
+  {
+    question: 'Was passiert mit all den Gesprächen?',
+    answer: 'Tausende von Stimmen werden automatisch zu verwertbarer Intelligenz gebündelt. Muster und Signalcluster entstehen über Teams und Abteilungen hinweg — ohne manuelle Auswertung.',
+  },
+  {
+    question: 'Werden nur Probleme identifiziert?',
+    answer: 'Nein. KI-generierte Lösungsrichtungen entstehen direkt aus den Signalen — konkrete Ansätze, keine bloße Problemliste. Schnelligkeit und Abdeckung statt Perfektion.',
+  },
+  {
+    question: 'Ist das Ergebnis ein weiterer Bericht?',
+    answer: 'Nein. Das Ergebnis sind vorvalidierte Venture Cases, bereit für Entscheider. Priorisierte Erkenntnisse, die sofort handlungsreif sind.',
+  },
+] : [
+  {
+    question: 'How does implicit reach every employee?',
+    answer: 'AI-led conversations reach your entire workforce in hours, not months. No scheduling, no interviewer fatigue — just deploy and go.',
+  },
+  {
+    question: 'What happens to all those conversations?',
+    answer: 'Thousands of voices are automatically clustered into actionable intelligence. Patterns and signals emerge across teams and departments — no manual analysis required.',
+  },
+  {
+    question: 'Do you just surface problems?',
+    answer: 'No. AI-generated solution directions emerge directly from the signals — concrete directions, not just a list of complaints. Speed and coverage over perfection.',
+  },
+  {
+    question: 'Is the output just another report?',
+    answer: 'No. The output is pre-validated venture cases ready for decision-makers. Prioritised insights you can act on immediately.',
+  },
+];
+---
+
+<section class="usp" id="usp">
+  <div class="container">
+
+    <div class="usp__header section-fade">
+      <span class="usp__badge">
+        {lang === 'de' ? 'Warum implicit' : 'Why implicit'}
+      </span>
+      <h2 class="usp__heading">
+        <span class="usp__line1">
+          {lang === 'de' ? 'Alles, was Sie brauchen,' : 'Everything you need'}
+        </span>
+        <span class="usp__line2">
+          {lang === 'de' ? 'um jede Organisation zu verstehen.' : 'to understand any organisation.'}
+        </span>
+      </h2>
+      <p class="usp__description">
+        {lang === 'de'
+          ? 'Die häufigsten Fragen zu implicit.ai und unserem Ansatz.'
+          : 'The most common questions about implicit.ai and our approach.'}
+      </p>
+    </div>
+
+    <div class="usp__faq">
+      {faqs.map((faq, i) => (
+        <div class="usp__item section-fade" style={`--delay: ${i * 80}ms`}>
+          <span class="usp__num" aria-hidden="true">{i + 1}</span>
+          <div class="usp__item-body">
+            <h3 class="usp__question">{faq.question}</h3>
+            <p class="usp__answer">{faq.answer}</p>
+          </div>
+          </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .usp {
+    padding: var(--space-32) 0;
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-bg);
+  }
+
+  .usp__header {
+    text-align: center;
+    margin-bottom: var(--space-16);
+  }
+
+  .usp__badge {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-1) var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-4);
+  }
+
+  .usp__heading {
+    font-size: clamp(var(--text-xl), 4vw, var(--text-2xl));
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1em;
+    margin-bottom: var(--space-4);
+  }
+
+  .usp__line1 {
+    color: var(--color-text-primary);
+  }
+
+  .usp__line2 {
+    color: var(--color-text-tertiary);
+  }
+
+  .usp__description {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .usp__faq {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .usp__item {
+    display: flex;
+    gap: var(--space-4);
+    margin-bottom: var(--space-8);
+  }
+
+  .usp__item:last-child {
+    margin-bottom: 0;
+  }
+
+  .usp__num {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-ui);
+    background-color: var(--color-surface-elevated);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-text-primary);
+    margin-top: 1px;
+  }
+
+  .usp__item-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .usp__question {
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    letter-spacing: -0.01em;
+  }
+
+  .usp__answer {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+  }
+</style>

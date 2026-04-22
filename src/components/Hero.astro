@@ -1,0 +1,270 @@
+---
+export interface Props {
+  lang?: 'en' | 'de';
+}
+const { lang = 'en' } = Astro.props;
+---
+
+<section class="hero" id="hero">
+  <div class="hero__inner container">
+    <div class="hero__badge">
+      <span class="hero__badge-dot" aria-hidden="true"></span>
+      {lang === 'de' ? 'KI-gestützte Innovationsintelligenz' : 'AI-powered innovation intelligence'}
+    </div>
+
+    <h1 class="hero__headline">
+      <span class="hero__line1">
+        {lang === 'de' ? 'Was in Ihrem Unternehmen' : 'What stays'}
+      </span>
+      <span class="hero__line2">
+        {lang === 'de' ? 'still bleibt.' : 'silent.'}
+      </span>
+    </h1>
+
+    <p class="hero__sub">
+      {lang === 'de'
+        ? 'implicit.ai hebt schwache Signale in Ihrer Organisation an die Oberfläche und verwandelt sie in validierte Innovationsmöglichkeiten.'
+        : 'implicit.ai surfaces weak signals from inside your organisation and transforms them into validated innovation opportunities.'}
+    </p>
+
+    <div class="hero__actions">
+      <a href="#request-pilot" class="hero__cta-primary">
+        <span class="hero__cta-primary-label">
+          {lang === 'de' ? 'Pilot anfragen' : 'Request Pilot'}
+        </span>
+        <i class="hero__cta-primary-icon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </i>
+      </a>
+      <a href="#how-it-works" class="hero__cta-secondary">
+        {lang === 'de' ? 'Wie es funktioniert' : 'How it works'}
+      </a>
+    </div>
+
+    <div class="hero__meta">
+      <span class="hero__meta-item">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.3"/>
+          <path d="M4.5 7l2 2 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        {lang === 'de' ? 'Kein langer Onboarding-Prozess' : 'No lengthy onboarding'}
+      </span>
+      <span class="hero__meta-item">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.3"/>
+          <path d="M4.5 7l2 2 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        {lang === 'de' ? 'Kein Vertrag erforderlich' : 'No contract required'}
+      </span>
+      <span class="hero__meta-item">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.3"/>
+          <path d="M4.5 7l2 2 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        {lang === 'de' ? 'Ergebnisse in 6 Wochen' : 'Results in 6 weeks'}
+      </span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding: var(--space-48) 0 var(--space-32);
+  }
+
+  .hero__inner {
+    max-width: 820px;
+    animation: hero-in 0.8s ease forwards;
+  }
+
+  @keyframes hero-in {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    background-color: var(--color-accent-light);
+    border: 1px solid var(--color-accent-muted);
+    color: var(--color-accent-dark);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-6);
+    animation: hero-in 0.8s ease forwards 0.05s;
+    opacity: 0;
+  }
+
+  .hero__badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.6; transform: scale(1.3); }
+  }
+
+  .hero__headline {
+    font-size: clamp(var(--text-2xl), 7vw, var(--text-3xl));
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    margin-bottom: var(--space-6);
+    animation: hero-in 0.8s ease forwards 0.1s;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.05em;
+  }
+
+  .hero__line1 {
+    color: var(--color-text-primary);
+  }
+
+  .hero__line2 {
+    color: var(--color-text-tertiary);
+  }
+
+  .hero__sub {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    line-height: 1.75;
+    max-width: 580px;
+    margin-bottom: var(--space-8);
+    animation: hero-in 0.8s ease forwards 0.2s;
+    opacity: 0;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-8);
+    animation: hero-in 0.8s ease forwards 0.3s;
+    opacity: 0;
+  }
+
+  .hero__cta-primary {
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    height: 48px;
+    padding: 0 var(--space-8);
+    background-color: var(--color-accent);
+    color: #ffffff;
+    font-size: var(--text-base);
+    font-weight: 700;
+    border-radius: var(--radius-ui);
+    box-shadow: var(--shadow-md);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .hero__cta-primary:hover {
+    box-shadow: var(--shadow-xl);
+  }
+
+  .hero__cta-primary:active {
+    transform: scale(0.97);
+  }
+
+  .hero__cta-primary-label {
+    margin-right: var(--space-10);
+    transition: opacity 0.5s ease;
+    white-space: nowrap;
+  }
+
+  .hero__cta-primary:hover .hero__cta-primary-label {
+    opacity: 0;
+  }
+
+  .hero__cta-primary-icon {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    bottom: 4px;
+    border-radius: 4px;
+    z-index: 1;
+    display: grid;
+    width: 25%;
+    place-items: center;
+    background-color: rgba(255, 255, 255, 0.18);
+    transition: width 0.5s ease;
+  }
+
+  .hero__cta-primary:hover .hero__cta-primary-icon {
+    width: calc(100% - 8px);
+  }
+
+  .hero__cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-6);
+    color: var(--color-text-secondary);
+    font-size: var(--text-base);
+    font-weight: 500;
+    border-radius: var(--radius-ui);
+    border: 1px solid var(--color-border);
+    background-color: var(--color-bg);
+    transition: color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .hero__cta-secondary:hover {
+    color: var(--color-text-primary);
+    border-color: var(--color-text-secondary);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .hero__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-6);
+    animation: hero-in 0.8s ease forwards 0.4s;
+    opacity: 0;
+  }
+
+  .hero__meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+  }
+
+  .hero__meta-item svg {
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__inner,
+    .hero__badge,
+    .hero__headline,
+    .hero__sub,
+    .hero__actions,
+    .hero__meta {
+      animation: none;
+      opacity: 1;
+    }
+
+    .hero__badge-dot {
+      animation: none;
+    }
+  }
+</style>

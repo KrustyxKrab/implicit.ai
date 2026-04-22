@@ -1,0 +1,146 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Privacy Policy / Datenschutzerklärung — implicit.ai" description="GDPR-compliant privacy policy for implicit.ai">
+  <Nav />
+  <main class="legal container">
+    <h1>Privacy Policy / Datenschutzerklärung</h1>
+
+    <!-- GERMAN -->
+    <section>
+      <h2>DE — Datenschutzerklärung</h2>
+
+      <h3>1. Verantwortlicher</h3>
+      <p>
+        implicit.ai<br />
+        [Adresse]<br />
+        E-Mail: hello@implicit.ai
+      </p>
+
+      <h3>2. Erhobene Daten</h3>
+      <p>
+        Wir erheben personenbezogene Daten nur, soweit dies für die Erbringung unserer Dienstleistungen erforderlich ist.
+        Dies umfasst: Name, E-Mail-Adresse, Unternehmensname sowie Informationen, die Sie im Rahmen von Interviews oder
+        Pilotkampagnen teilen.
+      </p>
+
+      <h3>3. Zwecke der Verarbeitung</h3>
+      <p>
+        Wir verarbeiten Ihre Daten zur Durchführung des Pilotprogramms, zur Kommunikation mit Ihnen und zur Verbesserung
+        unserer KI-gestützten Analysen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b) DSGVO (Vertragserfüllung) sowie
+        Art. 6 Abs. 1 lit. f) DSGVO (berechtigtes Interesse).
+      </p>
+
+      <h3>4. Speicherdauer</h3>
+      <p>
+        Personenbezogene Daten werden gelöscht, sobald der Zweck der Verarbeitung entfällt, sofern keine gesetzlichen
+        Aufbewahrungspflichten bestehen.
+      </p>
+
+      <h3>5. Ihre Rechte (Art. 15–22 DSGVO)</h3>
+      <p>Sie haben das Recht auf: Auskunft · Berichtigung · Löschung · Einschränkung der Verarbeitung ·
+        Datenübertragbarkeit · Widerspruch.</p>
+      <p>
+        Anfragen richten Sie bitte an: <a href="mailto:privacy@implicit.ai">privacy@implicit.ai</a>
+      </p>
+
+      <h3>6. Beschwerderecht</h3>
+      <p>
+        Sie haben das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren. Die zuständige Behörde richtet
+        sich nach Ihrem gewöhnlichen Aufenthaltsort.
+      </p>
+    </section>
+
+    <!-- ENGLISH -->
+    <section>
+      <h2>EN — Privacy Policy</h2>
+
+      <h3>1. Data Controller</h3>
+      <p>
+        implicit.ai<br />
+        [Address]<br />
+        Email: hello@implicit.ai
+      </p>
+
+      <h3>2. Data Collected</h3>
+      <p>
+        We collect personal data only to the extent necessary to provide our services. This includes: name, email
+        address, company name, and information shared during interviews or pilot engagements.
+      </p>
+
+      <h3>3. Purposes of Processing</h3>
+      <p>
+        We process your data to deliver the pilot programme, communicate with you, and improve our AI-assisted analyses.
+        The legal basis is Art. 6(1)(b) GDPR (contract performance) and Art. 6(1)(f) GDPR (legitimate interest).
+      </p>
+
+      <h3>4. Retention</h3>
+      <p>
+        Personal data is deleted once the purpose of processing no longer applies, unless statutory retention obligations
+        require otherwise.
+      </p>
+
+      <h3>5. Your Rights (Art. 15–22 GDPR)</h3>
+      <p>You have the right to: access · rectification · erasure · restriction of processing · data portability ·
+        objection.</p>
+      <p>
+        Submit requests to: <a href="mailto:privacy@implicit.ai">privacy@implicit.ai</a>
+      </p>
+
+      <h3>6. Right to Lodge a Complaint</h3>
+      <p>
+        You have the right to lodge a complaint with a data protection supervisory authority. The competent authority
+        depends on your place of habitual residence.
+      </p>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .legal {
+    padding: var(--space-16) var(--space-4);
+    max-width: 720px;
+  }
+
+  .legal h1 {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-8);
+  }
+
+  .legal section {
+    margin-bottom: var(--space-12);
+  }
+
+  .legal h2 {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    margin-bottom: var(--space-6);
+    color: var(--color-accent);
+  }
+
+  .legal h3 {
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-2);
+  }
+
+  .legal p {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    margin-bottom: var(--space-3);
+  }
+
+  .legal a {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+</style>

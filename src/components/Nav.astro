@@ -1,0 +1,147 @@
+---
+export interface Props {
+  lang?: 'en' | 'de';
+}
+const { lang = 'en' } = Astro.props;
+const cta = lang === 'de' ? 'Pilot anfragen' : 'Request Pilot';
+const toggleHref = lang === 'de' ? '/' : '/de/';
+const toggleLabel = lang === 'de' ? 'EN' : 'DE';
+---
+
+<nav class="nav" id="nav">
+  <div class="nav__inner container">
+    <a href={lang === 'de' ? '/de/' : '/'} class="nav__logo" aria-label="implicit.ai home">
+      implicit<span class="nav__logo-dot">.</span>ai
+    </a>
+    <div class="nav__actions">
+      <a href={toggleHref} class="nav__lang" aria-label={`Switch to ${toggleLabel}`}>
+        {toggleLabel}
+      </a>
+      <a href="#request-pilot" class="nav__cta">
+        <span class="nav__cta-label">{cta}</span>
+        <i class="nav__cta-icon" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </i>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-4) 0;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .nav.scrolled {
+    box-shadow: var(--shadow-sm);
+  }
+
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav__logo {
+    font-size: var(--text-base);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--color-text-primary);
+  }
+
+  .nav__logo-dot {
+    color: var(--color-accent);
+  }
+
+  .nav__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .nav__lang {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    transition: color 0.2s ease;
+    letter-spacing: 0.06em;
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-ui);
+  }
+
+  .nav__lang:hover {
+    color: var(--color-text-primary);
+    background-color: var(--color-surface);
+  }
+
+  .nav__cta {
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    height: 36px;
+    padding: 0 var(--space-4);
+    background-color: var(--color-accent);
+    color: #ffffff;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    border-radius: var(--radius-ui);
+    box-shadow: var(--shadow-xs);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .nav__cta:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  .nav__cta:active {
+    transform: scale(0.97);
+  }
+
+  .nav__cta-label {
+    margin-right: var(--space-8);
+    transition: opacity 0.5s ease;
+    white-space: nowrap;
+  }
+
+  .nav__cta:hover .nav__cta-label {
+    opacity: 0;
+  }
+
+  .nav__cta-icon {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    bottom: 4px;
+    border-radius: 4px;
+    z-index: 1;
+    display: grid;
+    width: 25%;
+    place-items: center;
+    background-color: rgba(255, 255, 255, 0.18);
+    transition: width 0.5s ease;
+  }
+
+  .nav__cta:hover .nav__cta-icon {
+    width: calc(100% - 8px);
+  }
+</style>
+
+<script>
+  const nav = document.getElementById('nav');
+  if (nav) {
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+  }
+</script>

@@ -1,0 +1,209 @@
+---
+export interface Props {
+  lang?: 'en' | 'de';
+}
+const { lang = 'en' } = Astro.props;
+
+const stages = lang === 'de' ? [
+  { id: 'extract',    num: '01', label: 'Extrahieren',   desc: 'Rohes tacites Wissen aus strukturierten KI-Interviews gewinnen' },
+  { id: 'synthesise', num: '02', label: 'Synthetisieren', desc: 'Muster und Cluster über Gespräche und Teams hinweg erkennen' },
+  { id: 'generate',   num: '03', label: 'Generieren',    desc: 'Konkrete Innovationsmöglichkeiten aus synthetisierten Signalen ableiten' },
+  { id: 'validate',   num: '04', label: 'Validieren',    desc: 'Möglichkeiten gegen reale Einschränkungen und strategische Ziele prüfen' },
+  { id: 'converge',   num: '05', label: 'Konvergieren',  desc: 'Priorisierte, handlungsfertige Erkenntnisse für die Entscheidungsebene liefern' },
+] : [
+  { id: 'extract',    num: '01', label: 'Extract',    desc: 'Surface raw tacit knowledge through structured AI-led interviews' },
+  { id: 'synthesise', num: '02', label: 'Synthesise', desc: 'Identify patterns and clusters across conversations and teams' },
+  { id: 'generate',   num: '03', label: 'Generate',   desc: 'Derive concrete innovation opportunities from synthesised signals' },
+  { id: 'validate',   num: '04', label: 'Validate',   desc: 'Test opportunities against real constraints and strategic goals' },
+  { id: 'converge',   num: '05', label: 'Converge',   desc: 'Deliver prioritised, action-ready insights to decision level' },
+];
+---
+
+<section class="loop" id="validation-loop">
+  <div class="container">
+    <div class="loop__header">
+      <p class="loop__eyebrow section-fade">
+        {lang === 'de' ? 'Proprietärer Prozess' : 'Proprietary process'}
+      </p>
+      <h2 class="loop__heading section-fade">
+        <span class="loop__heading-line1">{lang === 'de' ? 'Der Validierungskreislauf' : 'The Validation Loop'}</span>
+        <span class="loop__heading-line2">{lang === 'de' ? 'Fünf Stufen. Kein Rauschen.' : 'Five stages. Zero noise.'}</span>
+      </h2>
+      <p class="loop__sub section-fade">
+        {lang === 'de'
+          ? 'Ein proprietärer 5-Stufen-Prozess, der schwache Signale in handlungsfertige Erkenntnisse verwandelt.'
+          : 'A proprietary 5-stage process that transforms weak signals into action-ready insights.'}
+      </p>
+    </div>
+
+    <!-- Desktop: horizontal stepper -->
+    <div class="loop__stepper" aria-hidden="true">
+      {stages.map((stage, i) => (
+        <div class="loop__stepper-item">
+          <div class="loop__stepper-circle">{stage.num}</div>
+          {i < stages.length - 1 && <div class="loop__stepper-line"></div>}
+        </div>
+      ))}
+    </div>
+
+    <!-- Cards -->
+    <div class="loop__flow">
+      {stages.map((stage, i) => (
+        <div class="loop__stage section-fade" style={`--delay: ${i * 80}ms`}>
+          <span class="loop__stage-label">{stage.label}</span>
+          <p class="loop__stage-desc">{stage.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .loop {
+    padding: var(--space-24) 0;
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-bg);
+  }
+
+  .loop__header {
+    margin-bottom: var(--space-12);
+    max-width: 640px;
+  }
+
+  .loop__eyebrow {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    margin-bottom: var(--space-3);
+  }
+
+  .loop__heading {
+    font-size: clamp(var(--text-lg), 3vw, var(--text-xl));
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-3);
+    display: flex;
+    flex-direction: column;
+    gap: 0.1em;
+  }
+
+  .loop__heading-line1 {
+    color: var(--color-text-primary);
+  }
+
+  .loop__heading-line2 {
+    color: var(--color-text-tertiary);
+  }
+
+  .loop__sub {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+  }
+
+  /* Stepper connector (desktop only) */
+  .loop__stepper {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .loop__stepper {
+      display: flex;
+      align-items: center;
+      margin-bottom: var(--space-6);
+    }
+  }
+
+  .loop__stepper-item {
+    display: flex;
+    align-items: center;
+    flex: 1;
+  }
+
+  .loop__stepper-item:last-child {
+    flex: 0;
+  }
+
+  .loop__stepper-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    color: #ffffff;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 4px var(--color-accent-light);
+  }
+
+  .loop__stepper-line {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-accent-muted));
+    margin: 0 var(--space-1);
+    border-radius: 1px;
+  }
+
+  /* Cards */
+  .loop__flow {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  @media (min-width: 768px) {
+    .loop__flow {
+      grid-template-columns: repeat(5, 1fr);
+      gap: var(--space-3);
+    }
+  }
+
+  .loop__stage {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    padding: var(--space-4) var(--space-4) var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    box-shadow: var(--shadow-xs);
+    transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .loop__stage::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-accent-muted));
+    border-radius: var(--radius-card) var(--radius-card) 0 0;
+  }
+
+  .loop__stage:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+    border-color: var(--color-accent-muted);
+  }
+
+  .loop__stage-label {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    letter-spacing: -0.01em;
+  }
+
+  .loop__stage-desc {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+</style>

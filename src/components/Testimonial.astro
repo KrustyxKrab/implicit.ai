@@ -1,0 +1,84 @@
+---
+export interface Props {
+  lang?: 'en' | 'de';
+}
+const { lang = 'en' } = Astro.props;
+---
+
+<!-- ⚠ Placeholder copy — replace with real customer quote before go-live -->
+<section class="testimonial">
+  <div class="container">
+    <div class="testimonial__inner section-fade">
+      <blockquote class="testimonial__quote">
+        <span class="testimonial__mark" aria-hidden="true">"</span>
+        <p class="testimonial__text">
+          {lang === 'de'
+            ? 'Was unser Team früher Monate an Interviews und Analyse gekostet hat, lieferte implicit.ai an einem einzigen Nachmittag.'
+            : 'What used to take our team months of interviews and analysis, implicit.ai delivered in a single afternoon.'}
+        </p>
+        <footer class="testimonial__attribution">
+          <cite class="testimonial__name">
+            {lang === 'de' ? '[Name, Rolle] — ⚠ Platzhalter' : '[Name, Role] — ⚠ placeholder'}
+          </cite>
+        </footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonial {
+    padding: var(--space-32) 0;
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+  }
+
+  .testimonial__inner {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .testimonial__quote {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-8);
+  }
+
+  .testimonial__mark {
+    font-size: 5rem;
+    line-height: 0.6;
+    font-weight: 800;
+    color: var(--color-accent);
+    letter-spacing: -0.05em;
+    user-select: none;
+    display: block;
+    margin-bottom: var(--space-2);
+  }
+
+  .testimonial__text {
+    font-size: clamp(var(--text-lg), 3vw, 2.25rem);
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--color-text-primary);
+    letter-spacing: -0.02em;
+  }
+
+  .testimonial__attribution {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  .testimonial__name {
+    font-size: var(--text-sm);
+    font-style: normal;
+    font-weight: 500;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+</style>

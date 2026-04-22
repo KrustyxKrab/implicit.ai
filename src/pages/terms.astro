@@ -1,0 +1,131 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Terms of Service — implicit.ai" description="Terms of Service for implicit.ai pilot engagements">
+  <Nav />
+  <main class="legal container">
+    <h1>Terms of Service</h1>
+    <p class="legal__updated">Last updated: April 2026</p>
+
+    <section>
+      <h2>1. Scope of Service</h2>
+      <p>
+        These Terms of Service govern access to and use of implicit.ai's AI-powered innovation intelligence platform and
+        any associated pilot engagement services (collectively, the "Service"), provided by implicit.ai ("we", "us",
+        "our") to the customer ("you", "Client").
+      </p>
+    </section>
+
+    <section>
+      <h2>2. Pilot Terms</h2>
+      <p>
+        Pilot engagements are time-limited, scoped programmes designed to demonstrate the value of the Service within
+        your organisation. The scope, duration, and deliverables of each pilot will be agreed in writing prior to
+        commencement. No ongoing commitment is implied by participation in a pilot.
+      </p>
+    </section>
+
+    <section>
+      <h2>3. Intellectual Property</h2>
+      <p>
+        All intellectual property rights in the Service — including underlying AI models, software, and methodologies —
+        remain exclusively with implicit.ai. You retain ownership of all data and content you provide. By using the
+        Service, you grant us a limited, non-exclusive licence to process your data solely for the purpose of delivering
+        the Service.
+      </p>
+      <p>
+        Insights, maps, and reports generated through the Service are provided to you under a non-exclusive licence for
+        your internal business use only.
+      </p>
+    </section>
+
+    <section>
+      <h2>4. Liability</h2>
+      <p>
+        The Service is provided on an "as is" basis. To the fullest extent permitted by applicable law, we exclude all
+        warranties, express or implied. We shall not be liable for any indirect, incidental, or consequential damages
+        arising from your use of the Service.
+      </p>
+      <p>
+        Our total liability to you in connection with any claim shall not exceed the amounts paid by you in the three
+        months preceding the claim.
+      </p>
+    </section>
+
+    <section>
+      <h2>5. Termination</h2>
+      <p>
+        Either party may terminate a pilot engagement by providing 7 days' written notice. We reserve the right to
+        suspend or terminate access immediately in the event of material breach of these Terms.
+      </p>
+      <p>
+        On termination, we will provide a data export upon request within 30 days, after which your data will be
+        securely deleted.
+      </p>
+    </section>
+
+    <section>
+      <h2>6. Governing Law</h2>
+      <p>
+        These Terms are governed by the laws of the Federal Republic of Germany. The courts of [City], Germany shall
+        have exclusive jurisdiction over any disputes arising from these Terms.
+      </p>
+    </section>
+
+    <section>
+      <h2>7. Contact</h2>
+      <p>
+        For any questions regarding these Terms, please contact us at:
+        <a href="mailto:legal@implicit.ai">legal@implicit.ai</a>
+      </p>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .legal {
+    padding: var(--space-16) var(--space-4);
+    max-width: 720px;
+  }
+
+  .legal h1 {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-3);
+  }
+
+  .legal__updated {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-10);
+  }
+
+  .legal section {
+    margin-bottom: var(--space-8);
+  }
+
+  .legal h2 {
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-3);
+    letter-spacing: -0.01em;
+  }
+
+  .legal p {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    margin-bottom: var(--space-3);
+  }
+
+  .legal a {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+</style>

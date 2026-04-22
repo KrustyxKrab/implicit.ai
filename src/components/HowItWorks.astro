@@ -1,0 +1,658 @@
+---
+export interface Props {
+  lang?: 'en' | 'de';
+}
+const { lang = 'en' } = Astro.props;
+const isDE = lang === 'de';
+---
+
+<section class="hiw" id="how-it-works">
+  <div class="container">
+
+    <!-- Section header -->
+    <div class="hiw__header section-fade">
+      <p class="hiw__eyebrow">{isDE ? 'Wie es funktioniert' : 'How it works'}</p>
+      <h2 class="hiw__heading">
+        <span class="hiw__line1">{isDE ? 'Drei Schritte.' : 'Three steps.'}</span>
+        <span class="hiw__line2">{isDE ? 'Von der Einrichtung zur Klarheit.' : 'From deployment to clarity.'}</span>
+      </h2>
+    </div>
+
+    <!-- Step 01: Deploy -->
+    <div class="hiw__step hiw__step--odd section-fade">
+      <div class="hiw__ghost" aria-hidden="true" style="transform: translate(-150%, -50%);">01</div>
+      <div class="hiw__text">
+        <p class="hiw__step-eyebrow">{isDE ? 'Schritt 01' : 'Step 01'}</p>
+        <h3 class="hiw__step-heading">{isDE ? 'Agenten deployen' : 'Deploy agents'}</h3>
+        <p class="hiw__step-body">
+          {isDE
+            ? 'KI-Agenten erreichen jeden Mitarbeitenden in Stunden — nicht Monaten. Kein Scheduling, keine Interviewermüdung. Einfach deployen und warten lassen.'
+            : 'AI agents reach every employee in hours, not months. No scheduling, no interviewer fatigue — just deploy and let them work.'}
+        </p>
+      </div>
+      <div class="hiw__mockup">
+        <div class="mock mock--chat">
+          <div class="mock__chrome">
+            <div class="mock__dots">
+              <span class="mock__dot mock__dot--r"></span>
+              <span class="mock__dot mock__dot--y"></span>
+              <span class="mock__dot mock__dot--g"></span>
+            </div>
+            <span class="mock__title">implicit Agent · {isDE ? 'Prozessanalyse' : 'Process Discovery'}</span>
+          </div>
+          <div class="mock__body">
+            <div class="mock__msg mock__msg--ai">
+              <div class="mock__avatar-ai">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+                </svg>
+              </div>
+              <div class="mock__bubble">
+                {isDE ? 'Hallo! Ich bin Ihr implicit-Agent. Können Sie mir erklären, wie Genehmigungen für größere Deals ablaufen?' : 'Hi! I\'m your implicit agent. Can you walk me through how you handle enterprise deal approvals?'}
+              </div>
+            </div>
+            <div class="mock__msg mock__msg--emp">
+              <div class="mock__bubble">
+                {isDE ? 'Klar! Ich prüfe zuerst die Dealgröße und leite dann an die richtige Genehmigungsebene weiter…' : 'Sure! First I check the deal size, then route to the right approver level…'}
+              </div>
+            </div>
+            <div class="mock__msg mock__msg--ai">
+              <div class="mock__avatar-ai">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+                </svg>
+              </div>
+              <div class="mock__bubble">
+                {isDE ? 'Was passiert, wenn ein Deal 500.000 € überschreitet?' : 'What happens when a deal exceeds $500k?'}
+              </div>
+            </div>
+            <div class="mock__typing">
+              <span></span><span></span><span></span>
+              <small>{isDE ? 'Mitarbeiter tippt…' : 'Employee is typing…'}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 02: Interviews at scale -->
+    <div class="hiw__step hiw__step--even section-fade">
+      <div class="hiw__ghost" aria-hidden="true" style="transform: translate(60%, -50%);">02</div>
+      <div class="hiw__mockup">
+        <div class="mock mock--video">
+          <div class="mock__video-grid">
+            <div class="mock__video-tile">
+              <div class="mock__video-avatar">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+                </svg>
+              </div>
+              <span class="mock__video-label">{isDE ? 'Mitarbeitende' : 'Employee'}</span>
+            </div>
+            <div class="mock__video-tile mock__video-tile--ai">
+              <div class="mock__video-logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+                </svg>
+              </div>
+              <span class="mock__video-label">implicit Agent</span>
+            </div>
+          </div>
+          <div class="mock__video-bar">
+            <span class="mock__video-time">5:54</span>
+            <div class="mock__video-controls">
+              <button class="mock__ctrl" aria-label="mute">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/>
+                </svg>
+              </button>
+              <button class="mock__ctrl mock__ctrl--end" aria-label="end call">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.61 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.62a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hiw__text">
+        <p class="hiw__step-eyebrow">{isDE ? 'Schritt 02' : 'Step 02'}</p>
+        <h3 class="hiw__step-heading">{isDE ? 'Agenten interviewen jeden' : 'Agents interview everyone'}</h3>
+        <p class="hiw__step-body">
+          {isDE
+            ? 'Hunderte strukturierte Gespräche laufen gleichzeitig. Sie extrahieren, wie Arbeit wirklich gemacht wird — nicht wie sie dokumentiert ist.'
+            : 'Hundreds of structured conversations happening simultaneously, extracting how work actually gets done — not how it\'s documented.'}
+        </p>
+        <div class="hiw__stats">
+          <div class="hiw__stat">
+            <span class="hiw__stat-num">100s</span>
+            <span class="hiw__stat-label">{isDE ? 'Gespräche in Stunden' : 'Conversations in hours'}</span>
+          </div>
+          <div class="hiw__stat">
+            <span class="hiw__stat-num">100%</span>
+            <span class="hiw__stat-label">{isDE ? 'der Mitarbeitenden erreichbar' : 'Of employees reached'}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 03: The Map -->
+    <div class="hiw__step hiw__step--odd section-fade">
+      <div class="hiw__ghost" aria-hidden="true" style="transform: translate(-150%, -50%);">03</div>
+      <div class="hiw__text">
+        <p class="hiw__step-eyebrow">{isDE ? 'Schritt 03' : 'Step 03'}</p>
+        <h3 class="hiw__step-heading">{isDE ? 'Sie erhalten die Karte' : 'You get the map'}</h3>
+        <p class="hiw__step-body">
+          {isDE
+            ? 'Ein vollständiges Innovations-Bild mit identifizierten Engpässen, gemappten Abhängigkeiten und einer priorisierten Roadmap validierter Venture Cases.'
+            : 'A complete innovation picture with bottlenecks identified, dependencies mapped, and a prioritised roadmap of validated venture cases.'}
+        </p>
+      </div>
+      <div class="hiw__mockup">
+        <div class="mock mock--workflow">
+          <div class="mock__chrome">
+            <div class="mock__dots">
+              <span class="mock__dot mock__dot--r"></span>
+              <span class="mock__dot mock__dot--y"></span>
+              <span class="mock__dot mock__dot--g"></span>
+            </div>
+            <span class="mock__title">{isDE ? 'Wissenskarte · HHLA Pilot' : 'Knowledge Map · HHLA Pilot'}</span>
+          </div>
+          <div class="mock__body">
+            <div class="mock__wf-item mock__wf-item--done">
+              <div class="mock__wf-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              <div class="mock__wf-content">
+                <span class="mock__wf-title">{isDE ? 'Signalextraktion' : 'Signal Extraction'}</span>
+                <span class="mock__wf-sub">{isDE ? '1.247 Gespräche ausgewertet' : '1,247 conversations processed'}</span>
+              </div>
+              <span class="mock__wf-status mock__wf-status--done">{isDE ? 'Fertig' : 'Done'}</span>
+            </div>
+            <div class="mock__wf-item mock__wf-item--active">
+              <div class="mock__wf-icon mock__wf-icon--spin">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+              </div>
+              <div class="mock__wf-content">
+                <span class="mock__wf-title">{isDE ? 'Cluster-Synthese' : 'Cluster Synthesis'}</span>
+                <span class="mock__wf-sub">{isDE ? 'Verbinde Signalquellen…' : 'Connecting signal sources…'}</span>
+              </div>
+              <span class="mock__wf-status mock__wf-status--active">{isDE ? 'Aktiv' : 'Active'}</span>
+            </div>
+            <div class="mock__wf-item mock__wf-item--pending">
+              <div class="mock__wf-icon mock__wf-icon--pending">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+              </div>
+              <div class="mock__wf-content">
+                <span class="mock__wf-title">{isDE ? 'Hypothesengenerierung' : 'Hypothesis Generation'}</span>
+                <span class="mock__wf-sub">{isDE ? 'Operationale Probleme analysieren' : 'Analyse operational issues'}</span>
+              </div>
+              <span class="mock__wf-status">{isDE ? 'Ausstehend' : 'Pending'}</span>
+            </div>
+            <div class="mock__wf-item mock__wf-item--pending">
+              <div class="mock__wf-icon mock__wf-icon--pending">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+              </div>
+              <div class="mock__wf-content">
+                <span class="mock__wf-title">{isDE ? 'Venture Cases' : 'Venture Cases'}</span>
+                <span class="mock__wf-sub">{isDE ? 'Umsetzungsplan generieren' : 'Generate implementation plan'}</span>
+              </div>
+              <span class="mock__wf-status">{isDE ? 'Ausstehend' : 'Pending'}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .hiw {
+    padding: var(--space-32) 0;
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-bg);
+  }
+
+  /* Header */
+  .hiw__header {
+    margin-bottom: var(--space-24);
+  }
+
+  .hiw__eyebrow {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    margin-bottom: var(--space-4);
+  }
+
+  .hiw__heading {
+    font-size: clamp(var(--text-xl), 5vw, var(--text-3xl));
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hiw__line1 { color: var(--color-text-primary); }
+  .hiw__line2 { color: var(--color-text-tertiary); }
+
+  /* Step blocks */
+  .hiw__step {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    padding: var(--space-16) 0;
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  @media (min-width: 768px) {
+    .hiw__step {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+      align-items: center;
+      padding: var(--space-24) 0;
+    }
+
+    .hiw__step--even .hiw__text {
+      order: 2;
+    }
+    .hiw__step--even .hiw__mockup {
+      order: 1;
+    }
+  }
+
+  /* Ghost number */
+  .hiw__ghost {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: clamp(140px, 22vw, 300px);
+    font-weight: 900;
+    letter-spacing: -0.06em;
+    line-height: 1;
+    color: var(--color-border);
+    z-index: 0;
+    user-select: none;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  /* Text column */
+  .hiw__text {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .hiw__step-eyebrow {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+  }
+
+  .hiw__step-heading {
+    font-size: clamp(var(--text-xl), 4vw, 2.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--color-text-primary);
+  }
+
+  .hiw__step-body {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    max-width: 420px;
+  }
+
+  /* Stats */
+  .hiw__stats {
+    display: flex;
+    gap: var(--space-8);
+    margin-top: var(--space-4);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .hiw__stat {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .hiw__stat-num {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--color-text-primary);
+    line-height: 1;
+  }
+
+  .hiw__stat-label {
+    font-size: var(--text-xs);
+    color: var(--color-text-tertiary);
+    font-weight: 500;
+  }
+
+  /* Mockup column */
+  .hiw__mockup {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ---- Shared mockup chrome ---- */
+  .mock {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgb(0 0 0 / 0.03),
+      0 2px 4px rgb(0 0 0 / 0.04),
+      0 8px 16px rgb(0 0 0 / 0.06),
+      0 24px 48px rgb(0 0 0 / 0.08);
+    font-family: var(--font-family);
+  }
+
+  .mock__chrome {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+  }
+
+  .mock__dots {
+    display: flex;
+    gap: 5px;
+    flex-shrink: 0;
+  }
+
+  .mock__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  .mock__dot--r { background: #ef4444; }
+  .mock__dot--y { background: #f59e0b; }
+  .mock__dot--g { background: #22c55e; }
+
+  .mock__title {
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+    font-weight: 500;
+  }
+
+  .mock__body {
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  /* ---- Chat mockup ---- */
+  .mock--chat .mock__body {
+    gap: var(--space-3);
+  }
+
+  .mock__msg {
+    display: flex;
+    gap: var(--space-2);
+    align-items: flex-start;
+  }
+
+  .mock__msg--emp {
+    justify-content: flex-end;
+  }
+
+  .mock__avatar-ai {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: var(--color-accent-light);
+    border: 1px solid var(--color-accent-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .mock__bubble {
+    max-width: 75%;
+    padding: var(--space-2) var(--space-3);
+    border-radius: 12px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .mock__msg--ai .mock__bubble {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+    border-radius: 4px 12px 12px 12px;
+  }
+
+  .mock__msg--emp .mock__bubble {
+    background-color: var(--color-accent);
+    color: #ffffff;
+    border-radius: 12px 4px 12px 12px;
+  }
+
+  .mock__typing {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding-left: 32px;
+  }
+
+  .mock__typing span {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: var(--color-text-tertiary);
+    animation: typing-dot 1.2s ease-in-out infinite;
+  }
+  .mock__typing span:nth-child(2) { animation-delay: 0.2s; }
+  .mock__typing span:nth-child(3) { animation-delay: 0.4s; }
+
+  .mock__typing small {
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+  }
+
+  @keyframes typing-dot {
+    0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
+    40% { opacity: 1; transform: scale(1); }
+  }
+
+  /* ---- Video call mockup ---- */
+  .mock--video {
+    background-color: var(--color-surface);
+  }
+
+  .mock__video-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+    padding: var(--space-3);
+  }
+
+  .mock__video-tile {
+    aspect-ratio: 4/3;
+    background-color: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mock__video-tile--ai {
+    background-color: var(--color-accent-light);
+    border-color: var(--color-accent-muted);
+  }
+
+  .mock__video-avatar,
+  .mock__video-logo {
+    color: var(--color-text-tertiary);
+  }
+
+  .mock__video-tile--ai .mock__video-logo {
+    color: var(--color-accent);
+  }
+
+  .mock__video-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--color-text-tertiary);
+    letter-spacing: 0.04em;
+    position: absolute;
+    bottom: var(--space-2);
+    left: var(--space-2);
+    background-color: rgba(0,0,0,0.06);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .mock__video-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-3) var(--space-4);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .mock__video-time {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-tertiary);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .mock__video-controls {
+    display: flex;
+    gap: var(--space-2);
+  }
+
+  .mock__ctrl {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-surface-elevated);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-secondary);
+    cursor: default;
+  }
+
+  .mock__ctrl--end {
+    background-color: #ef4444;
+    border-color: #ef4444;
+    color: #ffffff;
+  }
+
+  /* ---- Workflow mockup ---- */
+  .mock__wf-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-2);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .mock__wf-item:last-child {
+    border-bottom: none;
+  }
+
+  .mock__wf-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-ui);
+    background-color: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--color-text-tertiary);
+  }
+
+  .mock__wf-item--done .mock__wf-icon {
+    background-color: #dcfce7;
+    border-color: #bbf7d0;
+    color: #16a34a;
+  }
+
+  .mock__wf-item--active .mock__wf-icon {
+    background-color: var(--color-accent-light);
+    border-color: var(--color-accent-muted);
+    color: var(--color-accent);
+  }
+
+  .mock__wf-icon--spin svg {
+    animation: spin 1.5s linear infinite;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .mock__wf-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .mock__wf-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .mock__wf-item--pending .mock__wf-title,
+  .mock__wf-item--pending .mock__wf-sub {
+    color: var(--color-text-tertiary);
+  }
+
+  .mock__wf-sub {
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+  }
+
+  .mock__wf-status {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-text-tertiary);
+    flex-shrink: 0;
+  }
+
+  .mock__wf-status--done { color: #16a34a; }
+  .mock__wf-status--active { color: var(--color-accent); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mock__typing span,
+    .mock__wf-icon--spin svg {
+      animation: none;
+    }
+  }
+</style>
