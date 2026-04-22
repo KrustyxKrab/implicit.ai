@@ -1,4 +1,6 @@
 ---
+import logoRaw from '../assets/logo.svg?raw';
+
 export interface Props {
   lang?: 'en' | 'de';
 }
@@ -10,8 +12,8 @@ const toggleLabel = lang === 'de' ? 'EN' : 'DE';
 
 <nav class="nav" id="nav">
   <div class="nav__inner container">
-    <a href={lang === 'de' ? '/de/' : '/'} class="nav__logo" aria-label="implicit.ai home">
-      implicit<span class="nav__logo-dot">.</span>ai
+    <a href={lang === 'de' ? '/de/' : '/'} class="nav__logo" aria-label="inplicit.ai home">
+      <span class="nav__logo-mark" set:html={logoRaw} />
     </a>
     <div class="nav__actions">
       <button class="nav__theme" id="theme-toggle" aria-label="Toggle theme" type="button">
@@ -61,17 +63,32 @@ const toggleLabel = lang === 'de' ? 'EN' : 'DE';
   }
 
   .nav__logo {
-    font-size: var(--text-base);
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    color: var(--color-text-primary);
+    display: flex;
+    align-items: center;
     transition: opacity 0.15s var(--ease-smooth);
   }
 
   .nav__logo:hover { opacity: 0.7; }
 
-  .nav__logo-dot {
-    color: var(--color-accent);
+  .nav__logo-mark {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav__logo-mark :global(svg) {
+    height: 26px;
+    width: auto;
+  }
+
+  /* Override black fills to follow theme */
+  .nav__logo-mark :global(svg path),
+  .nav__logo-mark :global(svg text) {
+    fill: var(--color-text-primary);
+  }
+
+  /* Keep the orange accent rect */
+  .nav__logo-mark :global(svg rect) {
+    fill: var(--color-accent);
   }
 
   .nav__actions {

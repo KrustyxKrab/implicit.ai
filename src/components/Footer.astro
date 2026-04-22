@@ -4,12 +4,13 @@ export interface Props {
 }
 const { lang = 'en' } = Astro.props;
 
+import logoRaw from '../assets/logo.svg?raw';
+
 const year = new Date().getFullYear();
 
 const mainLinks = lang === 'de'
   ? [
       { href: '/de/#how-it-works', label: 'Wie es funktioniert' },
-      { href: '/de/#validation-loop', label: 'Validierungsloop' },
       { href: '/de/#request-pilot', label: 'Pilot anfragen' },
     ]
   : [
@@ -35,14 +36,14 @@ const legalLinks = lang === 'de'
   <div class="footer__inner container">
 
     <div class="footer__top">
-      <a href={lang === 'de' ? '/de/' : '/'} class="footer__logo" aria-label="implicit.ai home">
-        implicit<span class="footer__logo-dot">.</span>ai
-      </a>
+     <a href={lang === 'de' ? '/de/' : '/'} class="nav__logo" aria-label="inplicit.ai home">
+      <span class="nav__logo-mark" set:html={logoRaw} />
+    </a>
 
       <ul class="footer__social" role="list">
         <li>
           <a
-            href="https://linkedin.com/company/implicit-ai"
+            href="https://linkedin.com/company/inplicit-ai"
             target="_blank"
             rel="noopener noreferrer"
             class="footer__social-btn"
@@ -57,7 +58,7 @@ const legalLinks = lang === 'de'
     </div>
 
     <div class="footer__bottom">
-      <p class="footer__copy">© {year} implicit.ai</p>
+      <p class="footer__copy">© {year} inplicit.ai</p>
 
       <nav class="footer__nav" aria-label={lang === 'de' ? 'Hauptnavigation' : 'Main navigation'}>
         {mainLinks.map((link) => (
@@ -94,17 +95,34 @@ const legalLinks = lang === 'de'
     justify-content: space-between;
   }
 
-  .footer__logo {
-    font-size: var(--text-base);
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    color: var(--color-text-primary);
+    .nav__logo {
+    display: flex;
+    align-items: center;
     transition: opacity 0.15s var(--ease-smooth);
   }
 
-  .footer__logo:hover { opacity: 0.6; }
+  .nav__logo:hover { opacity: 0.7; }
 
-  .footer__logo-dot { color: var(--color-accent); }
+  .nav__logo-mark {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav__logo-mark :global(svg) {
+    height: 26px;
+    width: auto;
+  }
+
+  /* Override black fills to follow theme */
+  .nav__logo-mark :global(svg path),
+  .nav__logo-mark :global(svg text) {
+    fill: var(--color-text-primary);
+  }
+
+  /* Keep the orange accent rect */
+  .nav__logo-mark :global(svg rect) {
+    fill: var(--color-accent);
+  }
 
   .footer__social {
     display: flex;

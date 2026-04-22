@@ -25,13 +25,14 @@ Website/
         ├── layouts/
         │   └── Layout.astro     ← root shell: meta/SEO, Inter font, global CSS
         ├── components/
-        │   ├── Nav.astro        ← sticky nav, logo wordmark, lang toggle, CTA
+        │   ├── Nav.astro        ← sticky nav, logo SVG, theme toggle, CTA
         │   ├── Hero.astro       ← full-viewport, 64px headline, fade-up anim
-        │   ├── HowItWorks.astro ← 01/02/03 numbered steps (3-col grid)
+        │   ├── HowItWorks.astro ← 01/02/03/04 numbered steps (2-col grid)
         │   ├── TheProblem.astro ← 2-col Kodak framing (signal + aggregation)
-        │   ├── ValidationLoop.astro ← 5-stage Extract→Converge card flow
-        │   ├── USP.astro        ← strikethrough "not this" vs bold "this"
-        │   ├── DemoCTA.astro    ← founder avatar, deliverables list, mailto CTA
+        │   ├── Applications.astro ← 4-card gallery of use-case applications
+        │   ├── ValidationLoop.astro ← 5-stage Listen→Converge card flow
+        │   ├── USP.astro        ← 6-card icon-facts grid (incl. MCP mention)
+        │   ├── DemoCTA.astro    ← deliverables list, mailto CTA (no founder quote)
         │   └── Footer.astro     ← legal links + copyright year (dynamic)
         └── pages/
             ├── index.astro      ← EN landing (composes all components)
@@ -52,7 +53,8 @@ Every component accepts `lang?: 'en' | 'de'` (default `'en'`). No other external
 |-----------|--------------|
 | `Nav.astro` | `lang` toggles CTA label + EN↔DE link href |
 | `Hero.astro` | Fade-up CSS animation on load (disabled via `prefers-reduced-motion`) |
-| `HowItWorks.astro` | Steps array defined inside frontmatter, bilingual |
+| `HowItWorks.astro` | 4 steps (connect knowledge, interviews, synthesis, results); bilingual |
+| `Applications.astro` | 4 use-case cards with icons; bilingual |
 | `TheProblem.astro` | Inline ternary for all copy; single CTA at bottom |
 | `ValidationLoop.astro` | Stages array in frontmatter; arrow separators hidden on mobile |
 | `USP.astro` | Strikethrough on "not" statement; accent divider between blocks |

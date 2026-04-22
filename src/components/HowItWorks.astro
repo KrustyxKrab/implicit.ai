@@ -1,4 +1,10 @@
 ---
+import slackUrl    from '../assets/integrations/Slack.svg?url';
+import microsoftUrl from '../assets/integrations/Microsoft.svg?url';
+import celonisUrl  from '../assets/integrations/Celonis.svg?url';
+import googleUrl   from '../assets/integrations/Google.svg?url';
+import logoIconRaw from '../assets/logo_icon.svg?raw';
+
 export interface Props {
   lang?: 'en' | 'de';
 }
@@ -12,69 +18,88 @@ const isDE = lang === 'de';
     <div class="hiw__header section-fade">
       <p class="hiw__eyebrow">{isDE ? 'Wie es funktioniert' : 'How it works'}</p>
       <h2 class="hiw__heading">
-        <span class="hiw__line1">{isDE ? 'Drei Schritte.' : 'Three steps.'}</span>
-        <span class="hiw__line2">{isDE ? 'Von der Einrichtung zur Klarheit.' : 'From deployment to clarity.'}</span>
+        <span class="hiw__line1">{isDE ? 'Vier Schritte.' : 'Four steps.'}</span>
+        <span class="hiw__line2">{isDE ? 'Von der Einrichtung zur Klarheit.' : 'From setup to clarity.'}</span>
       </h2>
     </div>
 
-    <!-- Step 01 -->
+    <!-- Step 01: Connect knowledge -->
     <div class="hiw__step hiw__step--odd section-fade">
       <div class="hiw__ghost" aria-hidden="true">01</div>
       <div class="hiw__text">
         <p class="hiw__step-eyebrow">{isDE ? 'Schritt 01' : 'Step 01'}</p>
-        <h3 class="hiw__step-heading">{isDE ? 'Agenten deployen' : 'Deploy agents'}</h3>
+        <h3 class="hiw__step-heading">{isDE ? 'Vorhandenes Wissen verbinden' : 'Connect your existing knowledge'}</h3>
         <p class="hiw__step-body">
           {isDE
-            ? 'KI-Agenten erreichen jeden Mitarbeitenden in Stunden — nicht Monaten. Kein Scheduling, keine Interviewermüdung. Einfach deployen und warten lassen.'
-            : 'AI agents reach every employee in hours, not months. No scheduling, no interviewer fatigue — just deploy and let them work.'}
+            ? 'Verbinden Sie zunächst Ihre expliziten Wissensquellen. Slack, Outlook, Celonis, SAP oder jede andere Quelle. So hat der Interview-Agent den nötigen Kontext, bevor das erste Gespräch beginnt.'
+            : 'Start by connecting your explicit knowledge sources. Slack, Outlook, Celonis, SAP or anything else your organisation runs on. This gives the interview agent context before the first conversation begins.'}
         </p>
       </div>
       <div class="hiw__mockup">
-        <div class="mock mock--chat">
+        <div class="mock mock--integrations">
           <div class="mock__chrome">
             <div class="mock__dots">
               <span class="mock__dot mock__dot--r"></span>
               <span class="mock__dot mock__dot--y"></span>
               <span class="mock__dot mock__dot--g"></span>
             </div>
-            <span class="mock__title">implicit Agent · {isDE ? 'Prozessanalyse' : 'Process Discovery'}</span>
+            <span class="mock__title">{isDE ? 'Wissensquellen' : 'Knowledge Sources'}</span>
           </div>
           <div class="mock__body">
-            <div class="mock__msg mock__msg--ai">
-              <div class="mock__avatar-ai">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
-                </svg>
+            <div class="mock__conn-row">
+              <div class="mock__conn-logo">
+                <img src={slackUrl} width="28" height="28" alt="" aria-hidden="true" />
               </div>
-              <div class="mock__bubble">
-                {isDE ? 'Hallo! Ich bin Ihr implicit-Agent. Können Sie mir erklären, wie Genehmigungen für größere Deals ablaufen?' : 'Hi! I\'m your implicit agent. Can you walk me through how you handle enterprise deal approvals?'}
+              <div class="mock__wf-content">
+                <span class="mock__wf-title">Slack</span>
+                <span class="mock__wf-sub">{isDE ? 'Workspace-Nachrichten' : 'Workspace messages'}</span>
               </div>
+              <span class="mock__conn-pill">{isDE ? 'Verbunden' : 'Connected'}</span>
             </div>
-            <div class="mock__msg mock__msg--emp">
-              <div class="mock__bubble">
-                {isDE ? 'Klar! Ich prüfe zuerst die Dealgröße und leite dann an die richtige Genehmigungsebene weiter…' : 'Sure! First I check the deal size, then route to the right approver level…'}
+            <div class="mock__conn-row">
+              <div class="mock__conn-logo">
+                <img src={microsoftUrl} width="28" height="28" alt="" aria-hidden="true" />
               </div>
+              <div class="mock__wf-content">
+                <span class="mock__wf-title">Microsoft 365</span>
+                <span class="mock__wf-sub">{isDE ? 'Outlook &amp; Teams' : 'Outlook &amp; Teams'}</span>
+              </div>
+              <span class="mock__conn-pill">{isDE ? 'Verbunden' : 'Connected'}</span>
             </div>
-            <div class="mock__msg mock__msg--ai">
-              <div class="mock__avatar-ai">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
-                </svg>
+            <div class="mock__conn-row">
+              <div class="mock__conn-logo mock__conn-logo--celonis">
+                <img src={celonisUrl} width="20" height="20" alt="" aria-hidden="true" />
               </div>
-              <div class="mock__bubble">
-                {isDE ? 'Was passiert, wenn ein Deal 500.000 € überschreitet?' : 'What happens when a deal exceeds $500k?'}
+              <div class="mock__wf-content">
+                <span class="mock__wf-title">Celonis</span>
+                <span class="mock__wf-sub">{isDE ? 'Prozessdaten' : 'Process data'}</span>
               </div>
+              <span class="mock__conn-pill">{isDE ? 'Verbunden' : 'Connected'}</span>
             </div>
-            <div class="mock__typing">
-              <span></span><span></span><span></span>
-              <small>{isDE ? 'Mitarbeiter tippt…' : 'Employee is typing…'}</small>
+            <div class="mock__conn-row">
+              <div class="mock__conn-logo">
+                <img src={googleUrl} width="28" height="28" alt="" aria-hidden="true" />
+              </div>
+              <div class="mock__wf-content">
+                <span class="mock__wf-title">Google Workspace</span>
+                <span class="mock__wf-sub">{isDE ? 'Drive &amp; Kalender' : 'Drive &amp; Calendar'}</span>
+              </div>
+              <span class="mock__conn-pill">{isDE ? 'Verbunden' : 'Connected'}</span>
+            </div>
+            <div class="mock__conn-agent">
+              <div class="mock__conn-agent-icon" set:html={logoIconRaw} />
+              <div class="mock__wf-content">
+                <span class="mock__wf-title">inplicit Agent</span>
+                <span class="mock__wf-sub">{isDE ? '4 Quellen verbunden' : '4 sources connected'}</span>
+              </div>
+              <span class="mock__status-dot"></span>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Step 02 -->
+    <!-- Step 02: Conversations -->
     <div class="hiw__step hiw__step--even section-fade">
       <div class="hiw__ghost" aria-hidden="true">02</div>
       <div class="hiw__mockup">
@@ -90,11 +115,9 @@ const isDE = lang === 'de';
             </div>
             <div class="mock__video-tile mock__video-tile--ai">
               <div class="mock__video-logo">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
-                </svg>
+                <span class="mock__agent-icon" set:html={logoIconRaw} />
               </div>
-              <span class="mock__video-label">implicit Agent</span>
+              <span class="mock__video-label">inplicit Agent</span>
             </div>
           </div>
           <div class="mock__video-bar">
@@ -116,36 +139,46 @@ const isDE = lang === 'de';
       </div>
       <div class="hiw__text">
         <p class="hiw__step-eyebrow">{isDE ? 'Schritt 02' : 'Step 02'}</p>
-        <h3 class="hiw__step-heading">{isDE ? 'Agenten interviewen jeden' : 'Agents interview everyone'}</h3>
+        <h3 class="hiw__step-heading">{isDE ? 'Gespräche, die wirklich zuhören' : 'Conversations that actually listen'}</h3>
         <p class="hiw__step-body">
           {isDE
-            ? 'Hunderte strukturierte Gespräche laufen gleichzeitig. Sie extrahieren, wie Arbeit wirklich gemacht wird — nicht wie sie dokumentiert ist.'
-            : 'Hundreds of structured conversations happening simultaneously, extracting how work actually gets done — not how it\'s documented.'}
+            ? 'KI-Agenten sprechen mit jedem in der Organisation, nicht nur mit Führungskräften. Jede Aussage wird kreuzvalidiert, nicht nur protokolliert. So entsteht ein Bild, das ehrlich ist.'
+            : 'AI agents talk with everyone in the organisation, not just leadership. Every statement is cross-validated, not just recorded. The result is a picture that is honest.'}
         </p>
         <div class="hiw__stats">
           <div class="hiw__stat">
-            <span class="hiw__stat-num">100s</span>
+            <span class="hiw__stat-num">100+</span>
             <span class="hiw__stat-label">{isDE ? 'Gespräche in Stunden' : 'Conversations in hours'}</span>
           </div>
           <div class="hiw__stat">
             <span class="hiw__stat-num">100%</span>
-            <span class="hiw__stat-label">{isDE ? 'der Mitarbeitenden erreichbar' : 'Of employees reached'}</span>
+            <span class="hiw__stat-label">{isDE ? 'der Belegschaft erreichbar' : 'Of workforce reached'}</span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Step 03 -->
+    <!-- Step 03: Synthesis -->
     <div class="hiw__step hiw__step--odd section-fade">
       <div class="hiw__ghost" aria-hidden="true">03</div>
       <div class="hiw__text">
         <p class="hiw__step-eyebrow">{isDE ? 'Schritt 03' : 'Step 03'}</p>
-        <h3 class="hiw__step-heading">{isDE ? 'Sie erhalten die Karte' : 'You get the map'}</h3>
+        <h3 class="hiw__step-heading">{isDE ? 'Ergebnisse verdichten sich' : 'Results come together'}</h3>
         <p class="hiw__step-body">
           {isDE
-            ? 'Ein vollständiges Innovations-Bild mit identifizierten Engpässen, gemappten Abhängigkeiten und einer priorisierten Roadmap validierter Venture Cases.'
-            : 'A complete innovation picture with bottlenecks identified, dependencies mapped, and a prioritised roadmap of validated venture cases.'}
+            ? 'Hunderte Gespräche laufen gleichzeitig. Die KI erkennt Muster, bildet Cluster und trennt Signal von Rauschen. Ohne manuelle Auswertung, ohne Tage des Wartens.'
+            : 'Hundreds of conversations happen at once. The AI spots patterns, forms clusters, and separates signal from noise. No manual analysis, no days of waiting.'}
         </p>
+        <div class="hiw__stats">
+          <div class="hiw__stat">
+            <span class="hiw__stat-num">3-4</span>
+            <span class="hiw__stat-label">{isDE ? 'Tage bis zu ersten Erkenntnissen' : 'Days to first insights'}</span>
+          </div>
+          <div class="hiw__stat">
+            <span class="hiw__stat-num">0</span>
+            <span class="hiw__stat-label">{isDE ? 'Manuelle Analyse nötig' : 'Manual analysis needed'}</span>
+          </div>
+        </div>
       </div>
       <div class="hiw__mockup">
         <div class="mock mock--workflow">
@@ -155,7 +188,7 @@ const isDE = lang === 'de';
               <span class="mock__dot mock__dot--y"></span>
               <span class="mock__dot mock__dot--g"></span>
             </div>
-            <span class="mock__title">{isDE ? 'Wissenskarte · HHLA Pilot' : 'Knowledge Map · HHLA Pilot'}</span>
+            <span class="mock__title">{isDE ? 'Synthese läuft' : 'Synthesis running'}</span>
           </div>
           <div class="mock__body">
             <div class="mock__wf-item mock__wf-item--done">
@@ -163,8 +196,8 @@ const isDE = lang === 'de';
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
               </div>
               <div class="mock__wf-content">
-                <span class="mock__wf-title">{isDE ? 'Signalextraktion' : 'Signal Extraction'}</span>
-                <span class="mock__wf-sub">{isDE ? '1.247 Gespräche ausgewertet' : '1,247 conversations processed'}</span>
+                <span class="mock__wf-title">{isDE ? 'Gespräche geführt' : 'Conversations completed'}</span>
+                <span class="mock__wf-sub">{isDE ? '1.247 Stimmen erfasst' : '1,247 voices recorded'}</span>
               </div>
               <span class="mock__wf-status mock__wf-status--done">{isDE ? 'Fertig' : 'Done'}</span>
             </div>
@@ -173,33 +206,91 @@ const isDE = lang === 'de';
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
               </div>
               <div class="mock__wf-content">
-                <span class="mock__wf-title">{isDE ? 'Cluster-Synthese' : 'Cluster Synthesis'}</span>
-                <span class="mock__wf-sub">{isDE ? 'Verbinde Signalquellen…' : 'Connecting signal sources…'}</span>
+                <span class="mock__wf-title">{isDE ? 'Cluster werden gebildet' : 'Clusters forming'}</span>
+                <span class="mock__wf-sub">{isDE ? 'Signalquellen werden verbunden' : 'Connecting signal sources'}</span>
               </div>
               <span class="mock__wf-status mock__wf-status--active">{isDE ? 'Aktiv' : 'Active'}</span>
             </div>
             <div class="mock__wf-item mock__wf-item--pending">
               <div class="mock__wf-icon mock__wf-icon--pending">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg>
               </div>
               <div class="mock__wf-content">
-                <span class="mock__wf-title">{isDE ? 'Hypothesengenerierung' : 'Hypothesis Generation'}</span>
-                <span class="mock__wf-sub">{isDE ? 'Operationale Probleme analysieren' : 'Analyse operational issues'}</span>
-              </div>
-              <span class="mock__wf-status">{isDE ? 'Ausstehend' : 'Pending'}</span>
-            </div>
-            <div class="mock__wf-item mock__wf-item--pending">
-              <div class="mock__wf-icon mock__wf-icon--pending">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
-              </div>
-              <div class="mock__wf-content">
-                <span class="mock__wf-title">{isDE ? 'Venture Cases' : 'Venture Cases'}</span>
-                <span class="mock__wf-sub">{isDE ? 'Umsetzungsplan generieren' : 'Generate implementation plan'}</span>
+                <span class="mock__wf-title">{isDE ? 'Erkenntnisse generieren' : 'Generating insights'}</span>
+                <span class="mock__wf-sub">{isDE ? 'Bereitet Ergebnisse vor' : 'Preparing your output'}</span>
               </div>
               <span class="mock__wf-status">{isDE ? 'Ausstehend' : 'Pending'}</span>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- Step 04: Output picture -->
+    <div class="hiw__step hiw__step--even section-fade">
+      <div class="hiw__ghost" aria-hidden="true">04</div>
+      <div class="hiw__mockup">
+        <div class="mock mock--output">
+          <div class="mock__chrome">
+            <div class="mock__dots">
+              <span class="mock__dot mock__dot--r"></span>
+              <span class="mock__dot mock__dot--y"></span>
+              <span class="mock__dot mock__dot--g"></span>
+            </div>
+            <span class="mock__title">{isDE ? 'Ergebnisübersicht' : 'Results overview'}</span>
+          </div>
+          <div class="mock__body">
+            <div class="mock__wf-item mock__wf-item--done">
+              <div class="mock__wf-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              <div class="mock__wf-content">
+                <span class="mock__wf-title">{isDE ? 'Schmerzpunkte' : 'Pain Points'}</span>
+                <span class="mock__wf-sub">{isDE ? 'In 5 Teams identifiziert' : 'Identified across 5 teams'}</span>
+              </div>
+              <span class="mock__out-count">14</span>
+            </div>
+            <div class="mock__wf-item mock__wf-item--done mock__wf-item--accent">
+              <div class="mock__wf-icon mock__wf-icon--accent">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              <div class="mock__wf-content">
+                <span class="mock__wf-title">{isDE ? 'Chancen' : 'Opportunities'}</span>
+                <span class="mock__wf-sub">{isDE ? 'Handlungsfelder bereit' : 'Action areas ready'}</span>
+              </div>
+              <span class="mock__out-count mock__out-count--accent">8</span>
+            </div>
+            <div class="mock__wf-item mock__wf-item--done">
+              <div class="mock__wf-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              <div class="mock__wf-content">
+                <span class="mock__wf-title">{isDE ? 'Prozesslücken' : 'Process Gaps'}</span>
+                <span class="mock__wf-sub">{isDE ? 'Priorisiert nach Impact' : 'Prioritised by impact'}</span>
+              </div>
+              <span class="mock__out-count">11</span>
+            </div>
+            <div class="mock__wf-item mock__wf-item--done">
+              <div class="mock__wf-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              <div class="mock__wf-content">
+                <span class="mock__wf-title">{isDE ? 'Wissenskarte' : 'Knowledge Map'}</span>
+                <span class="mock__wf-sub">{isDE ? 'Cluster visualisiert' : 'Clusters visualised'}</span>
+              </div>
+              <span class="mock__out-count">3</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hiw__text">
+        <p class="hiw__step-eyebrow">{isDE ? 'Schritt 04' : 'Step 04'}</p>
+        <h3 class="hiw__step-heading">{isDE ? 'Sie sehen das vollständige Bild' : 'You see the full picture'}</h3>
+        <p class="hiw__step-body">
+          {isDE
+            ? 'Schmerzpunkte, Chancen, Prozesslücken und eine Wissenskarte. Geordnet, priorisiert und bereit für Entscheidungen. Kein 60-seitiger Bericht, den niemand liest.'
+            : 'Pain points, opportunities, process gaps, and a knowledge map. Organised, prioritised, and ready for decisions. No 60-page report that nobody reads.'}
+        </p>
       </div>
     </div>
 
@@ -281,6 +372,8 @@ const isDE = lang === 'de';
     user-select: none;
     pointer-events: none;
     white-space: nowrap;
+    filter: blur(2px);
+    opacity: 0.8;
   }
 
   @media (min-width: 768px) {
@@ -289,9 +382,10 @@ const isDE = lang === 'de';
       right: auto;
       left: 50%;
       font-size: clamp(160px, 22vw, 320px);
+      filter: blur(3px);
     }
     .hiw__step--odd .hiw__ghost  { transform: translate(-150%, -50%); }
-    .hiw__step--even .hiw__ghost { transform: translate(60%, -50%); }
+    .hiw__step--even .hiw__ghost { transform: translate(20%, -50%); }
   }
 
   .hiw__text {
@@ -402,77 +496,89 @@ const isDE = lang === 'de';
     gap: var(--space-3);
   }
 
-  /* ---- Chat ---- */
-  .mock__msg {
-    display: flex;
-    gap: var(--space-2);
-    align-items: flex-start;
+  /* ---- Connection list (Step 01) ---- */
+  .mock--integrations .mock__body {
+    padding: 0;
+    gap: 0;
   }
 
-  .mock__msg--emp { justify-content: flex-end; }
+  .mock__conn-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
 
-  .mock__avatar-ai {
-    width: 24px;
-    height: 24px;
-    border-radius: var(--radius-ui);
-    background-color: var(--color-surface-elevated);
-    border: 1px solid var(--color-border);
+  .mock__conn-logo {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-text-tertiary);
+  }
+
+  .mock__conn-logo img {
+    display: block;
+    width: 28px;
+    height: 28px;
+  }
+
+  /* Celonis has no background rect — wrap in a light tile so the dark path is visible */
+  .mock__conn-logo--celonis {
+    background: #eaeaea;
+    border-radius: var(--radius-card);
+    padding: 4px;
+    box-sizing: border-box;
+  }
+
+  .mock__conn-logo--celonis img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .mock__conn-pill {
+    font-size: 10px;
+    font-weight: 600;
+    color: #22c55e;
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    padding: 2px 7px;
+    border-radius: var(--radius-full);
     flex-shrink: 0;
-    margin-top: 2px;
+    white-space: nowrap;
   }
 
-  .mock__bubble {
-    max-width: 75%;
-    padding: var(--space-2) var(--space-3);
-    font-size: 12px;
-    line-height: 1.5;
-  }
-
-  .mock__msg--ai .mock__bubble {
-    background-color: var(--color-surface-elevated);
-    border: 1px solid var(--color-border);
-    color: var(--color-text-primary);
-    border-radius: 2px 8px 8px 8px;
-  }
-
-  .mock__msg--emp .mock__bubble {
-    background-color: var(--color-cta-bg);
-    color: var(--color-cta-text);
-    border-radius: 8px 2px 8px 8px;
-  }
-
-  .mock__typing {
+  /* Agent footer row */
+  .mock__conn-agent {
     display: flex;
     align-items: center;
-    gap: var(--space-2);
-    padding-left: 30px;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-accent-light);
+    border-top: 1px solid var(--color-accent-muted);
   }
 
-  .mock__typing span {
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background-color: var(--color-text-tertiary);
-    animation: typing-dot 1.2s ease-in-out infinite;
-  }
-  .mock__typing span:nth-child(2) { animation-delay: 0.2s; }
-  .mock__typing span:nth-child(3) { animation-delay: 0.4s; }
-
-  .mock__typing small {
-    font-size: 11px;
-    color: var(--color-text-tertiary);
+  .mock__conn-agent-icon {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  @keyframes typing-dot {
-    0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
-    40% { opacity: 1; transform: scale(1); }
+  .mock__conn-agent-icon :global(svg) {
+    display: block;
+    width: 28px;
+    height: 28px;
   }
 
-  /* ---- Video call ---- */
+  .mock__conn-agent-icon :global(path) { fill: #000000; }
+  .mock__conn-agent-icon :global(rect)  { fill: var(--color-accent); }
+
+  /* ---- Video call (Step 02) ---- */
   .mock--video { background-color: var(--color-surface-elevated); }
 
   .mock__video-grid {
@@ -501,8 +607,29 @@ const isDE = lang === 'de';
     border-color: var(--color-border);
   }
 
-  .mock__video-avatar,
-  .mock__video-logo { color: var(--color-text-tertiary); }
+  .mock__video-avatar { color: var(--color-text-tertiary); }
+
+  .mock__video-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Agent icon in video tile */
+  .mock__agent-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mock__agent-icon :global(svg) {
+    display: block;
+    width: 32px;
+    height: 32px;
+  }
+
+  .mock__agent-icon :global(path) { fill: var(--color-text-primary); }
+  .mock__agent-icon :global(rect)  { fill: var(--color-accent); }
 
   .mock__video-label {
     font-size: 10px;
@@ -553,7 +680,7 @@ const isDE = lang === 'de';
     color: #ffffff;
   }
 
-  /* ---- Workflow ---- */
+  /* ---- Shared workflow items (Steps 03 + 04) ---- */
   .mock__wf-item {
     display: flex;
     align-items: center;
@@ -587,6 +714,14 @@ const isDE = lang === 'de';
     background-color: var(--color-accent-light);
     border-color: var(--color-accent-muted);
     color: var(--color-accent);
+  }
+
+  /* Accent variant for step 04 opportunities */
+  .mock__wf-item--accent .mock__wf-icon,
+  .mock__wf-icon--accent {
+    background-color: var(--color-accent-light) !important;
+    border-color: var(--color-accent-muted) !important;
+    color: var(--color-accent) !important;
   }
 
   .mock__wf-icon--spin svg { animation: spin 1.5s linear infinite; }
@@ -627,8 +762,36 @@ const isDE = lang === 'de';
   .mock__wf-status--done  { color: #22c55e; }
   .mock__wf-status--active { color: var(--color-accent); }
 
+  /* ---- Output counts (Step 04) ---- */
+  .mock__out-count {
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--color-text-tertiary);
+    flex-shrink: 0;
+    min-width: 2ch;
+    text-align: right;
+  }
+
+  .mock__out-count--accent { color: var(--color-accent); }
+
+  /* ---- Shared status dot ---- */
+  .mock__status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #22c55e;
+    flex-shrink: 0;
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .mock__typing span,
-    .mock__wf-icon--spin svg { animation: none; }
+    .mock__wf-icon--spin svg,
+    .mock__status-dot { animation: none; }
   }
 </style>
