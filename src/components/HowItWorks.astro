@@ -9,7 +9,6 @@ const isDE = lang === 'de';
 <section class="hiw" id="how-it-works">
   <div class="container">
 
-    <!-- Section header -->
     <div class="hiw__header section-fade">
       <p class="hiw__eyebrow">{isDE ? 'Wie es funktioniert' : 'How it works'}</p>
       <h2 class="hiw__heading">
@@ -18,7 +17,7 @@ const isDE = lang === 'de';
       </h2>
     </div>
 
-    <!-- Step 01: Deploy -->
+    <!-- Step 01 -->
     <div class="hiw__step hiw__step--odd section-fade">
       <div class="hiw__ghost" aria-hidden="true">01</div>
       <div class="hiw__text">
@@ -75,7 +74,7 @@ const isDE = lang === 'de';
       </div>
     </div>
 
-    <!-- Step 02: Interviews at scale -->
+    <!-- Step 02 -->
     <div class="hiw__step hiw__step--even section-fade">
       <div class="hiw__ghost" aria-hidden="true">02</div>
       <div class="hiw__mockup">
@@ -136,7 +135,7 @@ const isDE = lang === 'de';
       </div>
     </div>
 
-    <!-- Step 03: The Map -->
+    <!-- Step 03 -->
     <div class="hiw__step hiw__step--odd section-fade">
       <div class="hiw__ghost" aria-hidden="true">03</div>
       <div class="hiw__text">
@@ -209,26 +208,20 @@ const isDE = lang === 'de';
 
 <style>
   .hiw {
-    padding: var(--space-32) 0;
+    padding: var(--space-section) 0;
     border-top: 1px solid var(--color-border);
-    background-color: var(--color-bg);
   }
 
   @media (max-width: 767px) {
-    .hiw {
-      padding: var(--space-24) 0 var(--space-32);
-    }
+    .hiw { padding: var(--space-24) 0 var(--space-32); }
   }
 
-  /* Header */
   .hiw__header {
     margin-bottom: var(--space-24);
   }
 
   @media (max-width: 767px) {
-    .hiw__header {
-      margin-bottom: var(--space-16);
-    }
+    .hiw__header { margin-bottom: var(--space-16); }
   }
 
   .hiw__eyebrow {
@@ -236,7 +229,7 @@ const isDE = lang === 'de';
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: var(--color-accent);
+    color: var(--color-text-tertiary);
     margin-bottom: var(--space-4);
   }
 
@@ -244,13 +237,13 @@ const isDE = lang === 'de';
     font-size: clamp(var(--text-xl), 5vw, var(--text-3xl));
     font-weight: 800;
     letter-spacing: -0.04em;
-    line-height: 1.05;
+    line-height: 1.0;
     display: flex;
     flex-direction: column;
   }
 
   .hiw__line1 { color: var(--color-text-primary); }
-  .hiw__line2 { color: var(--color-text-tertiary); }
+  .hiw__line2 { color: var(--color-text-primary); opacity: 0.3; }
 
   /* Step blocks */
   .hiw__step {
@@ -268,23 +261,18 @@ const isDE = lang === 'de';
       gap: var(--space-16);
       align-items: center;
       padding: var(--space-24) 0;
-      border-top-color: var(--color-border-subtle);
     }
 
-    .hiw__step--even .hiw__text {
-      order: 2;
-    }
-    .hiw__step--even .hiw__mockup {
-      order: 1;
-    }
+    .hiw__step--even .hiw__text  { order: 2; }
+    .hiw__step--even .hiw__mockup { order: 1; }
   }
 
-  /* Ghost number — mobile: decorative top-right watermark */
+  /* Ghost number */
   .hiw__ghost {
     position: absolute;
     top: var(--space-3);
     right: var(--space-3);
-    font-size: clamp(64px, 18vw, 96px);
+    font-size: clamp(72px, 18vw, 100px);
     font-weight: 900;
     letter-spacing: -0.06em;
     line-height: 1;
@@ -295,25 +283,17 @@ const isDE = lang === 'de';
     white-space: nowrap;
   }
 
-  /* Ghost number — desktop: large centered background */
   @media (min-width: 768px) {
     .hiw__ghost {
       top: 50%;
       right: auto;
       left: 50%;
-      font-size: clamp(140px, 22vw, 300px);
+      font-size: clamp(160px, 22vw, 320px);
     }
-
-    .hiw__step--odd .hiw__ghost {
-      transform: translate(-150%, -50%);
-    }
-
-    .hiw__step--even .hiw__ghost {
-      transform: translate(60%, -50%);
-    }
+    .hiw__step--odd .hiw__ghost  { transform: translate(-150%, -50%); }
+    .hiw__step--even .hiw__ghost { transform: translate(60%, -50%); }
   }
 
-  /* Text column */
   .hiw__text {
     position: relative;
     z-index: 1;
@@ -327,7 +307,7 @@ const isDE = lang === 'de';
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: var(--color-accent);
+    color: var(--color-text-tertiary);
     margin-bottom: var(--space-3);
   }
 
@@ -335,7 +315,7 @@ const isDE = lang === 'de';
     font-size: clamp(var(--text-xl), 4vw, 2.5rem);
     font-weight: 800;
     letter-spacing: -0.03em;
-    line-height: 1.1;
+    line-height: 1.05;
     color: var(--color-text-primary);
     margin-bottom: var(--space-6);
   }
@@ -353,7 +333,7 @@ const isDE = lang === 'de';
     gap: var(--space-8);
     margin-top: var(--space-8);
     padding-top: var(--space-8);
-    border-top: 1px solid var(--color-border-subtle);
+    border-top: 1px solid var(--color-border);
   }
 
   .hiw__stat {
@@ -363,9 +343,9 @@ const isDE = lang === 'de';
   }
 
   .hiw__stat-num {
-    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
     font-weight: 800;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.04em;
     color: var(--color-text-primary);
     line-height: 1;
   }
@@ -376,23 +356,17 @@ const isDE = lang === 'de';
     font-weight: 500;
   }
 
-  /* Mockup column */
   .hiw__mockup {
     position: relative;
     z-index: 1;
   }
 
-  /* ---- Shared mockup chrome ---- */
+  /* ---- Shared mock chrome ---- */
   .mock {
-    background-color: var(--color-bg);
+    background-color: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-xl);
+    border-radius: var(--radius-card);
     overflow: hidden;
-    box-shadow:
-      0 0 0 1px rgb(0 0 0 / 0.03),
-      0 2px 4px rgb(0 0 0 / 0.04),
-      0 8px 16px rgb(0 0 0 / 0.06),
-      0 24px 48px rgb(0 0 0 / 0.08);
     font-family: var(--font-family);
   }
 
@@ -402,18 +376,13 @@ const isDE = lang === 'de';
     gap: var(--space-3);
     padding: var(--space-3) var(--space-4);
     border-bottom: 1px solid var(--color-border);
-    background-color: var(--color-surface);
+    background-color: var(--color-surface-elevated);
   }
 
-  .mock__dots {
-    display: flex;
-    gap: 5px;
-    flex-shrink: 0;
-  }
-
+  .mock__dots { display: flex; gap: 5px; flex-shrink: 0; }
   .mock__dot {
-    width: 10px;
-    height: 10px;
+    width: 9px;
+    height: 9px;
     border-radius: 50%;
   }
   .mock__dot--r { background: #ef4444; }
@@ -433,31 +402,25 @@ const isDE = lang === 'de';
     gap: var(--space-3);
   }
 
-  /* ---- Chat mockup ---- */
-  .mock--chat .mock__body {
-    gap: var(--space-3);
-  }
-
+  /* ---- Chat ---- */
   .mock__msg {
     display: flex;
     gap: var(--space-2);
     align-items: flex-start;
   }
 
-  .mock__msg--emp {
-    justify-content: flex-end;
-  }
+  .mock__msg--emp { justify-content: flex-end; }
 
   .mock__avatar-ai {
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    background-color: var(--color-accent-light);
-    border: 1px solid var(--color-accent-muted);
+    width: 24px;
+    height: 24px;
+    border-radius: var(--radius-ui);
+    background-color: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-accent);
+    color: var(--color-text-tertiary);
     flex-shrink: 0;
     margin-top: 2px;
   }
@@ -465,34 +428,33 @@ const isDE = lang === 'de';
   .mock__bubble {
     max-width: 75%;
     padding: var(--space-2) var(--space-3);
-    border-radius: 12px;
     font-size: 12px;
     line-height: 1.5;
   }
 
   .mock__msg--ai .mock__bubble {
-    background-color: var(--color-surface);
+    background-color: var(--color-surface-elevated);
     border: 1px solid var(--color-border);
     color: var(--color-text-primary);
-    border-radius: 4px 12px 12px 12px;
+    border-radius: 2px 8px 8px 8px;
   }
 
   .mock__msg--emp .mock__bubble {
-    background-color: var(--color-accent);
-    color: #ffffff;
-    border-radius: 12px 4px 12px 12px;
+    background-color: var(--color-cta-bg);
+    color: var(--color-cta-text);
+    border-radius: 8px 2px 8px 8px;
   }
 
   .mock__typing {
     display: flex;
     align-items: center;
     gap: var(--space-2);
-    padding-left: 32px;
+    padding-left: 30px;
   }
 
   .mock__typing span {
-    width: 5px;
-    height: 5px;
+    width: 4px;
+    height: 4px;
     border-radius: 50%;
     background-color: var(--color-text-tertiary);
     animation: typing-dot 1.2s ease-in-out infinite;
@@ -510,10 +472,8 @@ const isDE = lang === 'de';
     40% { opacity: 1; transform: scale(1); }
   }
 
-  /* ---- Video call mockup ---- */
-  .mock--video {
-    background-color: var(--color-surface);
-  }
+  /* ---- Video call ---- */
+  .mock--video { background-color: var(--color-surface-elevated); }
 
   .mock__video-grid {
     display: grid;
@@ -524,7 +484,7 @@ const isDE = lang === 'de';
 
   .mock__video-tile {
     aspect-ratio: 4/3;
-    background-color: var(--color-surface-elevated);
+    background-color: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-card);
     display: flex;
@@ -537,18 +497,12 @@ const isDE = lang === 'de';
   }
 
   .mock__video-tile--ai {
-    background-color: var(--color-accent-light);
-    border-color: var(--color-accent-muted);
+    background-color: var(--color-surface-elevated);
+    border-color: var(--color-border);
   }
 
   .mock__video-avatar,
-  .mock__video-logo {
-    color: var(--color-text-tertiary);
-  }
-
-  .mock__video-tile--ai .mock__video-logo {
-    color: var(--color-accent);
-  }
+  .mock__video-logo { color: var(--color-text-tertiary); }
 
   .mock__video-label {
     font-size: 10px;
@@ -558,9 +512,9 @@ const isDE = lang === 'de';
     position: absolute;
     bottom: var(--space-2);
     left: var(--space-2);
-    background-color: rgba(0,0,0,0.06);
+    background-color: var(--color-border);
     padding: 2px 6px;
-    border-radius: 4px;
+    border-radius: 2px;
   }
 
   .mock__video-bar {
@@ -578,17 +532,14 @@ const isDE = lang === 'de';
     font-variant-numeric: tabular-nums;
   }
 
-  .mock__video-controls {
-    display: flex;
-    gap: var(--space-2);
-  }
+  .mock__video-controls { display: flex; gap: var(--space-2); }
 
   .mock__ctrl {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    border-radius: var(--radius-ui);
     border: 1px solid var(--color-border);
-    background-color: var(--color-surface-elevated);
+    background-color: var(--color-surface);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -602,7 +553,7 @@ const isDE = lang === 'de';
     color: #ffffff;
   }
 
-  /* ---- Workflow mockup ---- */
+  /* ---- Workflow ---- */
   .mock__wf-item {
     display: flex;
     align-items: center;
@@ -611,13 +562,11 @@ const isDE = lang === 'de';
     border-bottom: 1px solid var(--color-border-subtle);
   }
 
-  .mock__wf-item:last-child {
-    border-bottom: none;
-  }
+  .mock__wf-item:last-child { border-bottom: none; }
 
   .mock__wf-icon {
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
     border-radius: var(--radius-ui);
     background-color: var(--color-surface-elevated);
     border: 1px solid var(--color-border);
@@ -629,9 +578,9 @@ const isDE = lang === 'de';
   }
 
   .mock__wf-item--done .mock__wf-icon {
-    background-color: #dcfce7;
-    border-color: #bbf7d0;
-    color: #16a34a;
+    background-color: rgba(34, 197, 94, 0.1);
+    border-color: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
   }
 
   .mock__wf-item--active .mock__wf-icon {
@@ -640,13 +589,11 @@ const isDE = lang === 'de';
     color: var(--color-accent);
   }
 
-  .mock__wf-icon--spin svg {
-    animation: spin 1.5s linear infinite;
-  }
+  .mock__wf-icon--spin svg { animation: spin 1.5s linear infinite; }
 
   @keyframes spin {
     from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    to   { transform: rotate(360deg); }
   }
 
   .mock__wf-content {
@@ -663,9 +610,7 @@ const isDE = lang === 'de';
   }
 
   .mock__wf-item--pending .mock__wf-title,
-  .mock__wf-item--pending .mock__wf-sub {
-    color: var(--color-text-tertiary);
-  }
+  .mock__wf-item--pending .mock__wf-sub { color: var(--color-text-tertiary); }
 
   .mock__wf-sub {
     font-size: 11px;
@@ -679,13 +624,11 @@ const isDE = lang === 'de';
     flex-shrink: 0;
   }
 
-  .mock__wf-status--done { color: #16a34a; }
+  .mock__wf-status--done  { color: #22c55e; }
   .mock__wf-status--active { color: var(--color-accent); }
 
   @media (prefers-reduced-motion: reduce) {
     .mock__typing span,
-    .mock__wf-icon--spin svg {
-      animation: none;
-    }
+    .mock__wf-icon--spin svg { animation: none; }
   }
 </style>

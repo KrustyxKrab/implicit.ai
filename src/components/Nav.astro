@@ -14,6 +14,14 @@ const toggleLabel = lang === 'de' ? 'EN' : 'DE';
       implicit<span class="nav__logo-dot">.</span>ai
     </a>
     <div class="nav__actions">
+      <button class="nav__theme" id="theme-toggle" aria-label="Toggle theme" type="button">
+        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
       <a href={toggleHref} class="nav__lang" aria-label={`Switch to ${toggleLabel}`}>
         {toggleLabel}
       </a>
@@ -34,16 +42,16 @@ const toggleLabel = lang === 'de' ? 'EN' : 'DE';
     position: sticky;
     top: 0;
     z-index: 100;
-    background-color: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background-color: var(--color-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--color-border);
     padding: var(--space-4) 0;
-    transition: box-shadow 0.2s ease;
+    transition: border-color 0.2s var(--ease-smooth);
   }
 
   .nav.scrolled {
-    box-shadow: var(--shadow-sm);
+    background-color: color-mix(in srgb, var(--color-bg) 92%, transparent);
   }
 
   .nav__inner {
@@ -54,10 +62,13 @@ const toggleLabel = lang === 'de' ? 'EN' : 'DE';
 
   .nav__logo {
     font-size: var(--text-base);
-    font-weight: 700;
-    letter-spacing: -0.03em;
+    font-weight: 800;
+    letter-spacing: -0.04em;
     color: var(--color-text-primary);
+    transition: opacity 0.15s var(--ease-smooth);
   }
+
+  .nav__logo:hover { opacity: 0.7; }
 
   .nav__logo-dot {
     color: var(--color-accent);
@@ -66,75 +77,91 @@ const toggleLabel = lang === 'de' ? 'EN' : 'DE';
   .nav__actions {
     display: flex;
     align-items: center;
-    gap: var(--space-4);
+    gap: var(--space-2);
   }
+
+  /* Theme toggle */
+  .nav__theme {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-ui);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: color 0.15s var(--ease-smooth), border-color 0.15s var(--ease-smooth);
+  }
+
+  .nav__theme:hover {
+    color: var(--color-text-primary);
+    border-color: var(--color-text-tertiary);
+  }
+
+  /* Show sun (toggle to light) in dark mode; moon (toggle to dark) in light mode */
+  :root .icon-sun,
+  [data-theme="dark"] .icon-sun  { display: block; }
+  :root .icon-moon,
+  [data-theme="dark"] .icon-moon { display: none; }
+  [data-theme="light"] .icon-sun  { display: none; }
+  [data-theme="light"] .icon-moon { display: block; }
 
   .nav__lang {
     font-size: var(--text-sm);
     font-weight: 500;
     color: var(--color-text-secondary);
-    transition: color 0.2s ease;
     letter-spacing: 0.06em;
     padding: var(--space-2) var(--space-3);
     border-radius: var(--radius-ui);
+    transition: color 0.15s var(--ease-smooth);
   }
 
-  .nav__lang:hover {
-    color: var(--color-text-primary);
-    background-color: var(--color-surface);
-  }
+  .nav__lang:hover { color: var(--color-text-primary); }
 
   .nav__cta {
     position: relative;
     overflow: hidden;
     display: inline-flex;
     align-items: center;
-    height: 36px;
+    height: 34px;
     padding: 0 var(--space-4);
-    background-color: var(--color-accent);
-    color: #ffffff;
+    background-color: var(--color-cta-bg);
+    color: var(--color-cta-text);
     font-size: var(--text-sm);
-    font-weight: 600;
+    font-weight: 700;
+    letter-spacing: -0.01em;
     border-radius: var(--radius-ui);
-    box-shadow: var(--shadow-xs);
-    transition: box-shadow 0.3s ease;
+    transition: opacity 0.2s var(--ease-smooth);
   }
 
-  .nav__cta:hover {
-    box-shadow: var(--shadow-md);
-  }
-
-  .nav__cta:active {
-    transform: scale(0.97);
-  }
+  .nav__cta:hover { opacity: 0.85; }
+  .nav__cta:active { transform: scale(0.97); }
 
   .nav__cta-label {
     margin-right: var(--space-8);
-    transition: opacity 0.5s ease;
+    transition: opacity 0.4s var(--ease-smooth);
     white-space: nowrap;
   }
 
-  .nav__cta:hover .nav__cta-label {
-    opacity: 0;
-  }
+  .nav__cta:hover .nav__cta-label { opacity: 0; }
 
   .nav__cta-icon {
     position: absolute;
-    right: 4px;
-    top: 4px;
-    bottom: 4px;
-    border-radius: 4px;
+    right: 3px;
+    top: 3px;
+    bottom: 3px;
+    border-radius: var(--radius-ui);
     z-index: 1;
     display: grid;
     width: 25%;
     place-items: center;
-    background-color: rgba(255, 255, 255, 0.18);
-    transition: width 0.5s ease;
+    background-color: var(--color-cta-icon-bg);
+    transition: width 0.4s var(--ease-spring);
   }
 
-  .nav__cta:hover .nav__cta-icon {
-    width: calc(100% - 8px);
-  }
+  .nav__cta:hover .nav__cta-icon { width: calc(100% - 6px); }
 </style>
 
 <script>
@@ -144,4 +171,13 @@ const toggleLabel = lang === 'de' ? 'EN' : 'DE';
       nav.classList.toggle('scrolled', window.scrollY > 10);
     }, { passive: true });
   }
+
+  const btn = document.getElementById('theme-toggle');
+  const html = document.documentElement;
+  btn?.addEventListener('click', () => {
+    const current = html.getAttribute('data-theme') || 'dark';
+    const next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (_) {}
+  });
 </script>

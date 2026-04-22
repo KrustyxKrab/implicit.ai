@@ -1,61 +1,103 @@
 /* design.css — single source of truth for all design tokens */
 
+/* ---- Dark (The Void) — default ---- */
 :root {
-  /* Colors — light mode */
-  --color-bg: #ffffff;
-  --color-surface: #f9fafb;
-  --color-surface-elevated: #f3f4f6;
-  --color-border: #e5e7eb;
-  --color-border-subtle: #f3f4f6;
-  --color-text-primary: #111827;
-  --color-text-secondary: #6b7280;
-  --color-text-tertiary: #9ca3af;
-  --color-accent: #0d9488;
-  --color-accent-dark: #0f766e;
-  --color-accent-light: #f0fdfa;
-  --color-accent-muted: #99f6e4;
+  /* Colors */
+  --color-bg: #0a0a0a;
+  --color-surface: #111111;
+  --color-surface-elevated: #161616;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-subtle: rgba(255, 255, 255, 0.04);
+  --color-text-primary: #ffffff;
+  --color-text-secondary: rgba(255, 255, 255, 0.55);
+  --color-text-tertiary: rgba(255, 255, 255, 0.28);
+  --color-accent: #2dd4bf;
+  --color-accent-dark: #0d9488;
+  --color-accent-light: rgba(45, 212, 191, 0.08);
+  --color-accent-muted: rgba(45, 212, 191, 0.18);
+
+  /* CTA tokens — inverted from bg in each mode */
+  --color-cta-bg: #ffffff;
+  --color-cta-text: #000000;
+  --color-cta-icon-bg: rgba(0, 0, 0, 0.12);
+
+  /* Shadows — near-invisible in dark mode */
+  --shadow-xs: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.6);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.7);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.8);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.9);
 
   /* Typography */
   --font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  --text-xs: 0.75rem;   /* 12px */
-  --text-sm: 0.875rem;  /* 14px */
-  --text-base: 1rem;    /* 16px */
-  --text-lg: 1.25rem;   /* 20px */
-  --text-xl: 2rem;      /* 32px */
-  --text-2xl: 3rem;     /* 48px */
-  --text-3xl: 4rem;     /* 64px */
+  --text-xs: 0.75rem;    /* 12px */
+  --text-sm: 0.875rem;   /* 14px */
+  --text-base: 1rem;     /* 16px */
+  --text-lg: 1.25rem;    /* 20px */
+  --text-xl: 2rem;       /* 32px */
+  --text-2xl: 3rem;      /* 48px */
+  --text-3xl: 4rem;      /* 64px */
+  --text-4xl: 6rem;      /* 96px */
 
   /* Spacing (multiples of 4px base unit) */
-  --space-1: 0.25rem;   /* 4px */
-  --space-2: 0.5rem;    /* 8px */
-  --space-3: 0.75rem;   /* 12px */
-  --space-4: 1rem;      /* 16px */
-  --space-6: 1.5rem;    /* 24px */
-  --space-8: 2rem;      /* 32px */
-  --space-10: 2.5rem;   /* 40px */
-  --space-12: 3rem;     /* 48px */
-  --space-16: 4rem;     /* 64px */
-  --space-24: 6rem;     /* 96px */
-  --space-32: 8rem;     /* 128px */
-  --space-40: 10rem;    /* 160px */
-  --space-48: 12rem;    /* 192px */
+  --space-1: 0.25rem;    /* 4px */
+  --space-2: 0.5rem;     /* 8px */
+  --space-3: 0.75rem;    /* 12px */
+  --space-4: 1rem;       /* 16px */
+  --space-6: 1.5rem;     /* 24px */
+  --space-8: 2rem;       /* 32px */
+  --space-10: 2.5rem;    /* 40px */
+  --space-12: 3rem;      /* 48px */
+  --space-16: 4rem;      /* 64px */
+  --space-24: 6rem;      /* 96px */
+  --space-32: 8rem;      /* 128px */
+  --space-40: 10rem;     /* 160px */
+  --space-48: 12rem;     /* 192px */
+  --space-section: 9rem;     /* 144px — standard section gap */
+  --space-section-lg: 13rem; /* 208px — hero/feature gap */
 
-  /* Border radii */
-  --radius-ui: 6px;
-  --radius-card: 12px;
-  --radius-xl: 20px;
+  /* Border radii — brutalist sharp */
+  --radius-ui: 2px;
+  --radius-card: 4px;
+  --radius-xl: 4px;
   --radius-full: 9999px;
 
-  /* Shadows */
-  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  /* Easing */
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
 
   /* Layout */
   --max-width: 1200px;
-  --section-padding: var(--space-24) var(--space-4);
+  --section-padding: var(--space-section) var(--space-4);
+}
+
+/* ---- White Enterprise — [data-theme="light"] ---- */
+[data-theme="light"] {
+  --color-bg: #ffffff;
+  --color-surface: #f9f9f9;
+  --color-surface-elevated: #f3f4f6;
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-border-subtle: rgba(0, 0, 0, 0.04);
+  --color-text-primary: #000000;
+  --color-text-secondary: rgba(0, 0, 0, 0.55);
+  --color-text-tertiary: rgba(0, 0, 0, 0.3);
+  --color-accent: #0d9488;
+  --color-accent-dark: #0f766e;
+  --color-accent-light: rgba(13, 148, 136, 0.06);
+  --color-accent-muted: rgba(13, 148, 136, 0.14);
+
+  /* CTA tokens */
+  --color-cta-bg: #000000;
+  --color-cta-text: #ffffff;
+  --color-cta-icon-bg: rgba(255, 255, 255, 0.15);
+
+  /* Shadows — diffuse, wide-spread, ultra-low opacity */
+  --shadow-xs: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.04), 0 1px 4px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.04);
+  --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.08), 0 8px 16px rgba(0, 0, 0, 0.04);
 }
 
 /* Base reset */
@@ -92,7 +134,7 @@ img {
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 var(--space-4);
+  padding: 0 var(--space-6);
 }
 
 @media (min-width: 768px) {
@@ -104,8 +146,8 @@ img {
 /* Section fade-in animation (Intersection Observer targets) */
 .section-fade {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(16px);
+  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-spring);
   transition-delay: var(--delay, 0ms);
 }
 
