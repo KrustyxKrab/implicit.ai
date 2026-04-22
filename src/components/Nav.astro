@@ -3,7 +3,7 @@ export interface Props {
   lang?: 'en' | 'de';
 }
 const { lang = 'en' } = Astro.props;
-const cta = lang === 'de' ? 'Pilot anfragen' : 'Request Pilot';
+const cta = lang === 'de' ? 'Zur Warteliste' : 'Join Waitlist';
 const toggleHref = lang === 'de' ? '/' : '/de/';
 const toggleLabel = lang === 'de' ? 'EN' : 'DE';
 ---
@@ -162,6 +162,14 @@ const toggleLabel = lang === 'de' ? 'EN' : 'DE';
   }
 
   .nav__cta:hover .nav__cta-icon { width: calc(100% - 6px); }
+
+  @media (max-width: 639px) {
+    .nav__theme { display: none; }
+    .nav__lang {
+      font-size: var(--text-xs);
+      padding: var(--space-1) var(--space-2);
+    }
+  }
 </style>
 
 <script>

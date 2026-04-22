@@ -1,4 +1,6 @@
 ---
+import DottedSurface from './ui/DottedSurface.astro';
+
 export interface Props {
   lang?: 'en' | 'de';
 }
@@ -6,6 +8,8 @@ const { lang = 'en' } = Astro.props;
 ---
 
 <section class="hero" id="hero">
+  <DottedSurface />
+
   <div class="hero__inner container">
     <div class="hero__badge">
       <span class="hero__badge-dot" aria-hidden="true"></span>
@@ -30,7 +34,7 @@ const { lang = 'en' } = Astro.props;
     <div class="hero__actions">
       <a href="#request-pilot" class="hero__cta-primary">
         <span class="hero__cta-primary-label">
-          {lang === 'de' ? 'Pilot anfragen' : 'Request Pilot'}
+          {lang === 'de' ? 'Zur Warteliste' : 'Join Waitlist'}
         </span>
         <i class="hero__cta-primary-icon" aria-hidden="true">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -61,6 +65,7 @@ const { lang = 'en' } = Astro.props;
 
 <style>
   .hero {
+    position: relative;
     min-height: 100svh;
     display: flex;
     align-items: center;
@@ -75,6 +80,8 @@ const { lang = 'en' } = Astro.props;
   }
 
   .hero__inner {
+    position: relative;
+    z-index: 1;
     max-width: 900px;
     animation: hero-in 0.7s var(--ease-out) forwards;
   }
@@ -84,7 +91,7 @@ const { lang = 'en' } = Astro.props;
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  /* Badge — hairline monochromatic, no teal fill */
+  /* Badge */
   .hero__badge {
     display: inline-flex;
     align-items: center;
@@ -115,7 +122,7 @@ const { lang = 'en' } = Astro.props;
     50%       { opacity: 0.5; transform: scale(1.4); }
   }
 
-  /* Headline — aggressive scale */
+  /* Headline */
   .hero__headline {
     font-size: clamp(var(--text-2xl), 8vw, var(--text-4xl));
     font-weight: 800;
@@ -129,14 +136,8 @@ const { lang = 'en' } = Astro.props;
     gap: 0.04em;
   }
 
-  .hero__line1 {
-    color: var(--color-text-primary);
-  }
-
-  .hero__line2 {
-    color: var(--color-text-primary);
-    opacity: 0.32;
-  }
+  .hero__line1 { color: var(--color-text-primary); }
+  .hero__line2 { color: var(--color-text-primary); opacity: 0.32; }
 
   .hero__sub {
     font-size: clamp(var(--text-base), 2vw, var(--text-lg));
@@ -202,7 +203,7 @@ const { lang = 'en' } = Astro.props;
 
   .hero__cta-primary:hover .hero__cta-primary-icon { width: calc(100% - 8px); }
 
-  /* Secondary CTA — hairline border, no fill */
+  /* Secondary CTA */
   .hero__cta-secondary {
     display: inline-flex;
     align-items: center;
@@ -222,7 +223,7 @@ const { lang = 'en' } = Astro.props;
     border-color: var(--color-text-tertiary);
   }
 
-  /* Meta — no icons, separator-based, pure opacity */
+  /* Meta */
   .hero__meta {
     display: flex;
     flex-wrap: wrap;
