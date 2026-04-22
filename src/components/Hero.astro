@@ -77,6 +77,13 @@ const { lang = 'en' } = Astro.props;
     padding: var(--space-48) 0 var(--space-32);
   }
 
+  @media (max-width: 767px) {
+    .hero {
+      padding: var(--space-16) 0 var(--space-12);
+      min-height: 90svh;
+    }
+  }
+
   .hero__inner {
     max-width: 820px;
     animation: hero-in 0.8s ease forwards;
@@ -147,6 +154,12 @@ const { lang = 'en' } = Astro.props;
     margin-bottom: var(--space-8);
     animation: hero-in 0.8s ease forwards 0.2s;
     opacity: 0;
+  }
+
+  @media (max-width: 767px) {
+    .hero__sub {
+      font-size: var(--text-base);
+    }
   }
 
   .hero__actions {
@@ -237,6 +250,25 @@ const { lang = 'en' } = Astro.props;
     gap: var(--space-6);
     animation: hero-in 0.8s ease forwards 0.4s;
     opacity: 0;
+  }
+
+  @media (max-width: 767px) {
+    .hero__meta {
+      gap: var(--space-3);
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 479px) {
+    .hero__actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .hero__cta-primary,
+    .hero__cta-secondary {
+      width: 100%;
+      justify-content: center;
+    }
   }
 
   .hero__meta-item {

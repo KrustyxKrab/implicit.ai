@@ -94,6 +94,12 @@ const deliverables = lang === 'de' ? [
     background-color: var(--color-bg);
   }
 
+  @media (max-width: 767px) {
+    .demo {
+      padding: var(--space-12) 0;
+    }
+  }
+
   .demo__card {
     position: relative;
     background-color: var(--color-surface);
@@ -102,6 +108,13 @@ const deliverables = lang === 'de' ? [
     padding: var(--space-12);
     box-shadow: var(--shadow-sm);
     overflow: hidden;
+  }
+
+  @media (max-width: 767px) {
+    .demo__card {
+      padding: var(--space-8) var(--space-6);
+      border-radius: var(--radius-card);
+    }
   }
 
   .demo__card-accent {
@@ -281,5 +294,12 @@ const deliverables = lang === 'de' ? [
 
   .demo__cta:hover .demo__cta-icon {
     width: calc(100% - 8px);
+  }
+
+  @media (max-width: 767px) {
+    .demo__cta {
+      width: 100%;
+      justify-content: center;
+    }
   }
 </style>

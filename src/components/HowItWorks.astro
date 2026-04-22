@@ -20,7 +20,7 @@ const isDE = lang === 'de';
 
     <!-- Step 01: Deploy -->
     <div class="hiw__step hiw__step--odd section-fade">
-      <div class="hiw__ghost" aria-hidden="true" style="transform: translate(-150%, -50%);">01</div>
+      <div class="hiw__ghost" aria-hidden="true">01</div>
       <div class="hiw__text">
         <p class="hiw__step-eyebrow">{isDE ? 'Schritt 01' : 'Step 01'}</p>
         <h3 class="hiw__step-heading">{isDE ? 'Agenten deployen' : 'Deploy agents'}</h3>
@@ -77,7 +77,7 @@ const isDE = lang === 'de';
 
     <!-- Step 02: Interviews at scale -->
     <div class="hiw__step hiw__step--even section-fade">
-      <div class="hiw__ghost" aria-hidden="true" style="transform: translate(60%, -50%);">02</div>
+      <div class="hiw__ghost" aria-hidden="true">02</div>
       <div class="hiw__mockup">
         <div class="mock mock--video">
           <div class="mock__video-grid">
@@ -138,7 +138,7 @@ const isDE = lang === 'de';
 
     <!-- Step 03: The Map -->
     <div class="hiw__step hiw__step--odd section-fade">
-      <div class="hiw__ghost" aria-hidden="true" style="transform: translate(-150%, -50%);">03</div>
+      <div class="hiw__ghost" aria-hidden="true">03</div>
       <div class="hiw__text">
         <p class="hiw__step-eyebrow">{isDE ? 'Schritt 03' : 'Step 03'}</p>
         <h3 class="hiw__step-heading">{isDE ? 'Sie erhalten die Karte' : 'You get the map'}</h3>
@@ -214,9 +214,21 @@ const isDE = lang === 'de';
     background-color: var(--color-bg);
   }
 
+  @media (max-width: 767px) {
+    .hiw {
+      padding: var(--space-16) 0;
+    }
+  }
+
   /* Header */
   .hiw__header {
     margin-bottom: var(--space-24);
+  }
+
+  @media (max-width: 767px) {
+    .hiw__header {
+      margin-bottom: var(--space-12);
+    }
   }
 
   .hiw__eyebrow {
@@ -245,8 +257,8 @@ const isDE = lang === 'de';
     position: relative;
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--space-8);
-    padding: var(--space-16) 0;
+    gap: var(--space-6);
+    padding: var(--space-10) 0;
     border-top: 1px solid var(--color-border-subtle);
   }
 
@@ -266,12 +278,12 @@ const isDE = lang === 'de';
     }
   }
 
-  /* Ghost number */
+  /* Ghost number — mobile: decorative top-right watermark */
   .hiw__ghost {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    font-size: clamp(140px, 22vw, 300px);
+    top: var(--space-3);
+    right: var(--space-3);
+    font-size: clamp(64px, 18vw, 96px);
     font-weight: 900;
     letter-spacing: -0.06em;
     line-height: 1;
@@ -280,6 +292,24 @@ const isDE = lang === 'de';
     user-select: none;
     pointer-events: none;
     white-space: nowrap;
+  }
+
+  /* Ghost number — desktop: large centered background */
+  @media (min-width: 768px) {
+    .hiw__ghost {
+      top: 50%;
+      right: auto;
+      left: 50%;
+      font-size: clamp(140px, 22vw, 300px);
+    }
+
+    .hiw__step--odd .hiw__ghost {
+      transform: translate(-150%, -50%);
+    }
+
+    .hiw__step--even .hiw__ghost {
+      transform: translate(60%, -50%);
+    }
   }
 
   /* Text column */

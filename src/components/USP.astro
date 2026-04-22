@@ -90,9 +90,21 @@ const faqs: FaqItem[] = lang === 'de' ? [
     background-color: var(--color-bg);
   }
 
+  @media (max-width: 767px) {
+    .usp {
+      padding: var(--space-16) 0;
+    }
+  }
+
   .usp__header {
     text-align: center;
     margin-bottom: var(--space-16);
+  }
+
+  @media (max-width: 767px) {
+    .usp__header {
+      margin-bottom: var(--space-10);
+    }
   }
 
   .usp__badge {
