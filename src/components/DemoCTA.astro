@@ -20,7 +20,6 @@ const deliverables = lang === 'de' ? [
 <section class="demo" id="request-pilot">
   <div class="container">
     <div class="demo__card section-fade">
-      <div class="demo__card-accent" aria-hidden="true"></div>
 
       <div class="demo__inner">
         <div class="demo__founder section-fade" style="--delay: 0ms">
@@ -62,7 +61,7 @@ const deliverables = lang === 'de' ? [
             {deliverables.map((d, i) => (
               <li class="demo__deliverable" style={`--delay: ${(i + 1) * 60}ms`}>
                 <span class="demo__check" aria-hidden="true">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
                     <path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </span>
@@ -89,41 +88,24 @@ const deliverables = lang === 'de' ? [
 
 <style>
   .demo {
-    padding: var(--space-24) 0;
+    padding: var(--space-section) 0;
     border-top: 1px solid var(--color-border);
-    background-color: var(--color-bg);
   }
 
   @media (max-width: 767px) {
-    .demo {
-      padding: var(--space-12) 0;
-    }
+    .demo { padding: var(--space-24) 0; }
   }
 
   .demo__card {
-    position: relative;
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-xl);
+    border-radius: var(--radius-card);
     padding: var(--space-12);
-    box-shadow: var(--shadow-sm);
     overflow: hidden;
   }
 
   @media (max-width: 767px) {
-    .demo__card {
-      padding: var(--space-8) var(--space-6);
-      border-radius: var(--radius-card);
-    }
-  }
-
-  .demo__card-accent {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--color-accent), var(--color-accent-muted), transparent);
+    .demo__card { padding: var(--space-8) var(--space-6); }
   }
 
   .demo__inner {
@@ -134,7 +116,7 @@ const deliverables = lang === 'de' ? [
 
   @media (min-width: 768px) {
     .demo__inner {
-      grid-template-columns: 260px 1fr;
+      grid-template-columns: 240px 1fr;
       align-items: start;
       gap: var(--space-16);
     }
@@ -147,11 +129,11 @@ const deliverables = lang === 'de' ? [
   }
 
   .demo__avatar {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-ui);
     background-color: var(--color-surface-elevated);
-    border: 1.5px solid var(--color-border);
+    border: 1px solid var(--color-border);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -182,30 +164,26 @@ const deliverables = lang === 'de' ? [
 
   .demo__eyebrow {
     font-size: var(--text-xs);
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: var(--color-accent);
-    margin-bottom: var(--space-2);
+    color: var(--color-text-tertiary);
+    margin-bottom: var(--space-3);
   }
 
   .demo__heading {
     font-size: clamp(var(--text-lg), 3vw, var(--text-xl));
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin-bottom: var(--space-3);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-4);
     display: flex;
     flex-direction: column;
-    gap: 0.1em;
+    gap: 0.06em;
+    line-height: 1.05;
   }
 
-  .demo__heading-line1 {
-    color: var(--color-text-primary);
-  }
-
-  .demo__heading-line2 {
-    color: var(--color-text-tertiary);
-  }
+  .demo__heading-line1 { color: var(--color-text-primary); }
+  .demo__heading-line2 { color: var(--color-text-primary); opacity: 0.3; }
 
   .demo__sub {
     font-size: var(--text-base);
@@ -227,23 +205,24 @@ const deliverables = lang === 'de' ? [
     align-items: flex-start;
     gap: var(--space-3);
     font-size: var(--text-base);
-    color: var(--color-text-primary);
+    color: var(--color-text-secondary);
     line-height: 1.5;
   }
 
   .demo__check {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: var(--color-accent-light);
+    width: 18px;
+    height: 18px;
+    border-radius: var(--radius-ui);
+    border: 1px solid var(--color-border);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-accent);
+    color: var(--color-text-secondary);
     flex-shrink: 0;
-    margin-top: 1px;
+    margin-top: 2px;
   }
 
+  /* Primary CTA — monochromatic inversion */
   .demo__cta {
     position: relative;
     overflow: hidden;
@@ -251,55 +230,43 @@ const deliverables = lang === 'de' ? [
     align-items: center;
     height: 48px;
     padding: 0 var(--space-8);
-    background-color: var(--color-accent);
-    color: #ffffff;
+    background-color: var(--color-cta-bg);
+    color: var(--color-cta-text);
     font-size: var(--text-base);
     font-weight: 700;
+    letter-spacing: -0.01em;
     border-radius: var(--radius-ui);
-    box-shadow: var(--shadow-md);
-    transition: box-shadow 0.3s ease;
+    transition: opacity 0.2s var(--ease-smooth);
   }
 
-  .demo__cta:hover {
-    box-shadow: var(--shadow-xl);
-  }
-
-  .demo__cta:active {
-    transform: scale(0.97);
-  }
+  .demo__cta:hover { opacity: 0.85; }
+  .demo__cta:active { transform: scale(0.97); }
 
   .demo__cta-label {
     margin-right: var(--space-10);
-    transition: opacity 0.5s ease;
+    transition: opacity 0.4s var(--ease-smooth);
     white-space: nowrap;
   }
 
-  .demo__cta:hover .demo__cta-label {
-    opacity: 0;
-  }
+  .demo__cta:hover .demo__cta-label { opacity: 0; }
 
   .demo__cta-icon {
     position: absolute;
     right: 4px;
     top: 4px;
     bottom: 4px;
-    border-radius: 4px;
+    border-radius: var(--radius-ui);
     z-index: 1;
     display: grid;
     width: 25%;
     place-items: center;
-    background-color: rgba(255, 255, 255, 0.18);
-    transition: width 0.5s ease;
+    background-color: var(--color-cta-icon-bg);
+    transition: width 0.4s var(--ease-spring);
   }
 
-  .demo__cta:hover .demo__cta-icon {
-    width: calc(100% - 8px);
-  }
+  .demo__cta:hover .demo__cta-icon { width: calc(100% - 8px); }
 
   @media (max-width: 767px) {
-    .demo__cta {
-      width: 100%;
-      justify-content: center;
-    }
+    .demo__cta { width: 100%; justify-content: center; }
   }
 </style>
