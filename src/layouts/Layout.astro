@@ -12,6 +12,7 @@ const {
 } = Astro.props;
 
 import '../styles/global.css';
+import '../styles/design.css';
 ---
 
 <!doctype html>
@@ -57,12 +58,3 @@ import '../styles/global.css';
     <slot />
   </body>
 </html>
-
-<style is:global>
-  @import '../styles/design.css';
-
-/* Alle Headlines auf Semibold (600) ändern */
-h1, h2, h3 {
-  font-weight: 600 !important; /* Vorher 300 */
-  letter-spacing: -0.02em !important; /* Etwas weniger negativ bei dickerer Schrift */
-}
