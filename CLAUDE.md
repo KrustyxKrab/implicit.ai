@@ -98,6 +98,36 @@ Before the site goes live, these must be resolved:
 
 ---
 
+## Astro CSS Gotchas (known issues — read before touching component styles)
+
+### 1. Absolutely positioned children need explicit `width`
+`position: absolute` elements do **not** inherit their parent's width in Astro's layout. Always set `width: 100%` (or explicit `inset`/`left`/`right`) explicitly:
+```css
+/* WRONG — collapses to content-width */
+.child { position: absolute; top: 0; left: 0; }
+
+/* CORRECT */
+.child { position: absolute; top: 0; left: 0; width: 100%; }
+```
+
+### 2. For JS-driven CSS transitions, set animated properties via inline styles — not class toggling
+When JS controls an animation that needs the CSS `transition` to fire, set the animated properties (transform, opacity) **directly as inline styles**. Using a class toggle + `will-change` batches the old and new value into the same browser frame — the browser never sees a "before" value, so the transition never fires.
+
+```js
+/* WRONG — class toggle + will-change batches into one frame; transition doesn't fire */
+el.classList.add('my-animated-state');
+
+/* CORRECT — inline style gives the browser a clear before/after to transition between */
+el.style.transform = 'translate(16px, 16px)';
+el.style.opacity = '0.46';
+```
+
+The CSS `transition` property (defined on a class) still applies to inline-style changes — it governs HOW the property animates, regardless of what triggers the change. So define `transition` in CSS, set animated values via JS inline styles.
+
+Class toggling is still correct for **boolean state** (visible/hidden, active/inactive) where no smooth transition is needed.
+
+---
+
 ## Open Hypotheses (product, not website)
 
 These are unvalidated assumptions in the business model — useful context for any copy decisions:

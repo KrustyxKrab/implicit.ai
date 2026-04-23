@@ -269,10 +269,20 @@ const isDE = lang === 'de';
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
               </div>
               <div class="mock__wf-content">
+                <span class="mock__wf-title">{isDE ? 'Aussagen kreuzvalidieren' : 'Cross-validating statements'}</span>
+                <span class="mock__wf-sub">{isDE ? 'Probleme über Interviews abgleichen' : 'Matching problems across interviews'}</span>
+              </div>
+              <span class="mock__wf-status mock__wf-status--active">{isDE ? 'Aktiv' : 'Active'}</span>
+            </div>
+            <div class="mock__wf-item mock__wf-item--pending">
+              <div class="mock__wf-icon mock__wf-icon--pending">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg>
+              </div>
+              <div class="mock__wf-content">
                 <span class="mock__wf-title">{isDE ? 'Cluster werden gebildet' : 'Clusters forming'}</span>
                 <span class="mock__wf-sub">{isDE ? 'Signalquellen werden verbunden' : 'Connecting signal sources'}</span>
               </div>
-              <span class="mock__wf-status mock__wf-status--active">{isDE ? 'Aktiv' : 'Active'}</span>
+              <span class="mock__wf-status">{isDE ? 'Ausstehend' : 'Pending'}</span>
             </div>
             <div class="mock__wf-item mock__wf-item--pending">
               <div class="mock__wf-icon mock__wf-icon--pending">
@@ -292,58 +302,108 @@ const isDE = lang === 'de';
     <!-- Step 04: Output picture -->
     <div class="hiw__step hiw__step--even section-fade">
       <div class="hiw__ghost" aria-hidden="true">04</div>
-      <div class="hiw__mockup">
-        <div class="mock mock--output">
-          <div class="mock__chrome">
-            <div class="mock__dots">
-              <span class="mock__dot mock__dot--r"></span>
-              <span class="mock__dot mock__dot--y"></span>
-              <span class="mock__dot mock__dot--g"></span>
+      <div class="hiw__mockup hiw__mockup--stack">
+        <div class="hiw__stack" id="hiw-stack-04">
+
+          <!-- Window B: Opportunities (starts behind) -->
+          <div class="mock mock--opps hiw__stack-win hiw__stack-win--back" id="win-b">
+            <div class="mock__chrome">
+              <div class="mock__dots">
+                <span class="mock__dot mock__dot--r"></span>
+                <span class="mock__dot mock__dot--y"></span>
+                <span class="mock__dot mock__dot--g"></span>
+              </div>
+              <span class="mock__title">{isDE ? 'Chancen' : 'Opportunities'}</span>
+              <span class="mock__opp-badge">8 {isDE ? 'identifiziert' : 'identified'}</span>
             </div>
-            <span class="mock__title">{isDE ? 'Ergebnisübersicht' : 'Results overview'}</span>
-          </div>
-          <div class="mock__body">
-            <div class="mock__wf-item mock__wf-item--done">
-              <div class="mock__wf-icon">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            <div class="mock__body">
+              <div class="mock__wf-item mock__wf-item--done mock__wf-item--accent">
+                <div class="mock__wf-icon mock__wf-icon--accent">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                </div>
+                <div class="mock__wf-content">
+                  <span class="mock__wf-title">{isDE ? 'Predictive Maintenance Hub' : 'Predictive Maintenance Hub'}</span>
+                  <span class="mock__wf-sub">{isDE ? '89 Stimmen · Operations' : '89 voices · Operations'}</span>
+                </div>
+                <span class="mock__opp-conf mock__opp-conf--high">{isDE ? 'Hoch' : 'High'}</span>
               </div>
-              <div class="mock__wf-content">
-                <span class="mock__wf-title">{isDE ? 'Schmerzpunkte' : 'Pain Points'}</span>
-                <span class="mock__wf-sub">{isDE ? 'In 5 Teams identifiziert' : 'Identified across 5 teams'}</span>
+              <div class="mock__wf-item mock__wf-item--done mock__wf-item--accent">
+                <div class="mock__wf-icon mock__wf-icon--accent">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                </div>
+                <div class="mock__wf-content">
+                  <span class="mock__wf-title">{isDE ? 'Smart Dokumentations-Engine' : 'Smart Documentation Engine'}</span>
+                  <span class="mock__wf-sub">{isDE ? '4 h/Tag · Logistik & Admin' : '4h/day · Logistics & Admin'}</span>
+                </div>
+                <span class="mock__opp-conf mock__opp-conf--high">{isDE ? 'Hoch' : 'High'}</span>
               </div>
-              <span class="mock__out-count">14</span>
-            </div>
-            <div class="mock__wf-item mock__wf-item--done mock__wf-item--accent">
-              <div class="mock__wf-icon mock__wf-icon--accent">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              <div class="mock__wf-item mock__wf-item--done mock__wf-item--accent">
+                <div class="mock__wf-icon mock__wf-icon--accent">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <div class="mock__wf-content">
+                  <span class="mock__wf-title">{isDE ? 'Internes Expertennetzwerk' : 'Internal Expert Network'}</span>
+                  <span class="mock__wf-sub">{isDE ? '140 Spezialisten · HR & F&E' : '140 specialists · HR & R&D'}</span>
+                </div>
+                <span class="mock__opp-conf mock__opp-conf--mid">{isDE ? 'Mittel' : 'Medium'}</span>
               </div>
-              <div class="mock__wf-content">
-                <span class="mock__wf-title">{isDE ? 'Chancen' : 'Opportunities'}</span>
-                <span class="mock__wf-sub">{isDE ? 'Handlungsfelder bereit' : 'Action areas ready'}</span>
-              </div>
-              <span class="mock__out-count mock__out-count--accent">8</span>
-            </div>
-            <div class="mock__wf-item mock__wf-item--done">
-              <div class="mock__wf-icon">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-              </div>
-              <div class="mock__wf-content">
-                <span class="mock__wf-title">{isDE ? 'Prozesslücken' : 'Process Gaps'}</span>
-                <span class="mock__wf-sub">{isDE ? 'Priorisiert nach Impact' : 'Prioritised by impact'}</span>
-              </div>
-              <span class="mock__out-count">11</span>
-            </div>
-            <div class="mock__wf-item mock__wf-item--done">
-              <div class="mock__wf-icon">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-              </div>
-              <div class="mock__wf-content">
-                <span class="mock__wf-title">{isDE ? 'Wissenskarte' : 'Knowledge Map'}</span>
-                <span class="mock__wf-sub">{isDE ? 'Cluster visualisiert' : 'Clusters visualised'}</span>
-              </div>
-              <span class="mock__out-count">3</span>
             </div>
           </div>
+
+          <!-- Window A: Results overview (starts in front) -->
+          <div class="mock mock--output hiw__stack-win hiw__stack-win--front" id="win-a">
+            <div class="mock__chrome">
+              <div class="mock__dots">
+                <span class="mock__dot mock__dot--r"></span>
+                <span class="mock__dot mock__dot--y"></span>
+                <span class="mock__dot mock__dot--g"></span>
+              </div>
+              <span class="mock__title">{isDE ? 'Ergebnisübersicht' : 'Results overview'}</span>
+            </div>
+            <div class="mock__body">
+              <div class="mock__wf-item mock__wf-item--done">
+                <div class="mock__wf-icon">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+                </div>
+                <div class="mock__wf-content">
+                  <span class="mock__wf-title">{isDE ? 'Schmerzpunkte' : 'Pain Points'}</span>
+                  <span class="mock__wf-sub">{isDE ? 'In 5 Teams identifiziert' : 'Identified across 5 teams'}</span>
+                </div>
+                <span class="mock__out-count">14</span>
+              </div>
+              <div class="mock__wf-item mock__wf-item--done mock__wf-item--accent">
+                <div class="mock__wf-icon mock__wf-icon--accent">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+                </div>
+                <div class="mock__wf-content">
+                  <span class="mock__wf-title">{isDE ? 'Chancen' : 'Opportunities'}</span>
+                  <span class="mock__wf-sub">{isDE ? 'Handlungsfelder bereit' : 'Action areas ready'}</span>
+                </div>
+                <span class="mock__out-count mock__out-count--accent">8</span>
+              </div>
+              <div class="mock__wf-item mock__wf-item--done">
+                <div class="mock__wf-icon">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+                </div>
+                <div class="mock__wf-content">
+                  <span class="mock__wf-title">{isDE ? 'Prozesslücken' : 'Process Gaps'}</span>
+                  <span class="mock__wf-sub">{isDE ? 'Priorisiert nach Impact' : 'Prioritised by impact'}</span>
+                </div>
+                <span class="mock__out-count">11</span>
+              </div>
+              <div class="mock__wf-item mock__wf-item--done">
+                <div class="mock__wf-icon">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+                </div>
+                <div class="mock__wf-content">
+                  <span class="mock__wf-title">{isDE ? 'Wissenskarte' : 'Knowledge Map'}</span>
+                  <span class="mock__wf-sub">{isDE ? 'Cluster visualisiert' : 'Clusters visualised'}</span>
+                </div>
+                <span class="mock__out-count">3</span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
       <div class="hiw__text">
@@ -388,6 +448,46 @@ const isDE = lang === 'de';
   });
 
   timer = setInterval(function () { activate((idx + 1) % panels.length); }, 8000);
+})();
+
+/* ---- Step 04: stacked window z-swap ---- */
+(function () {
+  var stack = document.getElementById('hiw-stack-04');
+  if (!stack) return;
+  var winA = document.getElementById('win-a');
+  var winB = document.getElementById('win-b');
+  if (!winA || !winB) return;
+
+  var aFront = true;
+  var swapTimer;
+
+  function swap() {
+    aFront = !aFront;
+    
+    // Temporarily bump z-index to prevent clipping during animation
+    var incoming = aFront ? winA : winB;
+    incoming.style.zIndex = '3';
+    setTimeout(function() { incoming.style.zIndex = ''; }, 300);
+
+    // Swap the state classes
+    winA.className = "mock mock--output hiw__stack-win " + (aFront ? "hiw__stack-win--front" : "hiw__stack-win--back");
+    winB.className = "mock mock--opps hiw__stack-win " + (aFront ? "hiw__stack-win--back" : "hiw__stack-win--front");
+  }
+
+  function resetTimer() {
+    clearInterval(swapTimer);
+    swapTimer = setInterval(swap, 4800);
+  }
+
+  // Event delegation to catch clicks on whichever window is currently in the back
+  stack.addEventListener('click', function (e) {
+    if (e.target.closest('.hiw__stack-win--back')) {
+      swap();
+      resetTimer();
+    }
+  });
+
+  swapTimer = setInterval(swap, 4800);
 })();
 </script>
 
@@ -1042,5 +1142,106 @@ const isDE = lang === 'de';
   @media (prefers-reduced-motion: reduce) {
     .mock__typing-dots span { animation: none; }
     .hiw__gallery-panel--active { animation: none; }
+  }
+
+  /* ---- Step 04: stacked windows ---- */
+.hiw__mockup--stack {
+  padding-right: 16px;
+  padding-bottom: 16px;
+}
+
+/* Applying CSS Grid fixes the 0px height collapse */
+.hiw__stack {
+  display: grid;
+  position: relative;
+}
+
+/* Both windows occupy the exact same grid cell */
+.hiw__stack-win {
+  grid-area: 1 / 1; 
+  width: 100%;
+  transition: transform 0.55s var(--ease-spring), opacity 0.38s var(--ease-smooth);
+}
+
+/* Front View State */
+.hiw__stack-win--front {
+  z-index: 2;
+  transform: translate(0, 0);
+  opacity: 1;
+  cursor: default;
+}
+
+/* Background View State */
+.hiw__stack-win--back {
+  z-index: 1;
+  transform: translate(16px, 16px);
+  opacity: 0.46;
+  cursor: pointer;
+}
+
+  /* Row hover micro-interaction (step 04 results) */
+  .mock--output .mock__wf-item {
+    transition: background 0.18s ease, padding-left 0.18s ease;
+    border-radius: var(--radius-ui);
+  }
+
+  .mock--output .mock__wf-item:hover {
+    background: var(--color-surface-elevated);
+    padding-left: calc(var(--space-2) + 2px);
+  }
+
+  /* ---- Opportunities window ---- */
+  /* chrome badge */
+  .mock__opp-badge {
+    margin-left: auto;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--color-accent);
+    background: var(--color-accent-light);
+    border: 1px solid var(--color-accent-muted);
+    padding: 1px 7px;
+    border-radius: var(--radius-full);
+  }
+
+  /* confidence pill in status column */
+  .mock__opp-conf {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: var(--radius-full);
+    flex-shrink: 0;
+    letter-spacing: 0.03em;
+  }
+
+  .mock__opp-conf--high {
+    color: #22c55e;
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+  }
+
+  .mock__opp-conf--mid {
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+  }
+
+  /* row hover — same as results window */
+  .mock--opps .mock__wf-item {
+    transition: background 0.18s ease, padding-left 0.18s ease;
+    border-radius: var(--radius-ui);
+  }
+
+  .mock--opps .mock__wf-item:hover {
+    background: var(--color-surface-elevated);
+    padding-left: calc(var(--space-2) + 2px);
+  }
+
+
+  @media (prefers-reduced-motion: reduce) {
+    .hiw__stack-win,
+    .mock--output .mock__wf-item,
+    .mock--opps .mock__wf-item { transition: none; }
+    .hiw__stack-win--a:hover,
+    .hiw__stack-win--b:hover { transform: none; }
   }
 </style>
