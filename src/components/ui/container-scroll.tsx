@@ -9,7 +9,10 @@ export const ContainerScroll = ({
   children: React.ReactNode;
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: containerRef });
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end end"],
+  });
   const [isMobile, setIsMobile] = React.useState(false);
 
   React.useEffect(() => {
@@ -94,12 +97,12 @@ const ScrollCard = ({
       marginRight: "auto",
       height: isMobile ? "26rem" : "36rem",
       width: "100%",
-      border: "1px solid var(--color-border)",
+      border: "1px solid rgba(255,255,255,0.1)",
       padding: isMobile ? "6px" : "16px",
-      backgroundColor: "var(--color-surface)",
+      backgroundColor: "var(--color-surface-elevated)",
       borderRadius: "20px",
       boxShadow:
-        "0 0 #0000004d, 0 9px 20px #0000004a, 0 37px 37px #00000026, 0 84px 50px #0000000a",
+        "0 0 0 1px rgba(255,255,255,0.06), 0 9px 20px rgba(0,0,0,0.5), 0 37px 37px rgba(0,0,0,0.3), 0 84px 50px rgba(0,0,0,0.15)",
     }}
   >
     <div

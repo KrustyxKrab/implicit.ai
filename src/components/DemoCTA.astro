@@ -6,12 +6,12 @@ const { lang = 'en' } = Astro.props;
 
 const deliverables = lang === 'de' ? [
   '30-minütige KI-Interviewsession mit Ihrem Team',
-  'Pilot-Innovationskarte — Ihre ersten identifizierten Signale',
+  'Pilot-Ergebnisübersicht — Ihre ersten identifizierten Signale',
   'Lückenanalyse: Was Ihre aktuelle Wissensstrategie übersieht',
-  'Empfehlung für den nächsten Schritt auf Basis Ihrer spezifischen Situation',
+  'Empfehlung für den nächsten Schritt auf Basis Ihrer Situation',
 ] : [
   '30-minute AI interview session with your team',
-  'Pilot innovation map — your first identified signals',
+  'Pilot results overview — your first identified signals',
   'Gap analysis: what your current knowledge strategy is missing',
   'Next-step recommendation based on your specific situation',
 ];
@@ -20,68 +20,45 @@ const deliverables = lang === 'de' ? [
 <section class="demo" id="request-pilot">
   <div class="container">
     <div class="demo__card section-fade">
-      <div class="demo__card-accent" aria-hidden="true"></div>
+      <div class="demo__content">
+        <div class="demo__content-header">
+          <p class="demo__eyebrow">
+            {lang === 'de' ? 'Jetzt starten' : 'Get started'}
+          </p>
+          <h2 class="demo__heading">
+            <span class="demo__heading-line1">{lang === 'de' ? 'Starten Sie mit einem Pilot.' : 'Start with a pilot.'}</span>
+            <span class="demo__heading-line2">{lang === 'de' ? 'Ergebnisse in 4 Stunden.' : 'Results in 4 hours.'}</span>
+          </h2>
+          <p class="demo__sub">
+            {lang === 'de'
+              ? 'Kein langer Onboarding-Prozess. Keine Setup-Gebühr. Nur ein fokussierter Pilot, der zeigt, was in Ihrer Organisation verborgen liegt.'
+              : 'No lengthy onboarding. No setup fee. Just a focused pilot that shows what is hidden inside your organisation.'}
+          </p>
+        </div>
 
-      <div class="demo__inner">
-        <div class="demo__founder section-fade" style="--delay: 0ms">
-          <div class="demo__avatar" aria-label="Founder photo placeholder">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-              <circle cx="16" cy="12" r="5" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M6 27c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <ul class="demo__deliverables" role="list">
+          {deliverables.map((d, i) => (
+            <li class="demo__deliverable" style={`--delay: ${(i + 1) * 60}ms`}>
+              <span class="demo__check" aria-hidden="true">
+                <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                  <path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              {d}
+            </li>
+          ))}
+        </ul>
+
+        <a href="mailto:hello@inplicit.ai" class="demo__cta">
+          <span class="demo__cta-label">
+            {lang === 'de' ? 'Zur Warteliste' : 'Join Waitlist'}
+          </span>
+          <i class="demo__cta-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-          </div>
-          <blockquote class="demo__quote">
-            <p class="demo__quote-text">
-              {lang === 'de'
-                ? '"Ich nehme mir persönlich Zeit, um Ihre Situation zu verstehen — bevor wir über Technologie sprechen."'
-                : '"I take time personally to understand your situation — before we talk about technology."'}
-            </p>
-            <cite class="demo__quote-cite">
-              {lang === 'de' ? 'Gründer, implicit.ai' : 'Founder, implicit.ai'}
-            </cite>
-          </blockquote>
-        </div>
-
-        <div class="demo__content section-fade" style="--delay: 80ms">
-          <div class="demo__content-header">
-            <p class="demo__eyebrow">
-              {lang === 'de' ? 'Jetzt starten' : 'Get started'}
-            </p>
-            <h2 class="demo__heading">
-              <span class="demo__heading-line1">{lang === 'de' ? 'Starten Sie mit einem Pilot.' : 'Start with a pilot.'}</span>
-              <span class="demo__heading-line2">{lang === 'de' ? 'Ergebnisse in 6 Wochen.' : 'Results in 6 weeks.'}</span>
-            </h2>
-            <p class="demo__sub">
-              {lang === 'de'
-                ? 'Kein langes Onboarding. Kein Vertrag. Nur ein fokussierter Pilot, der zeigt, was in Ihrer Organisation verborgen liegt.'
-                : 'No lengthy onboarding. No contract. Just a focused pilot that shows what is hidden inside your organisation.'}
-            </p>
-          </div>
-
-          <ul class="demo__deliverables" role="list">
-            {deliverables.map((d, i) => (
-              <li class="demo__deliverable" style={`--delay: ${(i + 1) * 60}ms`}>
-                <span class="demo__check" aria-hidden="true">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                    <path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-                {d}
-              </li>
-            ))}
-          </ul>
-
-          <a href="mailto:hello@implicit.ai" class="demo__cta">
-            <span class="demo__cta-label">
-              {lang === 'de' ? 'Pilot anfragen' : 'Request Pilot'}
-            </span>
-            <i class="demo__cta-icon" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </i>
-          </a>
-        </div>
+          </i>
+        </a>
       </div>
     </div>
   </div>
@@ -89,123 +66,55 @@ const deliverables = lang === 'de' ? [
 
 <style>
   .demo {
-    padding: var(--space-24) 0;
+    padding: var(--space-section) 0;
     border-top: 1px solid var(--color-border);
-    background-color: var(--color-bg);
   }
 
   @media (max-width: 767px) {
-    .demo {
-      padding: var(--space-12) 0;
-    }
+    .demo { padding: var(--space-24) 0; }
   }
 
   .demo__card {
-    position: relative;
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-xl);
+    border-radius: var(--radius-card);
     padding: var(--space-12);
-    box-shadow: var(--shadow-sm);
     overflow: hidden;
+    max-width: 680px;
   }
 
   @media (max-width: 767px) {
-    .demo__card {
-      padding: var(--space-8) var(--space-6);
-      border-radius: var(--radius-card);
-    }
+    .demo__card { padding: var(--space-8) var(--space-6); }
   }
 
-  .demo__card-accent {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--color-accent), var(--color-accent-muted), transparent);
-  }
-
-  .demo__inner {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-12);
-  }
-
-  @media (min-width: 768px) {
-    .demo__inner {
-      grid-template-columns: 260px 1fr;
-      align-items: start;
-      gap: var(--space-16);
-    }
-  }
-
-  .demo__founder {
+  .demo__content {
     display: flex;
     flex-direction: column;
-    gap: var(--space-4);
-  }
-
-  .demo__avatar {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    background-color: var(--color-surface-elevated);
-    border: 1.5px solid var(--color-border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-text-tertiary);
-  }
-
-  .demo__quote {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
-  }
-
-  .demo__quote-text {
-    font-size: var(--text-sm);
-    color: var(--color-text-secondary);
-    line-height: 1.75;
-    font-style: italic;
-  }
-
-  .demo__quote-cite {
-    font-size: var(--text-xs);
-    font-weight: 600;
-    color: var(--color-text-tertiary);
-    font-style: normal;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+    gap: 0;
   }
 
   .demo__eyebrow {
     font-size: var(--text-xs);
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: var(--color-accent);
-    margin-bottom: var(--space-2);
+    color: var(--color-text-tertiary);
+    margin-bottom: var(--space-3);
   }
 
   .demo__heading {
     font-size: clamp(var(--text-lg), 3vw, var(--text-xl));
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin-bottom: var(--space-3);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-4);
     display: flex;
     flex-direction: column;
-    gap: 0.1em;
+    gap: 0.06em;
+    line-height: 1.05;
   }
 
-  .demo__heading-line1 {
-    color: var(--color-text-primary);
-  }
-
-  .demo__heading-line2 {
-    color: var(--color-text-tertiary);
-  }
+  .demo__heading-line1 { color: var(--color-text-primary); }
+  .demo__heading-line2 { color: var(--color-text-primary); opacity: 0.3; }
 
   .demo__sub {
     font-size: var(--text-base);
@@ -227,23 +136,24 @@ const deliverables = lang === 'de' ? [
     align-items: flex-start;
     gap: var(--space-3);
     font-size: var(--text-base);
-    color: var(--color-text-primary);
+    color: var(--color-text-secondary);
     line-height: 1.5;
   }
 
   .demo__check {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: var(--color-accent-light);
+    width: 18px;
+    height: 18px;
+    border-radius: var(--radius-ui);
+    border: 1px solid var(--color-border);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-accent);
+    color: var(--color-text-secondary);
     flex-shrink: 0;
-    margin-top: 1px;
+    margin-top: 2px;
   }
 
+  /* Primary CTA */
   .demo__cta {
     position: relative;
     overflow: hidden;
@@ -251,55 +161,43 @@ const deliverables = lang === 'de' ? [
     align-items: center;
     height: 48px;
     padding: 0 var(--space-8);
-    background-color: var(--color-accent);
-    color: #ffffff;
+    background-color: var(--color-cta-bg);
+    color: var(--color-cta-text);
     font-size: var(--text-base);
     font-weight: 700;
+    letter-spacing: -0.01em;
     border-radius: var(--radius-ui);
-    box-shadow: var(--shadow-md);
-    transition: box-shadow 0.3s ease;
+    transition: opacity 0.2s var(--ease-smooth);
   }
 
-  .demo__cta:hover {
-    box-shadow: var(--shadow-xl);
-  }
-
-  .demo__cta:active {
-    transform: scale(0.97);
-  }
+  .demo__cta:hover { opacity: 0.85; }
+  .demo__cta:active { transform: scale(0.97); }
 
   .demo__cta-label {
     margin-right: var(--space-10);
-    transition: opacity 0.5s ease;
+    transition: opacity 0.4s var(--ease-smooth);
     white-space: nowrap;
   }
 
-  .demo__cta:hover .demo__cta-label {
-    opacity: 0;
-  }
+  .demo__cta:hover .demo__cta-label { opacity: 0; }
 
   .demo__cta-icon {
     position: absolute;
     right: 4px;
     top: 4px;
     bottom: 4px;
-    border-radius: 4px;
+    border-radius: var(--radius-ui);
     z-index: 1;
     display: grid;
     width: 25%;
     place-items: center;
-    background-color: rgba(255, 255, 255, 0.18);
-    transition: width 0.5s ease;
+    background-color: var(--color-cta-icon-bg);
+    transition: width 0.4s var(--ease-spring);
   }
 
-  .demo__cta:hover .demo__cta-icon {
-    width: calc(100% - 8px);
-  }
+  .demo__cta:hover .demo__cta-icon { width: calc(100% - 8px); }
 
   @media (max-width: 767px) {
-    .demo__cta {
-      width: 100%;
-      justify-content: center;
-    }
+    .demo__cta { width: 100%; justify-content: center; }
   }
 </style>

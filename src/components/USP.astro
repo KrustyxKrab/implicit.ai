@@ -3,45 +3,75 @@ export interface Props {
   lang?: 'en' | 'de';
 }
 const { lang = 'en' } = Astro.props;
+const isDE = lang === 'de';
 
-interface FaqItem {
-  question: string;
-  answer: string;
+interface Fact {
+  icon: string;
+  title: string;
+  body: string;
 }
 
-const faqs: FaqItem[] = lang === 'de' ? [
+const facts: Fact[] = isDE ? [
   {
-    question: 'Wie erreicht implicit jeden Mitarbeitenden?',
-    answer: 'KI-geführte Gespräche erreichen Ihre gesamte Belegschaft in Stunden — nicht Monaten. Kein Scheduling, keine Interviewermüdung. Einfach deployen und starten.',
+    icon: 'users',
+    title: 'Die gesamte Belegschaft, erreichbar in Stunden',
+    body: 'KI-geführte Gespräche skalieren auf jeden Mitarbeitenden. Kein Scheduling, keine Interviewermüdung, keine Verzerrung durch Hierarchie.',
   },
   {
-    question: 'Was passiert mit all den Gesprächen?',
-    answer: 'Tausende von Stimmen werden automatisch zu verwertbarer Intelligenz gebündelt. Muster und Signalcluster entstehen über Teams und Abteilungen hinweg — ohne manuelle Auswertung.',
+    icon: 'layers',
+    title: 'Tausende Stimmen, automatisch verdichtet',
+    body: 'Muster und Signalcluster entstehen über Teams und Abteilungen hinweg. Ohne manuelle Auswertung, ohne Tage des Wartens.',
   },
   {
-    question: 'Werden nur Probleme identifiziert?',
-    answer: 'Nein. KI-generierte Lösungsrichtungen entstehen direkt aus den Signalen — konkrete Ansätze, keine bloße Problemliste. Schnelligkeit und Abdeckung statt Perfektion.',
+    icon: 'compass',
+    title: 'Nicht nur Probleme, sondern Richtungen',
+    body: 'Aus den Signalen entstehen konkrete Handlungsfelder, keine reine Problemliste. Die KI zeigt, was als nächstes getan werden kann.',
   },
   {
-    question: 'Ist das Ergebnis ein weiterer Bericht?',
-    answer: 'Nein. Das Ergebnis sind vorvalidierte Venture Cases, bereit für Entscheider. Priorisierte Erkenntnisse, die sofort handlungsreif sind.',
+    icon: 'zap',
+    title: 'Erste Erkenntnisse in 4 Stunden',
+    body: 'Kein monatelanger Analyseprozess. Der erste Ergebnisbericht liegt in 4 Stunden vor, handlungsbereit und ohne Umwege.',
+  },
+  {
+    icon: 'plug',
+    title: 'MCP-Verbindungen für Ihre Workflows',
+    body: 'Ergebnisse fließen direkt in Ihre bestehenden Tools und KI-Workflows. inplicit verbindet sich dort, wo Ihre Arbeit stattfindet.',
+  },
+  {
+    icon: 'shield',
+    title: 'Die Stimme zwischen Mensch und KI',
+    body: 'Wenn KI-Agenten Entscheidungen vorbereiten, brauchen sie menschlichen Kontext. inplicit ist die Brücke: strukturiertes Zuhören, das KI-Systeme informiert.',
   },
 ] : [
   {
-    question: 'How does implicit reach every employee?',
-    answer: 'AI-led conversations reach your entire workforce in hours, not months. No scheduling, no interviewer fatigue — just deploy and go.',
+    icon: 'users',
+    title: 'Your entire workforce, reached in hours',
+    body: 'AI-led conversations scale to every employee. No scheduling, no interviewer fatigue, no hierarchy distorting what gets said.',
   },
   {
-    question: 'What happens to all those conversations?',
-    answer: 'Thousands of voices are automatically clustered into actionable intelligence. Patterns and signals emerge across teams and departments — no manual analysis required.',
+    icon: 'layers',
+    title: 'Thousands of voices, automatically clustered',
+    body: 'Patterns and signal clusters form across teams and departments. No manual analysis, no days of waiting for results.',
   },
   {
-    question: 'Do you just surface problems?',
-    answer: 'No. AI-generated solution directions emerge directly from the signals — concrete directions, not just a list of complaints. Speed and coverage over perfection.',
+    icon: 'compass',
+    title: 'Not just problems. Directions.',
+    body: 'Concrete areas for action emerge from the signals, not just a list of complaints. The AI shows what can be done next.',
   },
   {
-    question: 'Is the output just another report?',
-    answer: 'No. The output is pre-validated venture cases ready for decision-makers. Prioritised insights you can act on immediately.',
+    icon: 'zap',
+    title: 'First insights in 4 hours',
+    body: 'No months-long analysis process. Your first results are ready in 4 hours, action-ready and without detours.',
+  },
+  {
+    icon: 'plug',
+    title: 'MCP connections for your workflows',
+    body: 'Results flow directly into your existing tools and AI workflows. inplicit connects where your work actually happens.',
+  },
+  {
+    icon: 'shield',
+    title: 'The voice between humans and AI',
+    body: 'When AI agents prepare decisions, they need human context. inplicit is the bridge: structured listening that informs AI systems with what people actually think.',
   },
 ];
 ---
@@ -51,30 +81,56 @@ const faqs: FaqItem[] = lang === 'de' ? [
 
     <div class="usp__header section-fade">
       <span class="usp__badge">
-        {lang === 'de' ? 'Warum implicit' : 'Why implicit'}
+        {isDE ? 'Warum inplicit' : 'Why inplicit'}
       </span>
       <h2 class="usp__heading">
         <span class="usp__line1">
-          {lang === 'de' ? 'Alles, was Sie brauchen,' : 'Everything you need'}
+          {isDE ? 'Alles, was Sie brauchen,' : 'Everything you need'}
         </span>
         <span class="usp__line2">
-          {lang === 'de' ? 'um jede Organisation zu verstehen.' : 'to understand any organisation.'}
+          {isDE ? 'um Ihre Organisation zu verstehen.' : 'to understand any organisation.'}
         </span>
       </h2>
-      <p class="usp__description">
-        {lang === 'de'
-          ? 'Die häufigsten Fragen zu implicit.ai und unserem Ansatz.'
-          : 'The most common questions about implicit.ai and our approach.'}
-      </p>
     </div>
 
-    <div class="usp__faq">
-      {faqs.map((faq, i) => (
-        <div class="usp__item section-fade" style={`--delay: ${i * 80}ms`}>
-          <span class="usp__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
-          <div class="usp__item-body">
-            <h3 class="usp__question">{faq.question}</h3>
-            <p class="usp__answer">{faq.answer}</p>
+    <div class="usp__grid">
+      {facts.map((fact, i) => (
+        <div class="usp__fact section-fade" style={`--delay: ${i * 60}ms`}>
+          <div class="usp__fact-icon" aria-hidden="true">
+            {fact.icon === 'users' && (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            )}
+            {fact.icon === 'layers' && (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>
+              </svg>
+            )}
+            {fact.icon === 'compass' && (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+              </svg>
+            )}
+            {fact.icon === 'zap' && (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+            )}
+            {fact.icon === 'plug' && (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 6L6 18"/><path d="m13 6 5 5"/><path d="m6 13 5 5"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/>
+              </svg>
+            )}
+            {fact.icon === 'shield' && (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            )}
+          </div>
+          <div class="usp__fact-body">
+            <h3 class="usp__fact-title">{fact.title}</h3>
+            <p class="usp__fact-text">{fact.body}</p>
           </div>
         </div>
       ))}
@@ -123,63 +179,62 @@ const faqs: FaqItem[] = lang === 'de' ? [
     display: flex;
     flex-direction: column;
     gap: 0.06em;
-    margin-bottom: var(--space-4);
     max-width: 600px;
   }
 
   .usp__line1 { color: var(--color-text-primary); }
   .usp__line2 { color: var(--color-text-primary); opacity: 0.3; }
 
-  .usp__description {
-    font-size: var(--text-base);
-    color: var(--color-text-secondary);
-    font-weight: 400;
-    max-width: 480px;
+  .usp__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
   }
 
-  .usp__faq {
-    max-width: 680px;
+  @media (min-width: 640px) {
+    .usp__grid { grid-template-columns: repeat(2, 1fr); }
   }
 
-  .usp__item {
+  @media (min-width: 1024px) {
+    .usp__grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .usp__fact {
     display: flex;
-    gap: var(--space-6);
-    padding: var(--space-6) 0;
-    border-top: 1px solid var(--color-border);
-    align-items: flex-start;
+    gap: var(--space-4);
+    padding: var(--space-6);
+    transition: border-color 0.2s var(--ease-smooth);
   }
-
-  .usp__item:last-child {
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .usp__num {
+  
+  .usp__fact-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-ui);
+    color: var(--color-text-secondary);
     flex-shrink: 0;
-    font-size: var(--text-xs);
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
-    color: var(--color-text-tertiary);
-    letter-spacing: 0.04em;
     margin-top: 2px;
-    min-width: 24px;
   }
 
-  .usp__item-body {
+  .usp__fact-body {
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
   }
 
-  .usp__question {
+  .usp__fact-title {
     font-size: var(--text-base);
     font-weight: 600;
     color: var(--color-text-primary);
-    letter-spacing: -0.01em;
+    line-height: 1.5;
   }
 
-  .usp__answer {
-    font-size: var(--text-sm);
+  .usp__fact-text {
+    font-size: var(--text-base);
     color: var(--color-text-secondary);
-    line-height: 1.8;
+    line-height: 1.6;
   }
 </style>

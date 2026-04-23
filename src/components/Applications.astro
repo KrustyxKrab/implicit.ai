@@ -1,0 +1,239 @@
+---
+export interface Props {
+  lang?: 'en' | 'de';
+}
+const { lang = 'en' } = Astro.props;
+const isDE = lang === 'de';
+
+interface AppCard {
+  icon: string;
+  title: string;
+  body: string;
+  tag: string;
+}
+
+const cards: AppCard[] = isDE ? [
+  {
+    icon: 'target',
+    tag: 'Strategie',
+    title: 'Verborgene Chancen finden',
+    body: 'Strategische Entscheidungen basieren auf dem, was nach oben gefiltert wird. inplicit zeigt, was dabei verloren geht. Identifizieren Sie Wachstumspotenziale, bevor es Ihr Wettbewerber tut.',
+  },
+  {
+    icon: 'arrows',
+    tag: 'Change Management',
+    title: 'Echte Widerstände verstehen',
+    body: 'Transformationsprojekte scheitern nicht an mangelndem Budget, sondern an ungehörten Bedenken. inplicit zeigt, wo echte Widerstände liegen, bevor das Rollout beginnt.',
+  },
+  {
+    icon: 'gear',
+    tag: 'Prozessoptimierung',
+    title: 'Reibung auf jedem Level sichtbar machen',
+    body: 'Prozessverantwortliche sehen Metriken. Mitarbeitende erleben Reibung. inplicit überbrückt diese Lücke und zeigt, wo Arbeit wirklich bricht, auf jedem Level der Organisation.',
+  },
+  {
+    icon: 'brain',
+    tag: 'Wissensmanagement',
+    title: 'Expertise sichern, bevor sie geht',
+    body: 'Wenn Schlüsselpersonen das Unternehmen verlassen, geht institutionelles Wissen mit. inplicit macht dieses Wissen sichtbar und strukturiert, bevor es zu spät ist.',
+  },
+] : [
+  {
+    icon: 'target',
+    tag: 'Strategy',
+    title: 'Find hidden opportunities first',
+    body: 'Strategic decisions are built on what gets filtered up. inplicit shows what gets lost along the way. Identify growth potential and white spaces before your competitors do.',
+  },
+  {
+    icon: 'arrows',
+    tag: 'Change Management',
+    title: 'Understand the real blockers',
+    body: 'Transformation projects fail not because of missing budget, but because of unheard concerns. inplicit surfaces where genuine resistance lives before your rollout begins.',
+  },
+  {
+    icon: 'gear',
+    tag: 'Process Improvement',
+    title: 'Surface friction at every level',
+    body: 'Process owners see metrics. Employees experience friction. inplicit bridges that gap and shows where work actually breaks down, at every level of the organisation.',
+  },
+  {
+    icon: 'brain',
+    tag: 'Knowledge Retention',
+    title: 'Capture expertise before it walks out',
+    body: 'When key people leave, institutional knowledge goes with them. inplicit makes that knowledge visible and structured before it is too late.',
+  },
+];
+---
+
+<section class="apps" id="applications">
+  <div class="container">
+    <div class="apps__header section-fade">
+      <p class="apps__eyebrow">{isDE ? 'Anwendungsfälle' : 'Applications'}</p>
+      <h2 class="apps__heading">
+        <span class="apps__line1">{isDE ? 'Für jede Frage,' : 'For any question'}</span>
+        <span class="apps__line2">{isDE ? 'die Ihre Organisation beschäftigt.' : 'your organisation needs to answer.'}</span>
+      </h2>
+      <p class="apps__sub">
+        {isDE
+          ? 'inplicit ist kein Werkzeug für einen Anwendungsfall. Es ist die Art, wie Organisationen verstehen, was ihre Belegschaft wirklich weiß.'
+          : 'inplicit is not a tool for one use case. It is how organisations understand what their workforce truly knows.'}
+      </p>
+    </div>
+
+    <div class="apps__grid">
+      {cards.map((card, i) => (
+        <div class="apps__card section-fade" style={`--delay: ${i * 80}ms`}>
+          <div class="apps__card-top">
+            <div class="apps__card-icon" aria-hidden="true">
+              {card.icon === 'target' && (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
+                </svg>
+              )}
+              {card.icon === 'arrows' && (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 16V4m0 0L3 8m4-4l4 4"/><path d="M17 8v12m0 0l4-4m-4 4l-4-4"/>
+                </svg>
+              )}
+              {card.icon === 'gear' && (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="3"/><path d="M19.07 4.93A10 10 0 0 0 4.93 19.07A10 10 0 0 0 19.07 4.93"/>
+                  <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                </svg>
+              )}
+              {card.icon === 'brain' && (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.16z"/>
+                  <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.16z"/>
+                </svg>
+              )}
+            </div>
+            <span class="apps__card-tag">{card.tag}</span>
+          </div>
+          <h3 class="apps__card-title">{card.title}</h3>
+          <p class="apps__card-body">{card.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .apps {
+    padding: var(--space-section) 0;
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+  }
+
+  @media (max-width: 767px) {
+    .apps { padding: var(--space-24) 0; }
+  }
+
+  .apps__header {
+    margin-bottom: var(--space-16);
+    max-width: 640px;
+  }
+
+  @media (max-width: 767px) {
+    .apps__header { margin-bottom: var(--space-10); }
+  }
+
+  .apps__eyebrow {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-tertiary);
+    margin-bottom: var(--space-4);
+  }
+
+  .apps__heading {
+    font-size: clamp(var(--text-xl), 4vw, var(--text-2xl));
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    display: flex;
+    flex-direction: column;
+    gap: 0.06em;
+    margin-bottom: var(--space-4);
+  }
+
+  .apps__line1 { color: var(--color-text-primary); }
+  .apps__line2 { color: var(--color-text-primary); opacity: 0.3; }
+
+  .apps__sub {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: 1.75;
+  }
+
+  .apps__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  @media (min-width: 640px) {
+    .apps__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .apps__card {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    padding: var(--space-8);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    transition: border-color 0.2s var(--ease-smooth);
+  }
+
+  .apps__card:hover { border-color: var(--color-text-tertiary); }
+
+  .apps__card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .apps__card-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-ui);
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
+  }
+
+  .apps__card-tag {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-text-tertiary);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: var(--space-1) var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+  }
+
+  .apps__card-title {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--color-text-primary);
+  }
+
+  .apps__card-body {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+  }
+
+  @media (max-width: 767px) {
+    .apps__card { padding: var(--space-6); }
+  }
+</style>

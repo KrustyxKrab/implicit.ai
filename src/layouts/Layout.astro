@@ -6,10 +6,12 @@ export interface Props {
 }
 
 const {
-  title = 'implicit.ai — AI-powered innovation intelligence',
-  description = 'implicit.ai surfaces weak signals from inside your organisation and transforms them into validated innovation opportunities.',
+  title = 'inplicit.ai — AI-powered workforce intelligence',
+  description = 'inplicit.ai gives every voice in your organisation a place to be heard. Surface hidden knowledge, map what your workforce knows, and act on it.',
   lang = 'en',
 } = Astro.props;
+
+import '../styles/global.css';
 ---
 
 <!doctype html>
@@ -37,7 +39,7 @@ const {
     <!-- Inter font — full weight range for aggressive typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
 
     <!-- Apply saved theme before first paint to prevent flash -->
     <script is:inline>

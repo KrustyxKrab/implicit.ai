@@ -5,17 +5,17 @@ export interface Props {
 const { lang = 'en' } = Astro.props;
 
 const stages = lang === 'de' ? [
-  { id: 'extract',    num: '01', label: 'Extrahieren',   desc: 'Rohes tacites Wissen aus strukturierten KI-Interviews gewinnen' },
-  { id: 'synthesise', num: '02', label: 'Synthetisieren', desc: 'Muster und Cluster über Gespräche und Teams hinweg erkennen' },
-  { id: 'generate',   num: '03', label: 'Generieren',    desc: 'Konkrete Innovationsmöglichkeiten aus synthetisierten Signalen ableiten' },
-  { id: 'validate',   num: '04', label: 'Validieren',    desc: 'Möglichkeiten gegen reale Einschränkungen und strategische Ziele prüfen' },
-  { id: 'converge',   num: '05', label: 'Konvergieren',  desc: 'Priorisierte, handlungsfertige Erkenntnisse für die Entscheidungsebene liefern' },
+  { id: 'listen',      num: '01', label: 'Zuhören',      desc: 'KI-Gespräche mit der gesamten Belegschaft, kreuzvalidiert für Ehrlichkeit' },
+  { id: 'synthesise',  num: '02', label: 'Verdichten',   desc: 'Muster und Cluster über Gespräche und Teams hinweg erkennen' },
+  { id: 'generate',   num: '03', label: 'Generieren',    desc: 'Konkrete Erkenntnisse aus verdichteten Signalen ableiten' },
+  { id: 'validate',   num: '04', label: 'Validieren',    desc: 'Erkenntnisse gegen reale Einschränkungen und strategische Ziele prüfen' },
+  { id: 'converge',   num: '05', label: 'Konvergieren',  desc: 'Priorisierte, handlungsfertige Ergebnisse für die Entscheidungsebene liefern' },
 ] : [
-  { id: 'extract',    num: '01', label: 'Extract',    desc: 'Surface raw tacit knowledge through structured AI-led interviews' },
-  { id: 'synthesise', num: '02', label: 'Synthesise', desc: 'Identify patterns and clusters across conversations and teams' },
-  { id: 'generate',   num: '03', label: 'Generate',   desc: 'Derive concrete innovation opportunities from synthesised signals' },
-  { id: 'validate',   num: '04', label: 'Validate',   desc: 'Test opportunities against real constraints and strategic goals' },
-  { id: 'converge',   num: '05', label: 'Converge',   desc: 'Deliver prioritised, action-ready insights to decision level' },
+  { id: 'listen',      num: '01', label: 'Listen',     desc: 'AI conversations with your entire workforce, cross-validated for honesty' },
+  { id: 'synthesise',  num: '02', label: 'Synthesise', desc: 'Identify patterns and clusters across conversations and teams' },
+  { id: 'generate',   num: '03', label: 'Generate',    desc: 'Derive concrete insights from synthesised signals' },
+  { id: 'validate',   num: '04', label: 'Validate',    desc: 'Test findings against real constraints and strategic goals' },
+  { id: 'converge',   num: '05', label: 'Converge',    desc: 'Deliver prioritised, action-ready results to decision level' },
 ];
 ---
 
@@ -31,8 +31,8 @@ const stages = lang === 'de' ? [
       </h2>
       <p class="loop__sub section-fade">
         {lang === 'de'
-          ? 'Ein proprietärer 5-Stufen-Prozess, der schwache Signale in handlungsfertige Erkenntnisse verwandelt.'
-          : 'A proprietary 5-stage process that transforms weak signals into action-ready insights.'}
+          ? 'Ein proprietärer 5-Stufen-Prozess, der das Wissen Ihrer Belegschaft in handlungsfertige Erkenntnisse verwandelt.'
+          : 'A proprietary 5-stage process that turns what your workforce knows into action-ready insights.'}
       </p>
     </div>
 

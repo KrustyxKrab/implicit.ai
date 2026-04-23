@@ -2,17 +2,17 @@ import React from "react";
 import { ContainerScroll } from "./container-scroll";
 
 const stages = [
-  { id: "01", name: "Extract" },
+  { id: "01", name: "Listen" },
   { id: "02", name: "Synthesise" },
   { id: "03", name: "Generate" },
   { id: "04", name: "Validate" },
   { id: "05", name: "Converge" },
 ];
 
-const hypotheses = [
-  "Cost reduction opportunity in logistics routing optimisation",
-  "Digital twin potential for berth scheduling and allocation",
-  "Automation readiness gap in container handling workflows",
+const insights = [
+  "Approval workflows in logistics slow turnaround by 3 days on average",
+  "Knowledge gap identified: shift handover process poorly documented across 4 departments",
+  "Process bottleneck in container allocation affects 60% of outbound shipments",
 ];
 
 export function ProductPreviewScroll({ lang }: { lang: "en" | "de" }) {
@@ -43,7 +43,7 @@ export function ProductPreviewScroll({ lang }: { lang: "en" | "de" }) {
               lineHeight: 1.1,
             }}
           >
-            {isDE ? "Der Validierungsloop in Aktion" : "The Validation Loop in action"}
+            {isDE ? "Ihre Belegschaft. Gehört." : "Your workforce. Heard."}
           </h2>
         </div>
       }
@@ -86,7 +86,7 @@ function PlatformMockup({ isDE }: { isDE: boolean }) {
             fontWeight: 500,
           }}
         >
-          implicit.ai — Innovation Intelligence Platform
+          inplicit.ai — Workforce Intelligence Platform
         </span>
       </div>
 
@@ -197,7 +197,7 @@ function PlatformMockup({ isDE }: { isDE: boolean }) {
                   color: "var(--color-text-primary)",
                 }}
               >
-                {isDE ? "Hypothesen generieren" : "Generate Hypotheses"}
+                {isDE ? "Erkenntnisse generieren" : "Generating Insights"}
               </p>
             </div>
             <div
@@ -217,7 +217,7 @@ function PlatformMockup({ isDE }: { isDE: boolean }) {
           </div>
 
           {/* Hypothesis cards */}
-          {hypotheses.map((h, i) => (
+          {insights.map((h, i) => (
             <div
               key={i}
               style={{

@@ -4,8 +4,8 @@ import Nav from '../../components/Nav.astro';
 import Hero from '../../components/Hero.astro';
 import HowItWorks from '../../components/HowItWorks.astro';
 import TheProblem from '../../components/TheProblem.astro';
+import Applications from '../../components/Applications.astro';
 import ValidationLoop from '../../components/ValidationLoop.astro';
-import Testimonial from '../../components/Testimonial.astro';
 import USP from '../../components/USP.astro';
 import DemoCTA from '../../components/DemoCTA.astro';
 import Footer from '../../components/Footer.astro';
@@ -15,18 +15,18 @@ const lang = 'de';
 ---
 
 <Layout
-  title="implicit.ai — KI-gestützte Innovationsintelligenz"
-  description="implicit.ai hebt schwache Signale aus Ihrer Organisation an die Oberfläche und verwandelt sie in validierte Innovationsmöglichkeiten."
+  title="inplicit.ai — KI-gestützte Belegschaftsintelligenz"
+  description="inplicit.ai gibt jedem in Ihrer Organisation eine Stimme. Verstehen Sie, was Ihre Belegschaft wirklich weiß, denkt und bewegt."
   lang="de"
 >
   <Nav lang={lang} />
   <main>
     <Hero lang={lang} />
-    <ProductPreviewScroll lang={lang} client:visible />
+    <ProductPreviewScroll lang={lang} client:load />
     <HowItWorks lang={lang} />
     <TheProblem lang={lang} />
+    <Applications lang={lang} />
     <ValidationLoop lang={lang} />
-    <Testimonial lang={lang} />
     <USP lang={lang} />
     <DemoCTA lang={lang} />
   </main>
