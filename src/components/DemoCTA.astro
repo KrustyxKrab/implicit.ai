@@ -5,10 +5,10 @@ export interface Props {
 const { lang = 'en' } = Astro.props;
 
 const deliverables = lang === 'de' ? [
-  '30-minütige KI-Interviewsession mit Ihrem Team',
-  'Pilot-Ergebnisübersicht — Ihre ersten identifizierten Signale',
-  'Lückenanalyse: Was Ihre aktuelle Wissensstrategie übersieht',
-  'Empfehlung für den nächsten Schritt auf Basis Ihrer Situation',
+  'Unsere KI führt Interviews mit Ihrem gesamten Team',
+  'Sie erhalten die Ergebnisse mit identifizierten Signalen',
+  'Lückenanalyse: Was Ihrer aktuellen Wissensstrategie fehlt',
+  'Empfehlungen für die nächsten Schritte, basierend auf Ihrer spezifischen Situation',
 ] : [
   '30-minute AI interview session with your team',
   'Pilot results overview — your first identified signals',
@@ -27,11 +27,11 @@ const deliverables = lang === 'de' ? [
           </p>
           <h2 class="demo__heading">
             <span class="demo__heading-line1">{lang === 'de' ? 'Starten Sie mit einem Pilot.' : 'Start with a pilot.'}</span>
-            <span class="demo__heading-line2">{lang === 'de' ? 'Ergebnisse in 4 Stunden.' : 'Results in 4 hours.'}</span>
+            <span class="demo__heading-line2">{lang === 'de' ? 'Erste Erkenntnisse in 3–4 Tagen.' : 'Results in 4 hours.'}</span>
           </h2>
           <p class="demo__sub">
             {lang === 'de'
-              ? 'Kein langer Onboarding-Prozess. Keine Setup-Gebühr. Nur ein fokussierter Pilot, der zeigt, was in Ihrer Organisation verborgen liegt.'
+              ? 'Kein aufwendiges Onboarding. Keine Setup-Gebühr. Nur ein fokussierter Pilot, der zeigt, was in Ihrer Organisation verborgen liegt.'
               : 'No lengthy onboarding. No setup fee. Just a focused pilot that shows what is hidden inside your organisation.'}
           </p>
         </div>
