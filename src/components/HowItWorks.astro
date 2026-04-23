@@ -103,38 +103,101 @@ const isDE = lang === 'de';
     <div class="hiw__step hiw__step--even section-fade">
       <div class="hiw__ghost" aria-hidden="true">02</div>
       <div class="hiw__mockup">
-        <div class="mock mock--video">
-          <div class="mock__video-grid">
-            <div class="mock__video-tile">
-              <div class="mock__video-avatar">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
-                </svg>
+        <div class="hiw__gallery" id="hiw-gallery-02">
+
+          <div class="hiw__gallery-tabs">
+            <button class="hiw__gallery-tab hiw__gallery-tab--active" data-idx="0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.61 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.62a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+              {isDE ? 'Call' : 'Call'}
+            </button>
+            <button class="hiw__gallery-tab" data-idx="1">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              Chat
+            </button>
+          </div>
+
+          <!-- Panel: Video call -->
+          <div class="mock mock--video hiw__gallery-panel hiw__gallery-panel--active">
+            <div class="mock__video-grid">
+              <div class="mock__video-tile">
+                <div class="mock__video-avatar">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+                  </svg>
+                </div>
+                <span class="mock__video-label">{isDE ? 'Mitarbeitende' : 'Employee'}</span>
               </div>
-              <span class="mock__video-label">{isDE ? 'Mitarbeitende' : 'Employee'}</span>
+              <div class="mock__video-tile mock__video-tile--ai">
+                <div class="mock__video-logo">
+                  <span class="mock__agent-icon" set:html={logoIconRaw} />
+                </div>
+                <span class="mock__video-label">inplicit Agent</span>
+              </div>
             </div>
-            <div class="mock__video-tile mock__video-tile--ai">
-              <div class="mock__video-logo">
-                <span class="mock__agent-icon" set:html={logoIconRaw} />
+            <div class="mock__video-bar">
+              <span class="mock__video-time">5:54</span>
+              <div class="mock__video-controls">
+                <button class="mock__ctrl" aria-label="mute">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/>
+                  </svg>
+                </button>
+                <button class="mock__ctrl mock__ctrl--end" aria-label="end call">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.61 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.62a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/>
+                  </svg>
+                </button>
               </div>
-              <span class="mock__video-label">inplicit Agent</span>
             </div>
           </div>
-          <div class="mock__video-bar">
-            <span class="mock__video-time">5:54</span>
-            <div class="mock__video-controls">
-              <button class="mock__ctrl" aria-label="mute">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/>
-                </svg>
-              </button>
-              <button class="mock__ctrl mock__ctrl--end" aria-label="end call">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.61 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.62a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/>
-                </svg>
-              </button>
+
+          <!-- Panel: Chat -->
+          <div class="mock mock--chat hiw__gallery-panel">
+            <div class="mock__chrome">
+              <div class="mock__dots">
+                <span class="mock__dot mock__dot--r"></span>
+                <span class="mock__dot mock__dot--y"></span>
+                <span class="mock__dot mock__dot--g"></span>
+              </div>
+              <span class="mock__title">inplicit Agent</span>
+              <span class="mock__status-dot" style="margin-left:auto"></span>
+            </div>
+            <div class="mock__chat-body">
+              <div class="mock__msg mock__msg--agent">
+                <span class="mock__msg-icon" set:html={logoIconRaw} />
+                <div class="mock__msg-bubble">
+                  {isDE ? 'Welcher Prozess bremst Ihr Team am stärksten?' : 'Which process slows your team down the most?'}
+                </div>
+              </div>
+              <div class="mock__msg mock__msg--user">
+                <div class="mock__msg-bubble">
+                  {isDE ? 'Abteilungsübergreifende Freigaben. Keine klare Verantwortung.' : 'Cross-team sign-offs. No single owner.'}
+                </div>
+                <div class="mock__msg-avatar">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                </div>
+              </div>
+              <div class="mock__msg mock__msg--agent">
+                <span class="mock__msg-icon" set:html={logoIconRaw} />
+                <div class="mock__msg-bubble">
+                  {isDE ? 'Wie oft verzögert das einen Projektstart?' : 'How often does that delay a project launch?'}
+                </div>
+              </div>
+              <div class="mock__msg mock__msg--user">
+                <div class="mock__msg-bubble">
+                  {isDE ? 'Fast immer. Wir planen mittlerweile 3 Wochen Puffer ein.' : 'Almost every time. We build in 3 weeks of buffer now.'}
+                </div>
+                <div class="mock__msg-avatar">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                </div>
+              </div>
+              <div class="mock__typing">
+                <span class="mock__msg-icon" set:html={logoIconRaw} />
+                <div class="mock__typing-dots"><span></span><span></span><span></span></div>
+              </div>
             </div>
           </div>
+
         </div>
       </div>
       <div class="hiw__text">
@@ -296,6 +359,37 @@ const isDE = lang === 'de';
 
   </div>
 </section>
+
+<script is:inline>
+(function () {
+  var g = document.getElementById('hiw-gallery-02');
+  if (!g) return;
+  var panels = g.querySelectorAll('.hiw__gallery-panel');
+  var tabs = g.querySelectorAll('.hiw__gallery-tab');
+  var idx = 0;
+  var timer;
+
+  function activate(i) {
+    idx = i;
+    panels.forEach(function (p, j) {
+      p.classList.toggle('hiw__gallery-panel--active', j === i);
+    });
+    tabs.forEach(function (t, j) {
+      t.classList.toggle('hiw__gallery-tab--active', j === i);
+    });
+  }
+
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () {
+      clearInterval(timer);
+      activate(i);
+      timer = setInterval(function () { activate((idx + 1) % panels.length); }, 8000);
+    });
+  });
+
+  timer = setInterval(function () { activate((idx + 1) % panels.length); }, 8000);
+})();
+</script>
 
 <style>
   .hiw {
@@ -793,5 +887,160 @@ const isDE = lang === 'de';
   @media (prefers-reduced-motion: reduce) {
     .mock__wf-icon--spin svg,
     .mock__status-dot { animation: none; }
+  }
+
+  /* ---- Gallery (Step 02) ---- */
+  .hiw__gallery {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .hiw__gallery-tabs {
+    display: flex;
+    gap: var(--space-2);
+  }
+
+  .hiw__gallery-tab {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    border-radius: var(--radius-ui);
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-text-tertiary);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: color 0.2s, background 0.2s, border-color 0.2s;
+    font-family: var(--font-family);
+  }
+
+  .hiw__gallery-tab--active {
+    background: var(--color-surface-elevated);
+    border-color: var(--color-border);
+    color: var(--color-text-primary);
+  }
+
+  .hiw__gallery-panel {
+    display: none;
+  }
+
+  .hiw__gallery-panel--active {
+    display: block;
+    animation: gallery-fade 0.3s var(--ease-out) both;
+  }
+
+  @keyframes gallery-fade {
+    from { opacity: 0; transform: translateY(5px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ---- Chat mock (Step 02 panel) ---- */
+  .mock__chat-body {
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .mock__msg {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-2);
+  }
+
+  .mock__msg--user {
+    flex-direction: row-reverse;
+  }
+
+  .mock__msg-icon {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mock__msg-icon :global(svg) {
+    display: block;
+    width: 22px;
+    height: 22px;
+  }
+
+  .mock__msg-icon :global(path) { fill: var(--color-text-primary); }
+  .mock__msg-icon :global(rect)  { fill: var(--color-accent); }
+
+  .mock__msg-avatar {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-tertiary);
+    flex-shrink: 0;
+  }
+
+  .mock__msg-bubble {
+    max-width: 74%;
+    padding: 8px 11px;
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: var(--color-text-primary);
+  }
+
+  .mock__msg--agent .mock__msg-bubble {
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: 10px 10px 10px 2px;
+  }
+
+  .mock__msg--user .mock__msg-bubble {
+    background: var(--color-accent);
+    color: #000000;
+    border-radius: 10px 10px 2px 10px;
+  }
+
+  .mock__typing {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-2);
+  }
+
+  .mock__typing-dots {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    padding: 10px 14px;
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: 10px 10px 10px 2px;
+  }
+
+  .mock__typing-dots span {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--color-text-tertiary);
+    animation: typing-bounce 1.3s ease-in-out infinite;
+  }
+
+  .mock__typing-dots span:nth-child(2) { animation-delay: 0.18s; }
+  .mock__typing-dots span:nth-child(3) { animation-delay: 0.36s; }
+
+  @keyframes typing-bounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.35; }
+    30% { transform: translateY(-4px); opacity: 1; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mock__typing-dots span { animation: none; }
+    .hiw__gallery-panel--active { animation: none; }
   }
 </style>
