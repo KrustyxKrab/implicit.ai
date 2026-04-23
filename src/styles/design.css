@@ -11,10 +11,10 @@
   --color-text-primary: #ffffff;
   --color-text-secondary: rgba(255, 255, 255, 0.55);
   --color-text-tertiary: rgba(255, 255, 255, 0.28);
-  --color-accent: #2dd4bf;
-  --color-accent-dark: #0d9488;
-  --color-accent-light: rgba(45, 212, 191, 0.08);
-  --color-accent-muted: rgba(45, 212, 191, 0.18);
+  --color-accent: #f5a623;
+  --color-accent-dark: #d4891a;
+  --color-accent-light: rgba(245, 166, 35, 0.08);
+  --color-accent-muted: rgba(245, 166, 35, 0.18);
 
   /* CTA tokens — inverted from bg in each mode */
   --color-cta-bg: #ffffff;
@@ -82,10 +82,10 @@
   --color-text-primary: #000000;
   --color-text-secondary: rgba(0, 0, 0, 0.55);
   --color-text-tertiary: rgba(0, 0, 0, 0.3);
-  --color-accent: #0d9488;
-  --color-accent-dark: #0f766e;
-  --color-accent-light: rgba(13, 148, 136, 0.06);
-  --color-accent-muted: rgba(13, 148, 136, 0.14);
+  --color-accent: #d4891a;
+  --color-accent-dark: #b87515;
+  --color-accent-light: rgba(245, 166, 35, 0.06);
+  --color-accent-muted: rgba(245, 166, 35, 0.14);
 
   /* CTA tokens */
   --color-cta-bg: #000000;

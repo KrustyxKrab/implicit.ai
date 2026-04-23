@@ -36,8 +36,8 @@ All tokens live in `/src/styles/design.css`. Never hardcode these values.
 | `--color-border` | `#1f1f1f` |
 | `--color-text-primary` | `#f5f5f5` |
 | `--color-text-secondary` | `#888888` |
-| `--color-accent` | `#2dd4bf` |
-| `--color-accent-dark` | `#0d9488` |
+| `--color-accent` | `#f5a623` |
+| `--color-accent-dark` | `#d4891a` |
 | `--font-family` | Inter (Google Fonts) |
 | `--max-width` | `1200px` |
 | `--radius-ui` | `4px` |

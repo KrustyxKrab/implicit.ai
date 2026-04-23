@@ -61,18 +61,16 @@
 
     const material = new THREE.PointsMaterial({
       size: 5,
-      color: getTheme() === 'dark' ? 0xffffff : 0x000000,
+      color: 0xf5a623,
       transparent: true,
-      opacity: getTheme() === 'dark' ? 0.2 : 0.1,
+      opacity: getTheme() === 'dark' ? 0.9 : 0.70,
       sizeAttenuation: true,
     });
 
     scene.add(new THREE.Points(geometry, material));
 
     new MutationObserver(() => {
-      const dark = getTheme() === 'dark';
-      material.color.set(dark ? 0xffffff : 0x000000);
-      material.opacity = dark ? 0.2 : 0.1;
+      material.opacity = getTheme() === 'dark' ? 0.9 : 0.70;
     }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
     let frame = 0;
