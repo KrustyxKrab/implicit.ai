@@ -48,16 +48,20 @@ const { lang = 'en' } = Astro.props;
     </div>
 
     <div class="hero__meta">
-      <span class="hero__meta-item">
-        {lang === 'de' ? 'Schneller Start' : 'Fast to start'}
+      <span class="hero__meta-item hero__meta-item--check">
+        {lang === 'de' ? 'DSGVO-konform' : 'GDPR compliant'}
       </span>
       <span class="hero__meta-sep" aria-hidden="true">·</span>
-      <span class="hero__meta-item">
-        {lang === 'de' ? 'Keine Setup-Gebühr' : 'No setup fee'}
+      <span class="hero__meta-item hero__meta-item--check">
+        {lang === 'de' ? 'Betriebsrat-ready' : 'Works-council ready'}
       </span>
       <span class="hero__meta-sep" aria-hidden="true">·</span>
-      <span class="hero__meta-item">
-        {lang === 'de' ? 'Erste Ergebnisse in 4 Stunden' : 'First insights in 4 hours'}
+      <span class="hero__meta-item hero__meta-item--check">
+        {lang === 'de' ? 'Daten in Frankfurt (EU)' : 'Data in EU'}
+      </span>
+      <span class="hero__meta-sep" aria-hidden="true">·</span>
+      <span class="hero__meta-item hero__meta-item--check">
+        {lang === 'de' ? 'EU AI Act konform' : 'EU AI Act compliant'}
       </span>
     </div>
   </div>
@@ -237,6 +241,12 @@ const { lang = 'en' } = Astro.props;
     font-size: var(--text-sm);
     color: var(--color-text-tertiary);
     font-weight: 400;
+  }
+
+  .hero__meta-item--check::before {
+    content: '✓ ';
+    color: var(--color-accent);
+    font-weight: 600;
   }
 
   .hero__meta-sep {

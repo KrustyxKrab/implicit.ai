@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import Hero from '../../components/Hero.astro';
 import HowItWorks from '../../components/HowItWorks.astro';
+import DataPrivacy from '../../components/DataPrivacy.astro';
 import TheProblem from '../../components/TheProblem.astro';
 import Applications from '../../components/Applications.astro';
 import ValidationLoop from '../../components/ValidationLoop.astro';
@@ -24,9 +25,10 @@ const lang = 'de';
     <Hero lang={lang} />
     <ProductPreviewScroll lang={lang} client:load />
     <HowItWorks lang={lang} />
+    <DataPrivacy lang={lang} />
     <TheProblem lang={lang} />
     <Applications lang={lang} />
-    <ValidationLoop lang={lang} />
+    <!-- <ValidationLoop lang={lang} /> -->
     <USP lang={lang} />
     <DemoCTA lang={lang} />
   </main>
