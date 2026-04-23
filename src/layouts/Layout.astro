@@ -12,6 +12,7 @@ const {
 } = Astro.props;
 
 import '../styles/global.css';
+import '../styles/design.css';
 ---
 
 <!doctype html>
@@ -57,14 +58,3 @@ import '../styles/global.css';
     <slot />
   </body>
 </html>
-
-<style is:global>
-  @import '../styles/design.css';
-
-  /* Hier definieren wir den dünnen Look für die Headlines */
-  h1, h2, h3 {
-    font-weight: 300 !important; /* Nutzt die dünne Inter-Stärke, die du gerade in Zeile 40 geladen hast */
-    letter-spacing: -0.04em !important; /* Macht den Text eng und edel wie bei Augusta Labs */
-    color: #fafafa; /* Ein ganz leichtes Off-White */
-  }
-</style>

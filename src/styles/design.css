@@ -126,6 +126,11 @@ a {
   text-decoration: none;
 }
 
+h1, h2, h3 {
+  font-weight: 400 !important;
+  letter-spacing: -0.02em !important;
+}
+
 img {
   max-width: 100%;
   height: auto;
