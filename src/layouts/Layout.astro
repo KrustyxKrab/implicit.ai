@@ -59,10 +59,8 @@ const {
 <style is:global>
   @import '../styles/design.css';
 
-  /* Hier definieren wir den dünnen Look für die Headlines */
-  h1, h2, h3 {
-    font-weight: 300 !important; /* Nutzt die dünne Inter-Stärke, die du gerade in Zeile 40 geladen hast */
-    letter-spacing: -0.04em !important; /* Macht den Text eng und edel wie bei Augusta Labs */
-    color: #fafafa; /* Ein ganz leichtes Off-White */
-  }
-</style>
+/* Alle Headlines auf Semibold (600) ändern */
+h1, h2, h3 {
+  font-weight: 600 !important; /* Vorher 300 */
+  letter-spacing: -0.02em !important; /* Etwas weniger negativ bei dickerer Schrift */
+}
