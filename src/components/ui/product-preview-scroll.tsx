@@ -1,7 +1,7 @@
 import React from "react";
 import { ContainerScroll } from "./container-scroll";
 
-const stages = [
+const stagesEN = [
   { id: "01", name: "Listen" },
   { id: "02", name: "Synthesise" },
   { id: "03", name: "Generate" },
@@ -9,10 +9,24 @@ const stages = [
   { id: "05", name: "Converge" },
 ];
 
-const insights = [
+const stagesDE = [
+  { id: "01", name: "Zuhören" },
+  { id: "02", name: "Synthese" },
+  { id: "03", name: "Generieren" },
+  { id: "04", name: "Validieren" },
+  { id: "05", name: "Zusammenfassen" },
+];
+
+const insightsEN = [
   "Approval workflows in logistics slow turnaround by 3 days on average",
   "Knowledge gap identified: shift handover process poorly documented across 4 departments",
   "Process bottleneck in container allocation affects 60% of outbound shipments",
+];
+
+const insightsDE = [
+  "Genehmigungsworkflows in der Logistik verlangsamen die Durchlaufzeit um durchschnittlich 3 Tage",
+  "Identifizierte Wissenslücke: Der Prozess der Schichtübergabe ist in vier Abteilungen unzureichend dokumentiert",
+  "Ein Prozessengpass bei der Containerzuweisung betrifft 60 % der ausgehenden Sendungen",
 ];
 
 export function ProductPreviewScroll({ lang }: { lang: "en" | "de" }) {
@@ -43,7 +57,7 @@ export function ProductPreviewScroll({ lang }: { lang: "en" | "de" }) {
               lineHeight: 1.1,
             }}
           >
-            {isDE ? "Ihre Belegschaft. Gehört." : "Your workforce. Heard."}
+            {isDE ? "Ihre Mitarbeitenden. Gehört." : "Your workforce. Heard."}
           </h2>
         </div>
       }
@@ -54,6 +68,8 @@ export function ProductPreviewScroll({ lang }: { lang: "en" | "de" }) {
 }
 
 function PlatformMockup({ isDE }: { isDE: boolean }) {
+  const stages = isDE ? stagesDE : stagesEN;
+  const insights = isDE ? insightsDE : insightsEN;
   return (
     <div
       style={{
@@ -188,7 +204,7 @@ function PlatformMockup({ isDE }: { isDE: boolean }) {
                   marginBottom: "2px",
                 }}
               >
-                Stage 03 / 5
+                {isDE ? "Phase 03 / 5" : "Stage 03 / 5"}
               </p>
               <p
                 style={{
@@ -212,7 +228,7 @@ function PlatformMockup({ isDE }: { isDE: boolean }) {
                 flexShrink: 0,
               }}
             >
-              {isDE ? "Aktiv" : "In Progress"}
+              {isDE ? "In Bearbeitung" : "In Progress"}
             </div>
           </div>
 
