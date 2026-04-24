@@ -19,7 +19,7 @@ const isDE = lang === 'de';
       <p class="hiw__eyebrow">{isDE ? 'Wie es funktioniert' : 'How it works'}</p>
       <h2 class="hiw__heading">
         <span class="hiw__line1">{isDE ? 'Vier Schritte.' : 'Four steps.'}</span>
-        <span class="hiw__line2">{isDE ? 'Vom Start zur Klarheit.' : 'From setup to clarity.'}</span>
+        <span class="hiw__line2">{isDE ? 'Von der Einrichtung zur Klarheit.' : 'From setup to clarity.'}</span>
       </h2>
     </div>
 
@@ -28,10 +28,10 @@ const isDE = lang === 'de';
       <div class="hiw__ghost" aria-hidden="true">01</div>
       <div class="hiw__text">
         <p class="hiw__step-eyebrow">{isDE ? 'Schritt 01' : 'Step 01'}</p>
-        <h3 class="hiw__step-heading">{isDE ? 'Bestehende Wissensquellen anbinden' : 'Connect your existing knowledge'}</h3>
+        <h3 class="hiw__step-heading">{isDE ? 'Vorhandenes Wissen verbinden' : 'Connect your existing knowledge'}</h3>
         <p class="hiw__step-body">
           {isDE
-            ? 'Verbinden Sie Ihre vorhandenen Datenquellen: Slack, Outlook, Celonis, SAP oder jedes andere System, auf dem Ihre Organisation läuft. So weiß unsere Interview-KI bereits vor dem ersten Gespräch den nötigen Kontext.'
+            ? 'Verbinden Sie zunächst Ihre expliziten Wissensquellen. Slack, Outlook, Celonis, SAP oder jede andere Quelle. So hat der Interview-Agent den nötigen Kontext, bevor das erste Gespräch beginnt.'
             : 'Start by connecting your explicit knowledge sources. Slack, Outlook, Celonis, SAP or anything else your organisation runs on. This gives the interview agent context before the first conversation begins.'}
         </p>
       </div>
@@ -202,10 +202,10 @@ const isDE = lang === 'de';
       </div>
       <div class="hiw__text">
         <p class="hiw__step-eyebrow">{isDE ? 'Schritt 02' : 'Step 02'}</p>
-        <h3 class="hiw__step-heading">{isDE ? 'KI-Interviews mit der gesamten Belegschaft' : 'Conversations that actually listen'}</h3>
+        <h3 class="hiw__step-heading">{isDE ? 'Gespräche, bei denen wirklich zugehört wird' : 'Conversations that actually listen'}</h3>
         <p class="hiw__step-body">
           {isDE
-            ? 'Unsere KI spricht mit allen Mitarbeitenden. Dabei passt sie sich in Echtzeit dem Kontext und den Antworten der interviewten Person an. So kann sie auch gute Nachfragen stellen, um implizites Wissen herauszufinden.'
+            ? 'KI-Agenten sprechen mit jedem in der Organisation, nicht nur mit Führungskräften. Jede Aussage wird kreuzvalidiert, nicht nur protokolliert. So entsteht ein Bild, das ehrlich ist.'
             : 'AI agents talk with everyone in the organisation, not just leadership. Every statement is cross-validated, not just recorded. The result is a picture that is honest.'}
         </p>
         <div class="hiw__stats">
@@ -226,20 +226,20 @@ const isDE = lang === 'de';
       <div class="hiw__ghost" aria-hidden="true">03</div>
       <div class="hiw__text">
         <p class="hiw__step-eyebrow">{isDE ? 'Schritt 03' : 'Step 03'}</p>
-        <h3 class="hiw__step-heading">{isDE ? 'Muster werden sichtbar' : 'Results come together'}</h3>
+        <h3 class="hiw__step-heading">{isDE ? 'Ergebnisse überprüft und verdichtet' : 'Results come together'}</h3>
         <p class="hiw__step-body">
           {isDE
-            ? 'Unsere KI kann hunderte Gespräche gleichzeitig führen und verarbeiten. Die KI erkennt Muster, bildet Cluster und filtert die wichtigsten Signale heraus - ohne manuelle Auswertung, ohne Wartezeit.'
+            ? 'Hunderte Gespräche laufen gleichzeitig. Die KI erkennt Muster, bildet Cluster und trennt Signal von Rauschen. Ohne manuelle Auswertung, ohne Tage des Wartens.'
             : 'Hundreds of conversations happen at once. The AI spots patterns, forms clusters, and separates signal from noise. No manual analysis, no days of waiting.'}
         </p>
         <div class="hiw__stats">
           <div class="hiw__stat">
-            <span class="hiw__stat-num">{isDE ? '3–4' : '4'}</span>
-            <span class="hiw__stat-label">{isDE ? 'Tage bis zu ersten Erkenntnissen' : 'Hours to first insights'}</span>
+            <span class="hiw__stat-num">4</span>
+            <span class="hiw__stat-label">{isDE ? 'Stunden bis zu ersten Erkenntnissen' : 'Hours to first insights'}</span>
           </div>
           <div class="hiw__stat">
             <span class="hiw__stat-num">0</span>
-            <span class="hiw__stat-label">{isDE ? 'Keine manuelle Analyse' : 'Manual analysis needed'}</span>
+            <span class="hiw__stat-label">{isDE ? 'Manuelle Analyse nötig' : 'Manual analysis needed'}
           </div>
         </div>
       </div>
@@ -408,10 +408,10 @@ const isDE = lang === 'de';
       </div>
       <div class="hiw__text">
         <p class="hiw__step-eyebrow">{isDE ? 'Schritt 04' : 'Step 04'}</p>
-        <h3 class="hiw__step-heading">{isDE ? 'Sie sehen das vollständige Bild' : 'You see the full picture'}</h3>
+        <h3 class="hiw__step-heading">{isDE ? 'Alles auf einen Blick' : 'You see the full picture'}</h3>
         <p class="hiw__step-body">
           {isDE
-            ? 'Sie erhalten alle Schwachstellen und Prozessineffizienzen, aber auch Innovationspotentiale und konkrete nächste Schritte in einem Maßnahmenplan - strukturiert, priorisiert und mit Einsparpotential.'
+            ? 'Schmerzpunkte, Chancen, Prozesslücken und eine Wissenskarte. Geordnet, priorisiert und bereit für Entscheidungen. Kein 60-seitiger Bericht, den niemand liest.'
             : 'Pain points, opportunities, process gaps, and a knowledge map. Organised, prioritised, and ready for decisions. No 60-page report that nobody reads.'}
         </p>
       </div>
