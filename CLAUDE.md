@@ -21,7 +21,7 @@
 
 ## Product in One Paragraph
 
-Implicit is an AI-guided interview service that surfaces hidden innovation potential inside large organisations. It runs a 5-stage Validation Loop: **Extract** (AI 1:1 interviews at scale) → **Synthesise** (cluster signals) → **Generate** (AI solution hypotheses) → **Validate** (workforce reacts to hypotheses) → **Converge** (pre-validated venture cases). The output is not a report — it is a living Knowledge Map of what the organisation knows but has never said out loud. Beachhead customer: HHLA (7,000 FTE, Hamburg port). Pilot price: €45–80k.
+Implicit is an AI-guided interview service that surfaces inefficiencies, operational bottlenecks as well as hidden innovation potential inside large organisations. It runs a 5-stage Validation Loop: **Extract** (AI 1:1 interviews at scale) → **Synthesise** (cluster signals) → **Generate** (AI solution hypotheses) → **Validate** (workforce reacts to hypotheses) → **Converge** (pre-validated venture cases). The output is not a report — it is a living Knowledge Map of what the organisation knows but has never said out loud. Beachhead customer: HHLA (7,000 FTE, Hamburg port). Pilot price: €45–80k.
 
 ---
 
