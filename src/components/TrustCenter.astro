@@ -1,0 +1,681 @@
+---
+export interface Props {
+  lang?: 'en' | 'de';
+}
+const { lang = 'en' } = Astro.props;
+const isDE = lang === 'de';
+
+interface Principle { icon: string; title: string; body: string; }
+
+const heroBadges = isDE ? [
+  { label: 'DSGVO & AV-Vertrag',    value: '✓ Art. 28 DSGVO'           },
+  { label: 'EU AI Act',             value: '✓ Konform'                  },
+  { label: 'Betriebsrat-ready',     value: '✓ Anforderungen erfüllt'    },
+  { label: 'Zero Data Retention',   value: '✓ Vertraglich'              },
+] : [
+  { label: 'GDPR & DPA',           value: '✓ Art. 28 GDPR'             },
+  { label: 'EU AI Act',             value: '✓ Compliant'                },
+  { label: 'Works-council ready',   value: '✓ Requirements met'         },
+  { label: 'Zero Data Retention',   value: '✓ Contractual'              },
+];
+
+const privacyPrinciples: Principle[] = isDE ? [
+  { icon: 'shield',  title: 'AV-Vertrag nach Art. 28 DSGVO',   body: 'Schriftlich fixiert, pro Unternehmen unterzeichnet — vor dem ersten Interview.' },
+  { icon: 'user',    title: 'Pseudonymisierung auf Wunsch',     body: 'Transkripte werden vor der Auswertung pseudonymisiert. Das Unternehmen definiert den Grad der Anonymisierung.' },
+  { icon: 'bell',    title: '48-Stunden-Meldefrist',            body: 'Sicherheitsvorfälle werden innerhalb von 48 Stunden nach erster Kenntnis gemeldet.' },
+  { icon: 'trash',   title: 'Datenlöschung auf Anfrage',        body: 'Alle Daten werden nach Vertragsende gelöscht oder zurückgegeben — auf Wunsch sofort.' },
+  { icon: 'lock',    title: 'Privacy by Design',                body: 'Datenschutz ist von Anfang an eingebaut — nicht nachträglich angeheftet.' },
+] : [
+  { icon: 'shield',  title: 'DPA under Art. 28 GDPR',           body: 'Signed in writing, per organisation — before the first interview.' },
+  { icon: 'user',    title: 'Pseudonymisation on request',       body: 'Transcripts are pseudonymised before analysis. The organisation defines the level of anonymisation.' },
+  { icon: 'bell',    title: '48-hour incident reporting',        body: 'Security incidents are reported within 48 hours of first awareness.' },
+  { icon: 'trash',   title: 'Data deletion on request',          body: 'All data is deleted or returned after contract end — immediately on request.' },
+  { icon: 'lock',    title: 'Privacy by Design',                 body: 'Data protection is built in from day one — not bolted on after the fact.' },
+];
+
+const aiPrinciples: Principle[] = isDE ? [
+  { icon: 'slash',   title: 'Kein Training auf Interview-Daten', body: 'Gespräche und Antworten Ihrer Mitarbeitenden fließen nicht in das Training von KI-Modellen. Vertraglich zugesichert.' },
+  { icon: 'users',   title: 'Human-in-the-Loop',                 body: 'Kein Ergebnis wird automatisch versendet. Verantwortliche im Unternehmen entscheiden über die Weitergabe aller Erkenntnisse.' },
+  { icon: 'check',   title: 'EU AI Act Konformität',             body: 'Transparenz- und Kontrollpflichten gemäß EU AI Act sind vollständig erfüllt.' },
+] : [
+  { icon: 'slash',   title: 'No training on interview data',     body: 'Conversations and employee responses do not flow into the training of AI models. Contractually guaranteed.' },
+  { icon: 'users',   title: 'Human-in-the-Loop',                 body: 'No results are sent automatically. Responsible people within the organisation decide on the sharing of all insights.' },
+  { icon: 'check',   title: 'EU AI Act compliance',              body: 'Transparency and control obligations under the EU AI Act are fully met.' },
+];
+
+const faqItems = isDE ? [
+  { q: 'Werden Mitarbeiterdaten für KI-Training verwendet?',         a: 'Nein. inplicit nutzt ausschließlich Modelle mit vertraglich zugesichertem Zero Data Retention. Interview-Inhalte und Organisationsdaten werden nicht für das Training von Modellen verwendet.' },
+  { q: 'Wer hat Zugriff auf Interview-Inhalte?',                     a: 'Ausschließlich autorisierte Personen im Unternehmen. Inhalte werden nicht an Dritte weitergegeben. inplicit-Mitarbeitende haben nur für technisch notwendige Tätigkeiten Zugriff.' },
+  { q: 'Wie ist die Anonymisierung von Interview-Inhalten geregelt?', a: 'Auf Wunsch erfolgt eine Pseudonymisierung der Transkripte vor der Auswertung. Das Unternehmen legt den gewünschten Grad der Anonymisierung fest.' },
+  { q: 'Wie schnell werden Sicherheitsvorfälle gemeldet?',           a: 'Innerhalb von 48 Stunden nach erster Kenntnis — mit vollständiger Beschreibung des Vorfalls, betroffener Datenkategorien und ergriffener Maßnahmen.' },
+  { q: 'Ist ein AV-Vertrag verfügbar?',                              a: 'Ja. Der Auftragsverarbeitungsvertrag wird pro Unternehmen beim Onboarding unterzeichnet. Auf Anfrage kann das Dokument vorab zugesendet werden.' },
+] : [
+  { q: 'Is employee data used for AI training?',                     a: 'No. inplicit uses only models with contractually guaranteed zero data retention. Interview content and organisation data are not used to train any models.' },
+  { q: 'Who has access to interview content?',                       a: 'Only authorised people within your organisation. Content is not shared with third parties. inplicit staff access is limited to technically necessary activities.' },
+  { q: 'How is anonymisation of interview content handled?',         a: 'On request, transcripts are pseudonymised before analysis. The organisation defines the level of anonymisation required.' },
+  { q: 'How quickly are security incidents reported?',               a: 'Within 48 hours of first awareness — with a full description of the incident, affected data categories, and measures taken.' },
+  { q: 'Is a data processing agreement available?',                  a: 'Yes. The DPA is signed per organisation at onboarding. It can be sent in advance upon request.' },
+];
+---
+
+<!-- ─── HERO ─── -->
+<section class="tc-hero">
+  <div class="container">
+    <span class="tc-badge section-fade">Trust Center</span>
+    <h1 class="tc-hero__heading section-fade">
+      <span class="tc-hero__line1">{isDE ? 'Vertrauen' : 'Trust is'}</span>
+      <span class="tc-hero__line2">{isDE ? 'ist die Grundlage.' : 'the foundation.'}</span>
+    </h1>
+    <p class="tc-hero__sub section-fade">
+      {isDE
+        ? 'Wo Mitarbeiterdaten und Organisationswissen verarbeitet werden, muss alles nachvollziehbar sein. Hier steht, wie inplicit Datenschutz, Betriebsratsanforderungen und KI-Transparenz umsetzt.'
+        : 'Where employee data and organisational knowledge are processed, everything must be transparent. Here is how inplicit implements data protection, works-council requirements, and AI transparency.'}
+    </p>
+
+    <div class="tc-hero__badges section-fade">
+      {heroBadges.map((b) => (
+        <div class="tc-hero__badge">
+          <div class="tc-hero__badge-icon" aria-hidden="true">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <div>
+            <strong class="tc-hero__badge-label">{b.label}</strong>
+            <span class="tc-hero__badge-value">{b.value}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ─── DATENSCHUTZ ─── -->
+<section class="tc-section" id="datenschutz">
+  <div class="container">
+    <div class="tc-section__header section-fade">
+      <span class="tc-badge">{isDE ? 'Datenschutz & Compliance' : 'Privacy & Compliance'}</span>
+      <h2 class="tc-section__heading">
+        <span>{isDE ? 'DSGVO, Betriebsrat' : 'GDPR, works council'}</span>
+        <span class="tc-heading__faded">{isDE ? 'und Betroffenenrechte.' : 'and data subject rights.'}</span>
+      </h2>
+      <p class="tc-section__sub">
+        {isDE
+          ? 'Die Verarbeitung erfolgt ausschließlich im Auftrag und nach Weisung des jeweiligen Unternehmens — auf Grundlage eines AV-Vertrags. Betriebsräte erhalten vollständige Transparenz über Datenflüsse und Verarbeitungszwecke.'
+          : 'Processing takes place exclusively on behalf of and according to the instructions of each organisation — on the basis of a data processing agreement. Works councils receive full transparency on data flows and processing purposes.'}
+      </p>
+    </div>
+
+    <div class="tc-principles section-fade">
+      {privacyPrinciples.map((p, i) => (
+        <div class="tc-principle" style={`--delay: ${i * 60}ms`}>
+          <div class="tc-principle__icon" aria-hidden="true">
+            {p.icon === 'shield' && <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>}
+            {p.icon === 'user' && <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>}
+            {p.icon === 'bell' && <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>}
+            {p.icon === 'trash' && <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>}
+            {p.icon === 'lock' && <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>}
+          </div>
+          <div class="tc-principle__body">
+            <h3 class="tc-principle__title">{p.title}</h3>
+            <p class="tc-principle__text">{p.body}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Contact box -->
+    <div class="tc-contact section-fade">
+      <div class="tc-contact__person">
+        <!-- Replace with real founder photo -->
+        <div class="tc-contact__avatar" aria-hidden="true">S</div>
+        <div>
+          <p class="tc-contact__name">Silas Kruckenberg</p>
+          <p class="tc-contact__role">{isDE ? 'Gründer, inplicit.ai' : 'Founder, inplicit.ai'}</p>
+        </div>
+      </div>
+      <p class="tc-contact__text">
+        {isDE
+          ? 'Fragen zu Datenschutz, Compliance oder einem AV-Vertrag? Wir antworten persönlich.'
+          : 'Questions about privacy, compliance, or a data processing agreement? We respond personally.'}
+      </p>
+      <a href="mailto:hello@inplicit.ai" class="tc-contact__link">hello@inplicit.ai</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── KI-TRANSPARENZ ─── -->
+<section class="tc-section" id="ki-transparenz">
+  <div class="container">
+    <div class="tc-section__header section-fade">
+      <span class="tc-badge">{isDE ? 'KI & Transparenz' : 'AI & Transparency'}</span>
+      <h2 class="tc-section__heading">
+        <span>{isDE ? 'KI-Einsatz' : 'AI use'}</span>
+        <span class="tc-heading__faded">{isDE ? 'transparent & kontrolliert.' : 'transparent & controlled.'}</span>
+      </h2>
+      <p class="tc-section__sub">
+        {isDE
+          ? 'inplicit setzt KI ein, um Interviews zu führen und Erkenntnisse zu synthetisieren. Die Nutzung ist transparent, vertraglich geregelt und ohne Datenrisiko für Mitarbeitende.'
+          : 'inplicit uses AI to conduct interviews and synthesise insights. Usage is transparent, contractually regulated, and risk-free for employees.'}
+      </p>
+    </div>
+
+    <div class="tc-principles tc-principles--three section-fade">
+      {aiPrinciples.map((p, i) => (
+        <div class="tc-principle" style={`--delay: ${i * 60}ms`}>
+          <div class="tc-principle__icon" aria-hidden="true">
+            {p.icon === 'slash' && <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>}
+            {p.icon === 'users' && <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>}
+            {p.icon === 'check' && <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>}
+          </div>
+          <div class="tc-principle__body">
+            <h3 class="tc-principle__title">{p.title}</h3>
+            <p class="tc-principle__text">{p.body}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ (two-column, 21.dev-inspired) ─── -->
+<section class="tc-section tc-section--faq" id="faq">
+  <div class="container">
+    <div class="tc-faq__layout">
+
+      <div class="tc-faq__intro section-fade">
+        <span class="tc-badge">FAQ</span>
+        <h2 class="tc-section__heading">
+          <span>{isDE ? 'Noch Fragen' : 'Still have'}</span>
+          <span class="tc-heading__faded">{isDE ? 'zur Compliance?' : 'questions?'}</span>
+        </h2>
+        <p class="tc-section__sub">
+          {isDE
+            ? 'Die häufigsten Fragen zu Datenschutz, KI-Einsatz und Compliance bei inplicit.'
+            : 'The most common questions about data protection, AI usage, and compliance at inplicit.'}
+        </p>
+        <a href="mailto:hello@inplicit.ai" class="tc-faq__contact">
+          {isDE ? 'Direkt fragen →' : 'Ask directly →'}
+        </a>
+      </div>
+
+      <div class="tc-faq__items section-fade">
+        {faqItems.map((item) => (
+          <details class="tc-faq__item">
+            <summary class="tc-faq__q">
+              {item.q}
+              <span class="tc-faq__icon" aria-hidden="true"></span>
+            </summary>
+            <p class="tc-faq__a">{item.a}</p>
+          </details>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ─── -->
+<section class="tc-cta section-fade">
+  <div class="container">
+    <div class="tc-cta__card">
+      <p class="tc-cta__eyebrow">{isDE ? 'Jetzt starten' : 'Get started'}</p>
+      <h2 class="tc-cta__heading">
+        <span>{isDE ? 'Bereit, Ihrer Organisation' : 'Ready to give your'}</span>
+        <span class="tc-heading__faded">{isDE ? 'eine Stimme zu geben?' : 'organisation a voice?'}</span>
+      </h2>
+      <p class="tc-cta__sub">
+        {isDE
+          ? 'Erste Erkenntnisse in 3–4 Tagen. Kein aufwendiges Onboarding. Kein Setup-Aufwand.'
+          : 'First insights in 3–4 days. No lengthy onboarding. No setup effort.'}
+      </p>
+      <a href={isDE ? '/de/#request-pilot' : '/#request-pilot'} class="tc-cta__btn">
+        <span class="tc-cta__btn-label">{isDE ? 'Zur Warteliste' : 'Join Waitlist'}</span>
+        <i class="tc-cta__btn-icon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ── Shared badge ── */
+  .tc-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-1) var(--space-3);
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-accent);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-6);
+    opacity: 0.85;
+  }
+
+  /* ── Shared heading parts ── */
+  .tc-section__heading {
+    font-size: clamp(var(--text-xl), 4vw, var(--text-2xl));
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    display: flex;
+    flex-direction: column;
+    gap: 0.06em;
+    margin-bottom: var(--space-4);
+    color: var(--color-text-primary);
+  }
+
+  .tc-heading__faded { opacity: 0.3; }
+
+  .tc-section__sub {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: 1.75;
+    max-width: 560px;
+  }
+
+  /* ── Hero ── */
+  .tc-hero {
+    padding: var(--space-section-lg) 0 var(--space-section);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .tc-hero__heading {
+    font-size: clamp(var(--text-2xl), 7vw, var(--text-3xl));
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.04em;
+    margin-bottom: var(--space-8);
+    color: var(--color-text-primary);
+  }
+
+  .tc-hero__line1 { color: var(--color-text-primary); }
+  .tc-hero__line2 { color: var(--color-text-primary); opacity: 0.3; }
+
+  .tc-hero__sub {
+    font-size: clamp(var(--text-base), 2vw, var(--text-lg));
+    color: var(--color-text-secondary);
+    line-height: 1.75;
+    max-width: 600px;
+    margin-bottom: var(--space-12);
+  }
+
+  /* Hero badges grid — matches DataPrivacy checklist */
+  .tc-hero__badges {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+    max-width: 700px;
+  }
+
+  @media (min-width: 640px) {
+    .tc-hero__badges { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  .tc-hero__badge {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+  }
+
+  .tc-hero__badge-icon {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--color-accent);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-ui);
+  }
+
+  .tc-hero__badge-label {
+    display: block;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    line-height: 1.3;
+    margin-bottom: 2px;
+  }
+
+  .tc-hero__badge-value {
+    display: block;
+    font-size: 11px;
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  /* ── Sections ── */
+  .tc-section {
+    padding: var(--space-section) 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  @media (max-width: 767px) {
+    .tc-hero  { padding: var(--space-24) 0; }
+    .tc-section { padding: var(--space-24) 0; }
+  }
+
+  .tc-section__header {
+    margin-bottom: var(--space-12);
+    max-width: 620px;
+  }
+
+  /* ── Principles grid — matches DataPrivacy ── */
+  .tc-principles {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+    margin-bottom: var(--space-8);
+  }
+
+  @media (min-width: 640px) {
+    .tc-principles { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (min-width: 1024px) {
+    .tc-principles { grid-template-columns: repeat(3, 1fr); }
+    .tc-principles--three { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .tc-principle {
+    display: flex;
+    gap: var(--space-4);
+    padding: var(--space-6);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+    transition: border-color 0.2s var(--ease-smooth);
+  }
+
+  .tc-principle:hover {
+    border-color: color-mix(in srgb, var(--color-accent) 30%, var(--color-border));
+  }
+
+  .tc-principle__icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-ui);
+    background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+    color: var(--color-accent);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .tc-principle__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .tc-principle__title {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    line-height: 1.4;
+  }
+
+  .tc-principle__text {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  /* ── Contact box ── */
+  .tc-contact {
+    padding: var(--space-6);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .tc-contact__person {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .tc-contact__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    background: color-mix(in srgb, var(--color-accent) 15%, var(--color-surface));
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  .tc-contact__name {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .tc-contact__role {
+    font-size: var(--text-xs);
+    color: var(--color-text-tertiary);
+  }
+
+  .tc-contact__text {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+  }
+
+  .tc-contact__link {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-accent);
+    transition: opacity 0.15s var(--ease-smooth);
+  }
+
+  .tc-contact__link:hover { opacity: 0.75; }
+
+  /* ── FAQ — two-column, 21.dev Ruixen pattern ── */
+  .tc-faq__layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-16);
+  }
+
+  @media (min-width: 900px) {
+    .tc-faq__layout { grid-template-columns: 360px 1fr; gap: var(--space-16); }
+  }
+
+  .tc-faq__intro {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tc-faq__contact {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text-tertiary);
+    margin-top: var(--space-6);
+    transition: color 0.15s var(--ease-smooth);
+  }
+
+  .tc-faq__contact:hover { color: var(--color-text-primary); }
+
+  .tc-faq__items {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .tc-faq__item {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .tc-faq__q {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-5) 0;
+    font-size: var(--text-base);
+    font-weight: 500;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+
+  .tc-faq__q::-webkit-details-marker { display: none; }
+
+  .tc-faq__icon {
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-ui);
+    flex-shrink: 0;
+    position: relative;
+    transition: border-color 0.15s var(--ease-smooth);
+  }
+
+  .tc-faq__icon::before,
+  .tc-faq__icon::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    background: var(--color-text-secondary);
+    transition: transform 0.2s var(--ease-smooth), opacity 0.2s var(--ease-smooth);
+  }
+
+  .tc-faq__icon::before { width: 8px; height: 1.5px; }
+  .tc-faq__icon::after  { width: 1.5px; height: 8px; }
+
+  details[open] .tc-faq__icon::after { transform: scaleY(0); opacity: 0; }
+  details[open] .tc-faq__q { color: var(--color-accent); }
+  details[open] .tc-faq__icon { border-color: var(--color-accent-muted); }
+
+  .tc-faq__a {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    padding-bottom: var(--space-6);
+    max-width: 600px;
+  }
+
+  /* ── CTA — same pattern as DemoCTA ── */
+  .tc-cta {
+    padding: var(--space-section) 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .tc-cta__card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    padding: var(--space-12);
+    max-width: 680px;
+  }
+
+  @media (max-width: 767px) {
+    .tc-cta__card { padding: var(--space-8) var(--space-6); }
+  }
+
+  .tc-cta__eyebrow {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-tertiary);
+    margin-bottom: var(--space-3);
+  }
+
+  .tc-cta__heading {
+    font-size: clamp(var(--text-lg), 3vw, var(--text-xl));
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    display: flex;
+    flex-direction: column;
+    gap: 0.06em;
+    margin-bottom: var(--space-4);
+    color: var(--color-text-primary);
+  }
+
+  .tc-cta__sub {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--space-8);
+  }
+
+  /* CTA button — identical to DemoCTA / Hero pattern */
+  .tc-cta__btn {
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    height: 48px;
+    padding: 0 var(--space-8);
+    background-color: var(--color-cta-bg);
+    color: var(--color-cta-text);
+    font-size: var(--text-base);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    border-radius: var(--radius-ui);
+    transition: opacity 0.2s var(--ease-smooth);
+  }
+
+  .tc-cta__btn:hover { opacity: 0.85; }
+  .tc-cta__btn:active { transform: scale(0.97); }
+
+  .tc-cta__btn-label {
+    margin-right: var(--space-10);
+    transition: opacity 0.4s var(--ease-smooth);
+    white-space: nowrap;
+  }
+
+  .tc-cta__btn:hover .tc-cta__btn-label { opacity: 0; }
+
+  .tc-cta__btn-icon {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    bottom: 4px;
+    border-radius: var(--radius-ui);
+    z-index: 1;
+    display: grid;
+    width: 25%;
+    place-items: center;
+    background-color: var(--color-cta-icon-bg);
+    transition: width 0.4s var(--ease-spring);
+  }
+
+  .tc-cta__btn:hover .tc-cta__btn-icon { width: calc(100% - 8px); }
+
+  @media (max-width: 479px) {
+    .tc-cta__btn { width: 100%; justify-content: center; }
+  }
+</style>
