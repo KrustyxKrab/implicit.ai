@@ -644,7 +644,7 @@ const faqItems = isDE ? [
     line-height: 1.6;
   }
 
-  /* ── FAQ ── */
+  /* ── FAQ layout (scoped — no native element selectors here) ── */
   .tc-faq-section {
     padding: var(--space-section) 0;
     border-top: 1px solid var(--color-border);
@@ -694,73 +694,6 @@ const faqItems = isDE ? [
   }
 
   .tc-faq__contact-link:hover { color: var(--color-text-primary); }
-
-  .tc-faq__items {
-    display: flex;
-    flex-direction: column;
-    border-top: 1px solid var(--color-border);
-  }
-
-  .tc-faq__item {
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  /* summary: remove ALL browser-default markers */
-  .tc-faq__q {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: var(--space-4);
-    padding: var(--space-5) 0;
-    font-size: var(--text-base);
-    font-weight: 500;
-    color: var(--color-text-primary);
-    cursor: pointer;
-    list-style: none;
-    user-select: none;
-    font-family: var(--font-family);
-  }
-
-  /* All browsers: remove disclosure triangle */
-  .tc-faq__q::-webkit-details-marker { display: none; }
-  .tc-faq__q::marker { display: none; content: ''; }
-
-  .tc-faq__icon {
-    width: 18px;
-    height: 18px;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-ui);
-    flex-shrink: 0;
-    position: relative;
-    transition: border-color 0.15s var(--ease-smooth);
-  }
-
-  .tc-faq__icon::before,
-  .tc-faq__icon::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    background: var(--color-text-secondary);
-    transition: transform 0.2s var(--ease-smooth), opacity 0.2s var(--ease-smooth);
-  }
-
-  .tc-faq__icon::before { width: 8px; height: 1.5px; }
-  .tc-faq__icon::after  { width: 1.5px; height: 8px; }
-
-  /* :global() ensures details[open] ancestor selector isn't broken by Astro scoping */
-  :global(details[open]) .tc-faq__q { color: var(--color-accent); }
-  :global(details[open]) .tc-faq__icon { border-color: var(--color-accent-muted); }
-  :global(details[open]) .tc-faq__icon::after { transform: scaleY(0); opacity: 0; }
-
-  .tc-faq__a {
-    font-size: var(--text-base);
-    font-family: var(--font-family);
-    color: var(--color-text-secondary);
-    line-height: 1.8;
-    padding-bottom: var(--space-6);
-    max-width: 560px;
-  }
 
   /* ── CTA — identical to DemoCTA ── */
   .tc-cta {
@@ -851,5 +784,80 @@ const faqItems = isDE ? [
 
   @media (max-width: 479px) {
     .tc-cta__btn { width: 100%; justify-content: center; }
+  }
+</style>
+
+<!-- FAQ items: is:global avoids Astro scoping breaking details/summary native elements
+     and Tailwind preflight overrides. tc-faq__ prefix is unique to this component. -->
+<style is:global>
+  .tc-faq__items {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .tc-faq__item {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  /* summary element — reset Tailwind preflight + browser defaults */
+  .tc-faq__q {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-5) 0;
+    font-size: var(--text-base);
+    font-family: var(--font-family);
+    font-weight: 500;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  /* Remove disclosure triangle in all browsers */
+  .tc-faq__q::-webkit-details-marker { display: none; }
+  .tc-faq__q::marker { display: none; content: ''; }
+
+  /* Plus/minus toggle icon */
+  .tc-faq__icon {
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-ui);
+    flex-shrink: 0;
+    position: relative;
+    transition: border-color 0.15s var(--ease-smooth);
+  }
+
+  .tc-faq__icon::before,
+  .tc-faq__icon::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    background: var(--color-text-secondary);
+    transition: transform 0.2s var(--ease-smooth), opacity 0.2s var(--ease-smooth);
+  }
+
+  .tc-faq__icon::before { width: 8px; height: 1.5px; }
+  .tc-faq__icon::after  { width: 1.5px; height: 8px; }
+
+  /* Open state — no scoping issues here since the whole block is global */
+  details[open] .tc-faq__q { color: var(--color-accent); }
+  details[open] .tc-faq__icon { border-color: var(--color-accent-muted); }
+  details[open] .tc-faq__icon::after { transform: scaleY(0); opacity: 0; }
+
+  /* Answer text */
+  .tc-faq__a {
+    font-size: var(--text-base);
+    font-family: var(--font-family);
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    padding-bottom: var(--space-6);
+    max-width: 560px;
+    margin: 0;
   }
 </style>
