@@ -244,13 +244,15 @@ const faqItems = isDE ? [
 
       <div class="tc-faq__items section-fade">
         {faqItems.map((item) => (
-          <details class="tc-faq__item">
-            <summary class="tc-faq__q">
-              {item.q}
+          <div class="tc-faq__item">
+            <button class="tc-faq__q" aria-expanded="false" data-faq-btn>
+              <span class="tc-faq__q-text">{item.q}</span>
               <span class="tc-faq__icon" aria-hidden="true"></span>
-            </summary>
-            <p class="tc-faq__a">{item.a}</p>
-          </details>
+            </button>
+            <div class="tc-faq__answer-wrap">
+              <p class="tc-faq__a">{item.a}</p>
+            </div>
+          </div>
         ))}
       </div>
 
@@ -787,8 +789,8 @@ const faqItems = isDE ? [
   }
 </style>
 
-<!-- FAQ items: is:global avoids Astro scoping breaking details/summary native elements
-     and Tailwind preflight overrides. tc-faq__ prefix is unique to this component. -->
+<!-- FAQ: is:global because tc-faq__ classes sit on <button>/<div> elements that
+     Tailwind preflight touches. Prefix is unique — no global scope pollution. -->
 <style is:global>
   .tc-faq__items {
     display: flex;
@@ -800,28 +802,36 @@ const faqItems = isDE ? [
     border-bottom: 1px solid var(--color-border);
   }
 
-  /* summary element — reset Tailwind preflight + browser defaults */
+  /* <button> — reset all browser/Tailwind defaults */
   .tc-faq__q {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
     gap: var(--space-4);
     padding: var(--space-5) 0;
     font-size: var(--text-base);
     font-family: var(--font-family);
     font-weight: 500;
     color: var(--color-text-primary);
+    background: none;
+    border: none;
     cursor: pointer;
-    list-style: none;
+    text-align: left;
     user-select: none;
-    -webkit-user-select: none;
   }
 
-  /* Remove disclosure triangle in all browsers */
-  .tc-faq__q::-webkit-details-marker { display: none; }
-  .tc-faq__q::marker { display: none; content: ''; }
+  .tc-faq__q-text {
+    flex: 1;
+  }
 
-  /* Plus/minus toggle icon */
+  /* Height animated via inline style (CLAUDE.md Gotcha #2) */
+  .tc-faq__answer-wrap {
+    overflow: hidden;
+    transition: height 0.25s var(--ease-smooth);
+  }
+
+  /* Plus/minus icon */
   .tc-faq__icon {
     width: 18px;
     height: 18px;
@@ -845,12 +855,11 @@ const faqItems = isDE ? [
   .tc-faq__icon::before { width: 8px; height: 1.5px; }
   .tc-faq__icon::after  { width: 1.5px; height: 8px; }
 
-  /* Open state — no scoping issues here since the whole block is global */
-  details[open] .tc-faq__q { color: var(--color-accent); }
-  details[open] .tc-faq__icon { border-color: var(--color-accent-muted); }
-  details[open] .tc-faq__icon::after { transform: scaleY(0); opacity: 0; }
+  /* Open state — class toggle for boolean visual state (no transition needed) */
+  .tc-faq__q.is-open { color: var(--color-accent); }
+  .tc-faq__q.is-open .tc-faq__icon { border-color: var(--color-accent-muted); }
+  .tc-faq__q.is-open .tc-faq__icon::after { transform: scaleY(0); opacity: 0; }
 
-  /* Answer text */
   .tc-faq__a {
     font-size: var(--text-base);
     font-family: var(--font-family);
@@ -861,3 +870,25 @@ const faqItems = isDE ? [
     margin: 0;
   }
 </style>
+
+<script>
+  // Initialise after DOM is ready — height set via inline style per CLAUDE.md Gotcha #2
+  document.querySelectorAll<HTMLButtonElement>('[data-faq-btn]').forEach((btn) => {
+    const wrap = btn.nextElementSibling as HTMLElement | null;
+    if (!wrap) return;
+    wrap.style.height = '0';
+
+    btn.addEventListener('click', () => {
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      if (isOpen) {
+        btn.setAttribute('aria-expanded', 'false');
+        btn.classList.remove('is-open');
+        wrap.style.height = '0';
+      } else {
+        btn.setAttribute('aria-expanded', 'true');
+        btn.classList.add('is-open');
+        wrap.style.height = wrap.scrollHeight + 'px';
+      }
+    });
+  });
+</script>
