@@ -1,4 +1,6 @@
 ---
+import TrustCenterFAQ from './ui/TrustCenterFAQ';
+
 export interface Props {
   lang?: 'en' | 'de';
 }
@@ -242,18 +244,8 @@ const faqItems = isDE ? [
         </a>
       </div>
 
-      <div class="tc-faq__items section-fade">
-        {faqItems.map((item) => (
-          <div class="tc-faq__item">
-            <button class="tc-faq__q" aria-expanded="false" data-faq-btn>
-              <span class="tc-faq__q-text">{item.q}</span>
-              <span class="tc-faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="tc-faq__answer-wrap">
-              <p class="tc-faq__a">{item.a}</p>
-            </div>
-          </div>
-        ))}
+      <div class="section-fade">
+        <TrustCenterFAQ items={faqItems} client:visible />
       </div>
 
     </div>
@@ -788,26 +780,3 @@ const faqItems = isDE ? [
     .tc-cta__btn { width: 100%; justify-content: center; }
   }
 </style>
-
-
-<script>
-  // Initialise after DOM is ready — height set via inline style per CLAUDE.md Gotcha #2
-  document.querySelectorAll<HTMLButtonElement>('[data-faq-btn]').forEach((btn) => {
-    const wrap = btn.nextElementSibling as HTMLElement | null;
-    if (!wrap) return;
-    wrap.style.height = '0';
-
-    btn.addEventListener('click', () => {
-      const isOpen = btn.getAttribute('aria-expanded') === 'true';
-      if (isOpen) {
-        btn.setAttribute('aria-expanded', 'false');
-        btn.classList.remove('is-open');
-        wrap.style.height = '0';
-      } else {
-        btn.setAttribute('aria-expanded', 'true');
-        btn.classList.add('is-open');
-        wrap.style.height = wrap.scrollHeight + 'px';
-      }
-    });
-  });
-</script>
