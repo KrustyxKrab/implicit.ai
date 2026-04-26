@@ -1,6 +1,4 @@
 ---
-import TrustCenterFAQ from './ui/TrustCenterFAQ';
-
 export interface Props {
   lang?: 'en' | 'de';
 }
@@ -244,8 +242,18 @@ const faqItems = isDE ? [
         </a>
       </div>
 
-      <div class="section-fade">
-        <TrustCenterFAQ items={faqItems} client:visible />
+      <div class="tc-faq__items section-fade">
+        {faqItems.map((item) => (
+          <div class="tc-faq__item">
+            <button class="tc-faq__q" aria-expanded="false" data-faq-trigger>
+              <span class="tc-faq__q-text">{item.q}</span>
+              <span class="tc-faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="tc-faq__answer-wrap">
+              <p class="tc-faq__a">{item.a}</p>
+            </div>
+          </div>
+        ))}
       </div>
 
     </div>
@@ -780,3 +788,18 @@ const faqItems = isDE ? [
     .tc-cta__btn { width: 100%; justify-content: center; }
   }
 </style>
+
+<script>
+  // Height set via inline style — transition defined in design.css (CLAUDE.md Gotcha #2)
+  document.querySelectorAll('[data-faq-trigger]').forEach((btn) => {
+    const wrap = btn.nextElementSibling as HTMLElement;
+    wrap.style.height = '0px';
+
+    btn.addEventListener('click', () => {
+      const isOpen = btn.classList.contains('is-open');
+      btn.classList.toggle('is-open', !isOpen);
+      btn.setAttribute('aria-expanded', String(!isOpen));
+      wrap.style.height = isOpen ? '0px' : wrap.scrollHeight + 'px';
+    });
+  });
+</script>
